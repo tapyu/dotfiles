@@ -12,15 +12,8 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 # enable to tab-complete dotfiles
-_comp_options+=(globdots)		# Include hidden files.
+_comp_options+=(globdots) # Include hidden files.
 
-
-# search history from text already entered at the prompt
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end # ^[[A -> up arrow
-bindkey "^[[B" history-beginning-search-forward-end # ^[[B -> bottom arrow
 
 # vi mode
 bindkey -v
@@ -44,15 +37,25 @@ source "$ZDOTDIR/zsh-functions.sh"
 zsh_add_file "zsh-exports.sh"
 zsh_add_file "zsh-vim-mode.sh"
 zsh_add_file "zsh-aliases.sh"
-#zsh_add_file "zsh-prompt.sh"
 
 # plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "romkatv/powerlevel10k"
+zsh_add_plugin "zsh-users/zsh-history-substring-search"
+zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
+
 
 # apply p10k
 source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme # apply powerlevel10ktheme
 # to customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+
+# zsh-history-substring-search plugin setup
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
+
+# zoxide setup
+eval "$(zoxide init zsh)"
