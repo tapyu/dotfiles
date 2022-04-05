@@ -35,7 +35,7 @@ function zsh_add_completion() {
 
 
 # Change cursor shape for different vi modes.
-function zle-keymap-select {
+function zle-keymap-select() {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
     echo -ne '\e[2 q' # use \e[1 blinking
