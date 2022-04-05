@@ -35,6 +35,8 @@ function zsh_add_completion() {
 
 
 # Change cursor shape for different vi modes.
+# TODO see if this isn't a better way
+# https://github.com/LukeSmithxyz/voidrice/blob/master/.config/zsh/.zshrc
 function zle-keymap-select() {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then

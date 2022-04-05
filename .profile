@@ -25,11 +25,11 @@ export RANGER_DEVICONS_SEPARATOR="  "
 # source cargo, the Rust package manager
 source "$HOME/.cargo/env"
 # set zsh default condig directory
-export ZDOTDIR=$HOME/.config/zsh # without / to avoid error
+export ZDOTDIR="$HOME/.config/zsh" # without / to avoid error
 # XDG Paths
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
 # set editor
 export EDITOR="nvim"
 # set browser

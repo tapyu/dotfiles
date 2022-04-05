@@ -13,7 +13,18 @@ fi
 alias matlab='$MATLAB_ROOT_DIR/bin/matlab >> /dev/null 2>> /dev/null &'
 alias cat=batcat
 alias pycharm='/opt/pycharm-community-2021.2.3/bin/pycharm.sh'
-alias ll='ls -Ahl'
-alias la='ls -A'
-alias l='ls -h'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+# Verbosity and settings that you pretty much just always are going to want.
+# TODO see more here
+# https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
+# -l -> long list formating
+# almost-all: ignore . and ..
+alias \
+	cp="cp --interactive --verbose" \
+	mv="mv --interactive --verbose" \
+	alias ll='ls -l --almost-all --human-readable' \ 
+	alias la='ls --almost-all' \ 
+	alias l='ls --human-readable' \
+	alias mkdir="mkdir --parents --verbose"
