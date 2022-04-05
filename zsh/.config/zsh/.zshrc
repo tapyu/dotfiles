@@ -3,8 +3,8 @@ setopt appendhistory
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
 unsetopt BEEP # unset beep
-stty stop undef		# Disable ctrl-s to freeze terminal.
-zle_highlight=('paste:none')
+stty stop undef	# Disable ctrl-s to freeze terminal.
+zle_highlight=('paste:none') # disable highlighting when pasting something
 
 # basic auto/tab complete:
 autoload -U compinit
@@ -25,7 +25,8 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 # Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
+autoload edit-command-line
+zle -N edit-command-line
 bindkey '^ ' edit-command-line
 
 
