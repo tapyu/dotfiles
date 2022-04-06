@@ -36,6 +36,9 @@ export EDITOR="nvim"
 export BROWSER="brave"
 # set manpager
 export MANPAGER='nvim +Man!'
+# zoxide environment variables
+export _ZO_DATA_DIR="$XDG_DATA_HOME"
+export _ZO_RESOLVE_SYMLINKS='1'
 
 # set zsh-history-substring-search plugin
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
