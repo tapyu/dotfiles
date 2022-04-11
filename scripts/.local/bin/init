@@ -19,7 +19,7 @@ mkdir -p $ZDOTDIR ~/.cache/zsh/
 # https://trello.com/c/3uugZkiB/99-linux-setup-improvements
 
 # one-line packages
-apt-get install terminator texlive-full snapd htop r-base obs-studio variety neovim telegram-desktop git psensor screenfetch rar unrar gparted gimp ocrmypdf pdfgrep flatpak nemo ranger caca-utils curl bat zsh powerline fzf mlocate peek
+apt-get install terminator texlive-full snapd htop r-base obs-studio variety neovim telegram-desktop git psensor screenfetch rar unrar gparted gimp ocrmypdf pdfgrep flatpak nemo ranger caca-utils curl bat zsh powerline fzf mlocate peek pandoc
 # python packages
 apt-get install python3-pip # install pip
 apt-get install python3-tk # GUI
