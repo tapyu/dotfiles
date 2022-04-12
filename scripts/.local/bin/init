@@ -73,4 +73,6 @@ gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bi
 
 
 # zoxide install
-curl -sS https://webinstall.dev/zoxide | bash
+cargo install zoxide --locked
+# install dandavison/delta
+cargo install git-delta
