@@ -1,6 +1,7 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    # Peltoche/lsd program
     alias ls='lsd --group-dirs first'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -10,9 +11,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# matlab startup program
 alias matlab='$MATLAB_ROOT_DIR/bin/matlab >> /dev/null 2>> /dev/null &'
+# sharkdp/bat program
 alias cat=batcat
-alias pycharm='/opt/pycharm-community-2021.2.3/bin/pycharm.sh'
+# dandavison/delta program
+alias diff=delta
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
@@ -20,7 +24,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # TODO see more here
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
 # -l -> long list formating
-# almost-all: ignore . and ..
+# --almost-all -> ignore . and ..
 alias \
 	cp="cp --interactive --verbose" \
 	mv="mv --interactive --verbose" \

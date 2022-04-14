@@ -40,7 +40,10 @@ export MANPAGER='nvim +Man!'
 export _ZO_DATA_DIR="$XDG_DATA_HOME"
 export _ZO_RESOLVE_SYMLINKS='1'
 
-# set zsh-history-substring-search plugin
+# set zsh-users/zsh-history-substring-search plugin
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+
+# brew setup
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
