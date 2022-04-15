@@ -48,18 +48,24 @@ packer.init {
 
 -- Install your plugins here --
 
--- all your data's packages live in $XDG_DATA_HOME/nivm = .local/share/nvim
--- all your nonlazy packages live in $XDG_DATA_HOME/nvim/site/pack/packer/start
--- all your lazy packages live in $XDG_DATA_HOME/nvim/site/pack/packer/opt
+-- all your data's plugins live in $XDG_DATA_HOME/nivm = .local/share/nvim
+-- all your nonlazy plugins live in $XDG_DATA_HOME/nvim/site/pack/packer/start
+-- all your lazy plugins live in $XDG_DATA_HOME/nvim/site/pack/packer/opt
 --
 -- run -> run a command. Any cd is done inside the location of the package (e.g., in markdown-preview, cd is performed inside $XDG_DATA_HOME/nvim/site/pack/packer/opt/markdown-preview.nvim)
--- cmd -> the package only run when you run this command (it becomes a lazy package)
+-- cmd -> the package is only loaded when you run this command (it becomes a lazy plugin)
+-- config -> as soons as the plugin is loaded, it runs a function
+-- event -> the pligun is only loaded when an event happens (run :help events to see more info) (it becomes a lazy plugin)
 return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- update packer manage itself. Same as if we run :PackerUpdate
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim (a tons of plugins require it)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
+  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
+
+  -- Colorschemes
+  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out with :colorscheme
+  use 'folke/tokyonight.nvim' -- try :colorscheme tokyonight
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
