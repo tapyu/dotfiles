@@ -76,3 +76,16 @@ gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bi
 cargo install zoxide --locked
 # install dandavison/delta
 cargo install git-delta
+
+# nvim requirements check if all requirments are checked with :checkhealth
+# for more info, see https://github.com/LunarVim/Neovim-from-scratch/blob/master/README.md
+sudo apt install xsel
+pip install pynvim
+sudo apt-get install npm
+sudo npm i -g neovim
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output /tmp/get-pip.py
+sudo python2 /tmp/get-pip.py # intall pip for python2
+python2 -m pip install neovim
+
+# nvim plugin necessities
+npm install --global yarn # a JavaScript package manager compatible with npm, used by iamcco/markdown-preview.nvim

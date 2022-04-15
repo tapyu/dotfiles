@@ -2,6 +2,3 @@ zsh/**/plugins/
 zsh/**/.zcompdump
 zsh/**/.p10k.zsh
 **/__pycache__/
-**/.git/
-**/.github/
-**/.gitignore
