@@ -59,7 +59,7 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- update packer manage itself. Same as if we run :PackerUpdate
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim (a tons of plugins require it)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview', ft = {md}}
+  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
