@@ -18,7 +18,7 @@ alias cat=batcat
 # dandavison/delta program
 alias diff=delta
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
+alias vim=nvim # alias to make vim == nvim when installed with brew. In other installation way, delete this alias as it isn't necessary
 
 # Verbosity and settings that you pretty much just always are going to want.
 # TODO see more here
