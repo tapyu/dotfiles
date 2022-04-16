@@ -117,8 +117,17 @@ cmp.setup {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
+  window = {
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
+  },
   experimental = {
     ghost_text = false,
     native_menu = false,
   },
 }
+
+-- for more sources, see
+-- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+-- https://github.com/topics/nvim-cmp
