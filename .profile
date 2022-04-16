@@ -12,7 +12,7 @@
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin/" ] ; then
-    PATH="$HOME/.local/bin/:$PATH"
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 # User specific aliases and functions
@@ -30,6 +30,7 @@ export ZDOTDIR="$HOME/.config/zsh" # without / to avoid error
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 # set editor
 export EDITOR="nvim"
 # set browser
@@ -47,3 +48,12 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 
 # brew setup
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# The absolute path of the directory containing the Julia executable
+export JULIA_BINDIR="$XDG_DATA_HOME/julia-1.7.2/bin"
+# relative julia's data directory -> $JULIA_BINDIR/$DATAROOTDIR/julia/base -> ~/.local/share/julia/base
+export DATAROOTDIR="../share"
+# relative julia's config files -> $JULIA_BINDIR/$SYSCONFDIR/julia/startup.jl -> ~/.config/julia/startup.jl
+export SYSCONFDIR="../../.config"
+# where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
+export JULIA_HISTORY="$XDG_STATE_HOME/julia"
