@@ -27,10 +27,10 @@ source "$HOME/.cargo/env"
 # set zsh default condig directory
 export ZDOTDIR="$HOME/.config/zsh" # without / to avoid error
 # XDG Paths
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CONFIG_HOME="$HOME/.config" # Where user-specific configurations should be written (analogous to /etc)
+export XDG_CACHE_HOME="$HOME/.cache" # Where user-specific non-essential (cached) data should be written (analogous to /var/cache)
+export XDG_DATA_HOME="$HOME/.local/share" # Where user-specific data files should be written (analogous to /usr/share)
+export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files should be written (analogous to /var/lib)
 # set editor
 export EDITOR="nvim"
 # set browser
@@ -38,7 +38,7 @@ export BROWSER="brave"
 # set manpager
 export MANPAGER='nvim +Man!'
 # zoxide environment variables
-export _ZO_DATA_DIR="$XDG_DATA_HOME"
+export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
 export _ZO_RESOLVE_SYMLINKS='1'
 
 # set zsh-users/zsh-history-substring-search plugin
@@ -49,11 +49,12 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 # brew setup
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# The absolute path of the directory containing the Julia executable
-export JULIA_BINDIR="$XDG_DATA_HOME/julia-1.7.2/bin"
-# relative julia's data directory -> $JULIA_BINDIR/$DATAROOTDIR/julia/base -> ~/.local/share/julia/base
-export DATAROOTDIR="../share"
-# relative julia's config files -> $JULIA_BINDIR/$SYSCONFDIR/julia/startup.jl -> ~/.config/julia/startup.jl
-export SYSCONFDIR="../../.config"
-# where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
-export JULIA_HISTORY="$XDG_STATE_HOME/julia"
+## Julia's env variables
+# The absolute path of the directory containing the Julia executable -> ~/.local/share/julia-1.7.2/bin
+#export JULIA_BINDIR="$XDG_DATA_HOME/julia-1.7.2/bin"
+## relative julia's data directory -> $JULIA_BINDIR/$DATAROOTDIR/julia/base -> ~/.local/share/julia/base
+#export DATAROOTDIR="../.."
+## relative julia's config files -> $JULIA_BINDIR/$SYSCONFDIR/julia/startup.jl -> ~/.config/julia/startup.jl
+#export SYSCONFDIR="../../../../.config"
+## where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
+export JULIA_HISTORY="$XDG_CACHE_HOME/julia"
