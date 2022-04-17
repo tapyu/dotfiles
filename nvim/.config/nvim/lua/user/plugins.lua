@@ -86,6 +86,7 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP: the bare bone LPS
   use "williamboman/nvim-lsp-installer" -- it bootstraps all of the LPS for you
+  use "jose-elias-alvarez/null-ls.nvim" -- provides more diaginostic (style linting) and format fixing
 
   -- Telescope - A fast way ti access fies
   use "nvim-telescope/telescope.nvim" -- requires ripgrep
