@@ -117,6 +117,13 @@ return packer.startup(function(use)
   -- Wakatime
   use 'wakatime/vim-wakatime'
 
+  -- bufferline - a pretty nice way to organize buffers, windows, and tabs
+  -- buffers -> it is a file that is loaded into memory, you can open as much buffers as you want. It looks like a tabs definition in other IDE's
+  -- window -> it is a space in the screen that can load one of the buffers. you can have multiple windows on your screen, with each window showing one of the buffers (loaded files)
+  -- tabs -> a different set of windows showing (possibly) different buffers. The available buffers (loaded files) are the same for all tabs, but the windows can show different buffers in each tab
+  use "akinsho/bufferline.nvim"
+  use "moll/vim-bbye"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
