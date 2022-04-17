@@ -30,7 +30,8 @@ keymap("n", "<C-l>", "<C-w>l", opts) -- move right
 
 -- <CR>=carriage return -> Enter key
 -- Lexplore -> Open a file explorer on the left side
-keymap("n", "<leader>e", ":Lexplore 30<CR>", opts)
+-- NivmTree -> A much better file explorer that substitute Lexplore
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)

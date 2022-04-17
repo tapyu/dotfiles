@@ -57,10 +57,12 @@ packer.init {
 -- config -> as soons as the plugin is loaded, it runs a function
 -- event -> the pligun is only loaded when an event happens (run :help events to see more info) (it becomes a lazy plugin)
 return packer.startup(function(use)
-  -- My plugins here
+  -- basic plugins
   use "wbthomason/packer.nvim" -- update packer manage itself. Same as if we run :PackerUpdate
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim (a tons of plugins require it)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
+
+  -- markdown preview
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
 
   -- Colorschemes
@@ -75,6 +77,7 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp" --  give us the LSP completions
   use "hrsh7th/cmp-nvim-lua"
+  use "kyazdani42/nvim-web-devicons" -- A bunch of devicons used by a lot of other plugins
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -84,29 +87,35 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP: the bare bone LPS
   use "williamboman/nvim-lsp-installer" -- it bootstraps all of the LPS for you
 
-  -- Telescope
-  use "nvim-telescope/telescope.nvim"
+  -- Telescope - A fast way ti access fies
+  use "nvim-telescope/telescope.nvim" -- requires ripgrep
   use 'nvim-telescope/telescope-media-files.nvim'
 
   -- Treesitter - Syntax highlighting
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
   use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
+
   -- autopairs
   use "windwp/nvim-autopairs"
 
-  -- to remember autofill, bundled cheats for the editor, vim plugins, nerd-fonts, etc
+  -- CheatSheet - to remember autofill, bundled cheats for the editor, vim plugins, nerd-fonts, etc
   use {"sudormrfbin/cheatsheet.nvim", requires = {{'nvim-telescope/telescope.nvim'}, {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'},}}
 
   -- Disables relative line numbers when they don't make sense, e.g. when entering insert mode-
-  --  use "nkakouros-original/numbers.nvim"
+   use "nkakouros-original/numbers.nvim"
 
   -- comment
-  use {"numToStr/Comment.nvim", config = function() require('Comment').setup() end, tag = 'v0.6',} -- this tag does not break for v0.7 nvim users, so stick with it while you don't go to nvim v0.7
---  use 'numToStr/Comment.nvim'
+  use {"numToStr/Comment.nvim", config = function() require('Comment').setup() end} -- requires nvim version >= 0.7
 
-  -- Gitsigns - git integration
+  -- gitsigns - git integration
   use "lewis6991/gitsigns.nvim"
+
+  -- nvim-tree - file explorer
+  use "kyazdani42/nvim-tree.lua"
+
+  -- Wakatime
+  use 'wakatime/vim-wakatime'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
