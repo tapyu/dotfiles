@@ -101,6 +101,10 @@ return packer.startup(function(use)
   -- Disables relative line numbers when they don't make sense, e.g. when entering insert mode-
   --  use "nkakouros-original/numbers.nvim"
 
+  -- comment
+  use {"numToStr/Comment.nvim", config = function() require('Comment').setup() end, tag = 'v0.6',} -- this tag does not break for v0.7 nvim users, so stick with it while you don't go to nvim v0.7
+--  use 'numToStr/Comment.nvim'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
