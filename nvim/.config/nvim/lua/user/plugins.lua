@@ -84,6 +84,10 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP: the bare bone LPS
   use "williamboman/nvim-lsp-installer" -- it bootstraps all of the LPS for you
 
+  -- Telescope
+  use "nvim-telescope/telescope.nvim"
+  use 'nvim-telescope/telescope-media-files.nvim'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

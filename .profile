@@ -49,12 +49,5 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 # brew setup
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-## Julia's env variables
-# The absolute path of the directory containing the Julia executable -> ~/.local/share/julia-1.7.2/bin
-#export JULIA_BINDIR="$XDG_DATA_HOME/julia-1.7.2/bin"
-## relative julia's data directory -> $JULIA_BINDIR/$DATAROOTDIR/julia/base -> ~/.local/share/julia/base
-#export DATAROOTDIR="../.."
-## relative julia's config files -> $JULIA_BINDIR/$SYSCONFDIR/julia/startup.jl -> ~/.config/julia/startup.jl
-#export SYSCONFDIR="../../../../.config"
-## where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
+# Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
 export JULIA_HISTORY="$XDG_CACHE_HOME/julia"
