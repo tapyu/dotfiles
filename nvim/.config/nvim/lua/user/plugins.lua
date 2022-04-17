@@ -92,11 +92,14 @@ return packer.startup(function(use)
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
   use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
+  -- autopairs
+  use "windwp/nvim-autopairs"
 
-  -- helpers
-  use {"sudormrfbin/cheatsheet.nvim", requires = {{'nvim-telescope/telescope.nvim'}, {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'},}} -- to remember autofill, bundled cheats for the editor, vim plugins, nerd-fonts, etc
---  use "nkakouros-original/numbers.nvim" -- Disables relative line numbers when they don't make sense, e.g. when entering insert mode
-  use "windwp/nvim-autopairs" -- autopairs
+  -- to remember autofill, bundled cheats for the editor, vim plugins, nerd-fonts, etc
+  use {"sudormrfbin/cheatsheet.nvim", requires = {{'nvim-telescope/telescope.nvim'}, {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'},}}
+
+  -- Disables relative line numbers when they don't make sense, e.g. when entering insert mode-
+  --  use "nkakouros-original/numbers.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
