@@ -16,7 +16,7 @@ lualine.setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {{'filetype', icon_only = true, separator = '', padding={right=0, left=1}}, 'filename' },
+    lualine_c = {{'filetype', icon_only = true, separator = '', padding={right=0, left=0}}, 'filename' },
     lualine_x = {'encoding', 'fileformat'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
