@@ -30,14 +30,13 @@ zle -N edit-command-line
 bindkey '^ ' edit-command-line
 
 
-# useful Functions
-source "$ZDOTDIR/zsh-functions.sh"
+# all base functions of zsh, this makes all the job of the "oh-my-zsh" bloated stuff
+source "$ZDOTDIR/zsh-base-functions.sh"
 
-
-# normal files to source
+# user files to source
 zsh_add_file "zsh-exports.sh"
-zsh_add_file "zsh-vim-mode.sh"
 zsh_add_file "zsh-aliases.sh"
+zsh_add_file "zsh-user-functions.sh"
 
 # plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
