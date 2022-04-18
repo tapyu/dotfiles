@@ -57,7 +57,7 @@ keymap("v", ">", ">gv", opts)
 -- <A-x> -> Alt x (I also see it being called <M-x> sometimes)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "p", '"_dP', opts) -- do not yank a delete word when pasting in visual mode
+keymap("v", "p", '"_dP', opts) -- do not yank a deleted word when pasting in visual mode
 
 -- Visual Block --
 -- Move text up and down
@@ -79,5 +79,5 @@ keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 
 
--- Formating
+-- Formating --
 keymap("n", "<leader>F", ":Format<cr>", opts)
