@@ -98,8 +98,8 @@ return packer.startup(function(use)
 
   -- Treesitter - Syntax highlighting
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-  use "p00f/nvim-ts-rainbow"
-  -- use "nvim-treesitter/playground"dsjai
+  -- use "p00f/nvim-ts-rainbow"
+  -- use "nvim-treesitter/playground"
 
   -- autopairs
   use "windwp/nvim-autopairs"
