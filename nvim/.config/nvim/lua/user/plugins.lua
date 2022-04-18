@@ -68,6 +68,7 @@ return packer.startup(function(use)
   -- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out with :colorscheme
   use 'folke/tokyonight.nvim' -- try :colorscheme tokyonight
+  use "EdenEast/nightfox.nvim"
 
   -- completions plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -78,6 +79,9 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp" --  give us the LSP completions
   use "hrsh7th/cmp-nvim-lua"
   use "kyazdani42/nvim-web-devicons" -- A bunch of devicons used by a lot of other plugins
+
+  -- statusline
+ use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -95,7 +99,7 @@ return packer.startup(function(use)
   -- Treesitter - Syntax highlighting
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
   use "p00f/nvim-ts-rainbow"
-  use "nvim-treesitter/playground"
+  -- use "nvim-treesitter/playground"
 
   -- autopairs
   use "windwp/nvim-autopairs"

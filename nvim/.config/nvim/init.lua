@@ -7,9 +7,10 @@ require("user.lsp")
 require("user.telescope")
 require("user.treesitter")
 require("user.autopairs")
-require("user.comment") -- do not use this module while nvim's version is 0.6. Otherwise it will break
+-- require("user.comment") -- do not use this module while nvim's version is 0.6. Otherwise it will break
 require("user.gitsigns")
 require("user.nvim-tree")
 require("user.bufferline")
 require("user.null-ls")
 require("user.toggleterm")
+require("user.lualine")
