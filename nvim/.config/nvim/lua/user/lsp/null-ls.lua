@@ -11,10 +11,10 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup {
   debug = false,
   sources = {
-    formatting.prettier.with { extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } },
+    formatting.prettier.with { extra_args = {} }, -- for markdown, yaml and other useless filetype (for me), such as javascript
     formatting.black.with { extra_args = { "--fast" } },
-    -- formatting.yapf,
-    formatting.stylua,
-    diagnostics.flake8,
+    -- formatting.yapf, -- style linting for python
+    formatting.stylua, -- style linting for lua
+    diagnostics.flake8, -- style linting for python
   },
 }

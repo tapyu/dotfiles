@@ -83,7 +83,7 @@ keymap(
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts) -- it is necessary ripgrep (rp) pacman -S ripgrep
 
 -- Formating --
-keymap("n", "<leader>F", ":Format<CR>", opts) -- it is necessary stylua (pacman -S stylua)
+keymap("n", "<leader>F", ":Format<CR>", opts) -- it is necessary stylua (pacman -S stylua). :Format is not a vim's builtin command, it is defined in handlers.lua
 
 -- CheatSheet --
 keymap("n", "<leader>?", "<cmd>Cheatsheet<CR>", opts) -- PS: : == <cmd>

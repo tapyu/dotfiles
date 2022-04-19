@@ -11,7 +11,6 @@ require("user.comment") -- do not use this module while nvim's version is 0.6. O
 require("user.gitsigns")
 require("user.nvim-tree")
 require("user.bufferline")
-require("user.null-ls")
 require("user.toggleterm")
 require("user.lualine")
 require("user.cheatsheet")

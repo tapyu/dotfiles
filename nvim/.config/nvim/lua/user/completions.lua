@@ -8,6 +8,7 @@ if not snip_status_ok then
   return
 end
 
+-- I think that require("some/module") is about module whereas require("path.to.file") is about a path to filse
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
