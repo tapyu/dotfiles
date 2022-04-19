@@ -80,4 +80,8 @@ keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 
 
 -- Formating --
-keymap("n", "<leader>F", ":Format<cr>", opts)
+keymap("n", "<leader>F", ":Format<CR>", opts)
+
+
+-- CheatSheet --
+keymap("n", "<leader>?", ":Cheatsheet<CR>", opts)
