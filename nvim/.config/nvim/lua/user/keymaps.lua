@@ -73,15 +73,17 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
-
 -- Telescope --
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>", opts)
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
-
+keymap(
+	"n",
+	"<leader>f",
+	":lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>",
+	opts
+)
+keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts) -- it is necessary ripgrep (rp) pacman -S ripgrep
 
 -- Formating --
-keymap("n", "<leader>F", ":Format<CR>", opts)
-
+keymap("n", "<leader>F", ":Format<CR>", opts) -- it is necessary stylua (pacman -S stylua)
 
 -- CheatSheet --
-keymap("n", "<leader>?", ":Cheatsheet<CR>", opts)
+keymap("n", "<leader>?", "<cmd>Cheatsheet<CR>", opts) -- PS: : == <cmd>

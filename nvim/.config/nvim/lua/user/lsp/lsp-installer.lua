@@ -3,8 +3,7 @@ if not status_ok then
 	return
 end
 
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
+-- on_server_ready() is an built-in functions of lps_installer
 lsp_installer.on_server_ready(function(server)
 	local opts = { -- these functions are applied to every single language server on the system
 		on_attach = require("user.lsp.handlers").on_attach, -- both on_attach and capabilities are functions
