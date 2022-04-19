@@ -70,7 +70,7 @@ return packer.startup(function(use)
   -- use "nvim-treesitter/playground"
 
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP: the bare bone LPS
+  use "neovim/nvim-lspconfig" -- enable LSP: the bare bone LPS - here we find/define the keybinds
   use "williamboman/nvim-lsp-installer" -- it bootstraps all of the LPS for you
   use "jose-elias-alvarez/null-ls.nvim" -- provides more diaginostic (style linting) and format fixing
 

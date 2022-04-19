@@ -1,6 +1,8 @@
+-- stands for "module"
 local M = {}
 
 -- TODO: backfill this to template
+-- M.setup is a function (accessible)
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
@@ -10,12 +12,13 @@ M.setup = function()
   }
 
   for _, sign in ipairs(signs) do
+    -- sign_define is a vim's built-in function
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
   local config = {
     -- disable virtual text
-    virtual_text = false,
+    virtual_text = false, -- it could be useful sometimes
     -- show signs
     signs = {
       active = signs,
@@ -44,6 +47,8 @@ M.setup = function()
   })
 end
 
+-- this function performs highlight of the variable that the cursor is on
+-- not accessible as it is local
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
@@ -60,6 +65,9 @@ local function lsp_highlight_document(client)
   end
 end
 
+-- all the keymaps that can be found here:
+-- https://github.com/neovim/nvim-lspconfig#suggested-configuration
+-- not accessible as it is local
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -82,8 +90,8 @@ M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
   end
-  lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  lsp_keymaps(bufnr) -- it is a local function
+  lsp_highlight_document(client) -- it is a local function
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
