@@ -57,70 +57,42 @@ packer.init {
 -- config -> as soons as the plugin is loaded, it runs a function
 -- event -> the pligun is only loaded when an event happens (run :help events to see more info) (it becomes a lazy plugin)
 return packer.startup(function(use)
+  -- 1. prerequisite
   -- basic plugins
   use "wbthomason/packer.nvim" -- update packer manage itself. Same as if we run :PackerUpdate
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim (a tons of plugins require it)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
 
-  -- markdown preview
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
-
-  -- Colorschemes
-  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out with :colorscheme
-  use 'folke/tokyonight.nvim' -- try :colorscheme tokyonight
-  use "EdenEast/nightfox.nvim"
-
-  -- completions plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp" --  give us the LSP completions
-  use "hrsh7th/cmp-nvim-lua"
-  use "kyazdani42/nvim-web-devicons" -- A bunch of devicons used by a lot of other plugins
-
-  -- statusline
- use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
-
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- 2. foundations
+  -- Treesitter - Syntax highlighting
+  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+  -- use "p00f/nvim-ts-rainbow"
+  -- use "nvim-treesitter/playground"
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP: the bare bone LPS
   use "williamboman/nvim-lsp-installer" -- it bootstraps all of the LPS for you
   use "jose-elias-alvarez/null-ls.nvim" -- provides more diaginostic (style linting) and format fixing
 
-  -- Telescope - A fast way ti access fies
-  use "nvim-telescope/telescope.nvim" -- requires ripgrep
-  use 'nvim-telescope/telescope-media-files.nvim'
-
-  -- Treesitter - Syntax highlighting
-  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-  -- use "p00f/nvim-ts-rainbow"
-  -- use "nvim-treesitter/playground"
-
-  -- autopairs
-  use "windwp/nvim-autopairs"
-
-  -- CheatSheet - to remember autofill, bundled cheats for the editor, vim plugins, nerd-fonts, etc
-  use {"sudormrfbin/cheatsheet.nvim", requires = {{'nvim-telescope/telescope.nvim'}, {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'},}}
-
-  -- Disables relative line numbers when they don't make sense, e.g. when entering insert mode-
-   use "nkakouros-original/numbers.nvim"
-
-  -- comment
-  use {"numToStr/Comment.nvim", config = function() require('Comment').setup() end} -- requires nvim version >= 0.7
-
   -- gitsigns - git integration
   use "lewis6991/gitsigns.nvim"
+
+  -- 3. discoverability, navegation, and visual
+  -- Telescope - A fast way to access files
+  use "nvim-telescope/telescope.nvim" -- requires ripgrep
+  use 'nvim-telescope/telescope-media-files.nvim'
 
   -- nvim-tree - file explorer
   use "kyazdani42/nvim-tree.lua"
 
-  -- Wakatime
-  use 'wakatime/vim-wakatime'
+  -- CheatSheet - to remember autofill, bundled cheats for the editor, vim plugins, nerd-fonts, etc
+  use {"sudormrfbin/cheatsheet.nvim", requires = {{'nvim-telescope/telescope.nvim'}, {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'},}}
+
+  -- statusline
+ use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+
+  -- Colorschemes
+  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out with :colorscheme
 
   -- bufferline - a pretty nice way to organize buffers, windows, and tabs
   -- buffers -> it is a file that is loaded into memory, you can open as much buffers as you want. It looks like a tabs definition in other IDE's
@@ -131,6 +103,37 @@ return packer.startup(function(use)
 
   -- Toggleterm - terminal integration
   use "akinsho/toggleterm.nvim"
+
+  -- 4. writing henrance performance
+  -- completions plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp" --  give us the LSP completions
+  use "hrsh7th/cmp-nvim-lua"
+  use "kyazdani42/nvim-web-devicons" -- A bunch of devicons used by a lot of other plugins
+
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  -- comment
+  use {"numToStr/Comment.nvim", config = function() require('Comment').setup() end} -- requires nvim version >= 0.7
+
+  -- autopairs
+  use "windwp/nvim-autopairs"
+
+  -- accessories
+  -- Disables relative line numbers when they don't make sense, e.g. when entering insert mode-
+   use "nkakouros-original/numbers.nvim"
+
+  -- Wakatime
+  use 'wakatime/vim-wakatime'
+
+  -- markdown preview
+  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
