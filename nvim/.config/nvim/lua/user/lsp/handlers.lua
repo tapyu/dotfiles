@@ -1,7 +1,6 @@
 -- stands for "module"
 local M = {}
 
--- TODO: backfill this to template
 -- M.setup is a function (accessible)
 M.setup = function()
   local signs = {
