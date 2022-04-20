@@ -62,18 +62,22 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used in lots of plugins
 
 	-- 2. foundations
-	-- Treesitter - Syntax highlighting
+	-- Treesitter - Syntax highlighting, that is, provides colors for the programming language's text
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	-- use "p00f/nvim-ts-rainbow"
 	-- use "nvim-treesitter/playground"
 
-	-- LSP
+	-- LSP (Language Server Protocol) - provides varies features for a specific programming language. The main is providing diaginostic (erros, warnings, hints, and info) lintering (flag and colorize the code). But some LPS programming language also provides other features, such as stalistic lintering
 	use("neovim/nvim-lspconfig") -- enable LSP: the bare bone LPS - here we find/define the keybinds
-	use("williamboman/nvim-lsp-installer") -- it bootstraps all of the LPS for you
+	use("williamboman/nvim-lsp-installer") -- it bootstraps (and install/remove) all of the LPS plugins for you. It covers a lot of programming languages's LSP plugins
 	use("jose-elias-alvarez/null-ls.nvim") -- provides more diaginostic (style linting) and format fixing
 
 	-- gitsigns - git integration
 	use("lewis6991/gitsigns.nvim")
+
+	-- Debug Adpter Protocol - abstract the way how the debugging support of development tools communicates with debuggers into a protocol. Software Development Tool or a Software Programming Tool is used by the software developers for creating, editing, maintaining, supporting and debugging other applications, frameworks and programs. In this case, the Software Development Tool is neovim, and the neovim DAP abstract the way of how neovim communicates with generics debuggers
+	use("mfussenegger/nvim-dap")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }) -- A UI for nvim-dap
 
 	-- 3. discoverability, navegation, and visual
 	-- Telescope - A fast way to access files
@@ -105,7 +109,7 @@ return packer.startup(function(use)
 	-- Toggleterm - terminal integration
 	use("akinsho/toggleterm.nvim")
 
-	-- 4. writing henrance performance
+	-- 4. writing enhance performance
 	-- completions plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions

@@ -5,7 +5,7 @@ require("user.colorscheme")
 require("user.completions")
 require("user.lsp")
 require("user.telescope")
-require("user.treesitter")
+require("user.treesitter") -- only compatible with version 0.7
 require("user.autopairs")
 require("user.comment") -- do not use this module while nvim's version is 0.6. Otherwise it will break
 require("user.gitsigns")
