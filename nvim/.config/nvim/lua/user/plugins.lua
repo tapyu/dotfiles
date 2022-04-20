@@ -68,7 +68,7 @@ return packer.startup(function(use)
 	-- use "nvim-treesitter/playground"
 
 	-- LSP (Language Server Protocol) - provides varies features for a specific programming language. The main is providing diaginostic (erros, warnings, hints, and info) lintering (flag and colorize the code) and documentation. But some LPS programming language also provides other features, such as stalistic lintering
-	use("neovim/nvim-lspconfig") -- enable LSP: the bare bone LPS - here we find/define the keybinds
+	use("neovim/nvim-lspconfig") -- enable LSP -> the bare bone LPS - here we find/define the keybinds
 	use("williamboman/nvim-lsp-installer") -- it bootstraps (and install/remove) all of the LPS plugins for you. It covers a lot of programming languages's LSP plugins
 	use("jose-elias-alvarez/null-ls.nvim") -- provides more diaginostic (style linting) and format fixing
 
