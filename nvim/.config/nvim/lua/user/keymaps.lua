@@ -87,3 +87,5 @@ keymap("n", "<leader>F", ":Format<CR>", opts) -- it is necessary stylua (pacman 
 
 -- CheatSheet --
 keymap("n", "<leader>?", "<cmd>Cheatsheet<CR>", opts) -- PS: : == <cmd>
+
+-- TODO make dap keymaps

@@ -5,4 +5,5 @@ if not is_status_ok then
 	return
 end
 
+require("user.dap.dap-ui")
 require("user.dap.python")
