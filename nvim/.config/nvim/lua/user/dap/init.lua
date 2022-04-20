@@ -7,4 +7,4 @@ end
 
 require("user.dap.dap-ui")
 require("user.dap.python")
-require("user.dap.jula")
+require("user.dap.julia")

@@ -3,7 +3,7 @@ require("user.keymaps")
 require("user.plugins")
 require("user.colorscheme")
 require("user.completions")
-require("user.lsp")
+require("user.lsp") --  install lua-language-server
 require("user.telescope")
 require("user.treesitter") -- only compatible with version 0.7
 require("user.autopairs")

@@ -11,12 +11,11 @@ lsp_installer.on_server_ready(function(server)
 	}
 
   -- server is the input function
-  -- LaTeX's LSP TODO
-	-- if server.name == "texlab" then
-	-- 	local texlab_opts = require("user.lsp.settings.texlab")
-  --  -- vim is a global variable
-	-- 	opts = vim.tbl_deep_extend("force", texlab_opts, opts)
-	-- end
+	if server.name == "texlab" then
+		local texlab_opts = require("user.lsp.settings.texlab")
+   -- vim is a global variable
+		opts = vim.tbl_deep_extend("force", texlab_opts, opts)
+	end
 
    -- julia's LSP TODO
 	-- if server.name == "julials" then
