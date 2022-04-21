@@ -25,14 +25,14 @@ export XDG_DATA_HOME="$HOME/.local/share" # Where user-specific data files shoul
 export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files should be written (analogous to /var/lib)
 
 ## tidy up $HOME directory
-export NPM_CONFIG_USERCONFIG="$XDG_DATA_HOME/npm" # change ~/.npm/ directory
+export NPM_CONFIG_USERCONFIG="$XDG_DATA_HOME/npm" # change ~/.npm/ directory (?)
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
-export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory
-export GIT_CONFIG="$XDG_CONFIG_HOME/gitconfig" # change .gitconfig
+export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory (?)
+export GIT_CONFIG="$XDG_CONFIG_HOME/gitconfig" # change .gitconfig (?)
 export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst
-export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
+export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo (?)
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia" # change ~/.julia (?)
-[ -f "$HOME/.cargo/env" ] && [ source "$HOME/.cargo/env" ] # source cargo, the Rust package manager
+[ -d $CARGO_HOME ] && [ source $CARGO_HOME ] # source cargo, the Rust package manager
 
 ## default programs
 export EDITOR="nvim" # set editor
