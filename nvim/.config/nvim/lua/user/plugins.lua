@@ -140,7 +140,7 @@ return packer.startup(function(use)
 	use("nkakouros-original/numbers.nvim")
 
 	-- Wakatime
-	use("wakatime/vim-wakatime")
+	-- use("wakatime/vim-wakatime")
 
 	-- markdown preview
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
