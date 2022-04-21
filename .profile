@@ -30,6 +30,8 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory
 export GIT_CONFIG="$XDG_CONFIG_HOME/gitconfig" # change .gitconfig
 export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst
+export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
+export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia" # change ~/.julia (?)
 [ -f "$HOME/.cargo/env" ] && [ source "$HOME/.cargo/env" ] # source cargo, the Rust package manager
 
 ## default programs
