@@ -25,10 +25,11 @@ export XDG_DATA_HOME="$HOME/.local/share" # Where user-specific data files shoul
 export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files should be written (analogous to /var/lib)
 
 ## tidy up $HOME directory
-export NPM_CONFIG_USERCONFIG="$XDG_DATA_HOME/npm"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default condig directory
-export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # proprietary nvidia drivers
-export GIT_CONFIG="$XDG_CONFIG_HOME"
+export NPM_CONFIG_USERCONFIG="$XDG_DATA_HOME/npm" # change ~/.npm/ directory
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
+export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory
+export GIT_CONFIG="$XDG_CONFIG_HOME/gitconfig" # change .gitconfig
+export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst
 [ -f "$HOME/.cargo/env" ] && [ source "$HOME/.cargo/env" ] # source cargo, the Rust package manager
 
 ## default programs
