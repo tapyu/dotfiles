@@ -11,6 +11,9 @@
 # On Ubuntu, you should choose the followig extensions -> gtile, clipboard indicator, workspace switch wraparound, Unite, Hide Top Bar
 # path that I need to save on dotfiles repo (get inspired in this repo -> https://github.com/Mach-OS/Machfiles):
 
+## tidy up
+mkdir $HOME/.local/state # the $XDG_STATE_HOME (?)
+
 # download Meslo patched Nerd-fonts into ~/.local/share/fonts/
 for name in {Regular,Italic,Bold-Italic}; do wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf; done
 
