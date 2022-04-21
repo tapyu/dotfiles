@@ -23,6 +23,7 @@ mkdir -p $ZDOTDIR ~/.cache/zsh/ # is it necessary?
 
 # one-line packages
 apt-get install terminator texlive-full snapd htop r-base obs-studio variety neovim telegram-desktop git psensor screenfetch rar unrar gparted gimp ocrmypdf pdfgrep flatpak nemo ranger caca-utils curl bat zsh powerline fzf mlocate peek pandoc
+pacman -S github-cli
 # python packages
 apt-get install python3-pip # install pip
 apt-get install python3-tk # GUI
