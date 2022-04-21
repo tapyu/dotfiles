@@ -1,19 +1,22 @@
 #!/bin/sh
 
-# partitions
-# /boot/efi (EFI System, type:efi) -> 256MB
+# Suggesteed partitions and sizes
+# /boot/efi (EFI System, type:efi) -> 300MB (at least)
 # Linux Swap (type:swap) -> equal to memory RAM space
-# / (Linux FileSystem, type: ext4) -> 30GB
-# /usr/ (type: ext4) -> at least 50 GB
-# /home/ (type: ext4) -> at least 100 GB
+# / (Linux FileSystem, type: ext4) -> at 50GB
+# /usr/ (type: ext4) -> at least 100 GB
+# /home/ (type: ext4) -> at least 200 GB
 # the leftover space -> leave as free space (use it as it is required)
 
 # On Ubuntu, you should choose the followig extensions -> gtile, clipboard indicator, workspace switch wraparound, Unite, Hide Top Bar
 # path that I need to save on dotfiles repo (get inspired in this repo -> https://github.com/Mach-OS/Machfiles):
 
+# download Meslo patched Nerd-fonts into ~/.local/share/fonts/
+for name in {Regular,Italic,Bold-Italic}; do wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf; done
+
 # make ~/.config/ directories
 # zsh dir
-mkdir -p $ZDOTDIR ~/.cache/zsh/
+mkdir -p $ZDOTDIR ~/.cache/zsh/ # is it necessary?
 
 # what I need to download again manually:
 # https://trello.com/c/3uugZkiB/99-linux-setup-improvements
