@@ -1,4 +1,4 @@
-# ~/.profile: executed by the command interpreter for login shells
+# ~/.profile: executed by the command interpreter for login shells.
 # all Enviromental (global) variables must be set here
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
