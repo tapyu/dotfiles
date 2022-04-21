@@ -18,36 +18,32 @@ fi
 # User specific aliases and functions
 # To add directories to your PATH or define additional environment variables, place those changes in .bash_profile (or the equivalent, according to your distribution; for example, Ubuntu uses .profile). For everything else, place the changes in .bashrc.
 
-# matlab root directorie
-export MATLAB_ROOT_DIR="/usr/local/Polyspace/R2021a"
-# ranger conf - icon and directory name separator
-export RANGER_DEVICONS_SEPARATOR="  "
-# source cargo, the Rust package manager
-[ -f "$HOME/.cargo/env" ] && [ source "$HOME/.cargo/env" ]
-# set zsh default condig directory
-export ZDOTDIR="$HOME/.config/zsh" # without / to avoid error
 # XDG Paths
 export XDG_CONFIG_HOME="$HOME/.config" # Where user-specific configurations should be written (analogous to /etc)
 export XDG_CACHE_HOME="$HOME/.cache" # Where user-specific non-essential (cached) data should be written (analogous to /var/cache)
 export XDG_DATA_HOME="$HOME/.local/share" # Where user-specific data files should be written (analogous to /usr/share)
 export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files should be written (analogous to /var/lib)
-# set editor
-export EDITOR="nvim"
-# set browser
-export BROWSER="brave"
-# set manpager
-export MANPAGER='nvim +Man!'
+
+## tidy up $HOME directory
+export $NPM_CONFIG_USERCONFIG="$XDG_DATA_HOME/npm"
+export ZDOTDIR="$HOME/.config/zsh" # set zsh default condig directory
+[ -f "$HOME/.cargo/env" ] && [ source "$HOME/.cargo/env" ] # source cargo, the Rust package manager
+
+## default programs
+export EDITOR="nvim" # set editor
+export BROWSER="brave" # set browser
+export MANPAGER='nvim +Man!' # set manpager
+
+## program settings
+export MATLAB_ROOT_DIR="/usr/local/Polyspace/R2021a" # matlab root directory
 # zoxide environment variables
 export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
 export _ZO_RESOLVE_SYMLINKS='1'
-
+export RANGER_DEVICONS_SEPARATOR="  " # ranger conf - icon and directory name separator
 # set zsh-users/zsh-history-substring-search plugin
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-
-# brew setup
-#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
 export JULIA_HISTORY="$XDG_CACHE_HOME/julia"
