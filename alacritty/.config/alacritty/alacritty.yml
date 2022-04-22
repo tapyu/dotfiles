@@ -5,7 +5,7 @@ cursor:
 window:
         startup_mode: Maximized
 font:
-        size: 24.0
+        size: 18.0
         normal:
                 family: MesloLGMDZ Nerd Font
                 style: Regular

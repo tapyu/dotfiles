@@ -35,8 +35,10 @@ M.setup = function()
     },
   }
 
+  -- pass the configuration of the diagnostic settings
   vim.diagnostic.config(config)
 
+  -- this setup the floatting documentation (press K with the cursor onto a function to see it)
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
   })
@@ -94,6 +96,7 @@ M.on_attach = function(client, bufnr)
   lsp_highlight_document(client) -- it is a local function
 end
 
+-- the basic capabilities of the client(=server?)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -101,6 +104,7 @@ if not status_ok then
   return
 end
 
+-- if cmp_nvim_lsp capabilities is ok, append these capabilities with the client capabilities
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M

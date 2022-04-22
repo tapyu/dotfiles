@@ -31,7 +31,7 @@ export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvi
 export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst (?)
 export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia" # change ~/.julia (?)
-[ -d $CARGO_HOME ] && [ source $CARGO_HOME ] # source cargo, the Rust package manager
+[ -d $CARGO_HOME ] && source $CARGO_HOME # source cargo, the Rust package manager
 
 ## default programs
 export EDITOR="nvim" # set editor
@@ -47,7 +47,9 @@ export RANGER_DEVICONS_SEPARATOR="  " # ranger conf - icon and directory name se
 # set zsh-users/zsh-history-substring-search plugin
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+# fzf settings
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/files PS: rg = ripgrep
 
 # Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
 export JULIA_HISTORY="$XDG_CACHE_HOME/julia"
