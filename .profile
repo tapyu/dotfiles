@@ -8,21 +8,19 @@
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
-# echo "from ~/.profile" # just testing this file
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin/" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# User specific aliases and functions
-# To add directories to your PATH or define additional environment variables, place those changes in .bash_profile (or the equivalent, according to your distribution; for example, Ubuntu uses .profile). For everything else, place the changes in .bashrc.
 
 # XDG Paths
 export XDG_CONFIG_HOME="$HOME/.config" # Where user-specific configurations should be written (analogous to /etc)
 export XDG_CACHE_HOME="$HOME/.cache" # Where user-specific non-essential (cached) data should be written (analogous to /var/cache)
 export XDG_DATA_HOME="$HOME/.local/share" # Where user-specific data files should be written (analogous to /usr/share)
 export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files should be written (analogous to /var/lib)
+
+# set PATH so it includes user's private bin if it exists
+[ -d "$HOME/.local/bin/" ] && PATH="$HOME/.local/bin:$PATH"
+[ -d $XDG_DATA_HOME/cargo/bin ] && PATH="$PATH:$XDG_DATA_HOME/cargo/bin"
+
+# User specific aliases and functions
+# To add directories to your PATH or define additional environment variables, place those changes in .bash_profile (or the equivalent, according to your distribution; for example, Ubuntu uses .profile). For everything else, place the changes in .bashrc.
 
 ## tidy up $HOME directory
 export NPM_CONFIG_USERCONFIG="$XDG_DATA_HOME/npm" # change ~/.npm/ directory (?)
@@ -50,6 +48,5 @@ export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
 # fzf settings
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/files PS: rg = ripgrep
-
 # Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
-export JULIA_HISTORY="$XDG_CACHE_HOME/julia"
+export JULIA_HISTORY="$XDG_STATE_HOME/julia"

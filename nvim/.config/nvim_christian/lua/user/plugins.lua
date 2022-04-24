@@ -88,10 +88,7 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 
 	-- CheatSheet - to remember autofill, bundled cheats for the editor, vim plugins, nerd-fonts, etc
-	use({
-		"sudormrfbin/cheatsheet.nvim",
-		requires = { { "nvim-telescope/telescope.nvim" }, { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-	})
+	use({"sudormrfbin/cheatsheet.nvim", requires = { { "nvim-telescope/telescope.nvim" }, { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },})
 
 	-- statusline
 	use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
@@ -125,25 +122,20 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- comment
-	use({
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	}) -- requires nvim version >= 0.7
+	use({"numToStr/Comment.nvim", config = function() require("Comment").setup() end,}) -- requires nvim version >= 0.7
 
 	-- autopairs
 	use("windwp/nvim-autopairs")
 
-	-- accessories
-	-- Disables relative line numbers when they don't make sense, e.g. when entering insert mode-
-	use("nkakouros-original/numbers.nvim")
-
-	-- Wakatime
-	-- use("wakatime/vim-wakatime")
-
+  -- 5. Language-based features
 	-- markdown preview
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
+  -- LaTeX
+  use("lervag/vimtex")
+
+  -- 6. Miscellaneous
+	-- Wakatime
+	-- use("wakatime/vim-wakatime")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

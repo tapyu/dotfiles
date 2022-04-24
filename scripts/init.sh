@@ -11,30 +11,27 @@
 # On Ubuntu, you should choose the followig extensions -> gtile, clipboard indicator, workspace switch wraparound, Unite, Hide Top Bar
 # path that I need to save on dotfiles repo (get inspired in this repo -> https://github.com/Mach-OS/Machfiles):
 
-## tidy up
-mkdir $HOME/.local/state # the $XDG_STATE_HOME (?)
+## tidy up - creating important directories
+[! -d $HOME/.local/state/ ] && mkdir $HOME/.local/state # the $XDG_STATE_HOME (is it necessary?)
+[! -d $HOME/.local/state ] && mkdir -p $ZDOTDIR ~/.cache/zsh/ # is it necessary?
+
 
 # download Meslo patched Nerd-fonts into ~/.local/share/fonts/
 for name in {Regular,Italic,Bold-Italic}; do wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf; done
-
-# make ~/.config/ directories
-# zsh dir
-mkdir -p $ZDOTDIR ~/.cache/zsh/ # is it necessary?
 
 # what I need to download again manually:
 # https://trello.com/c/3uugZkiB/99-linux-setup-improvements
 
 # one-line packages
 apt-get install terminator texlive-full snapd htop r-base obs-studio variety neovim telegram-desktop git psensor screenfetch rar unrar gparted gimp ocrmypdf pdfgrep flatpak nemo ranger caca-utils curl bat zsh powerline fzf mlocate peek pandoc
-pacman -S github-cli
+pacman -S github-cli # git CLI to make token password persistent
+pacman -S git-delta # dandavison/delta
 # python packages
 apt-get install python3-pip # install pip
 apt-get install python3-tk # GUI
 # ubuntu packages
 apt-get install gnome-tweak-tool dconf-editor
 ubuntu-drivers autoinstall # installing third packages
-rm /etc/apt/preferences.d/nosnap.pref
-apt update
 # snap packages
 snap install --classic code
 snap install discord whatsapp-for-linux lsd
@@ -78,11 +75,8 @@ apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfix
 # turn alacritty the default terminal emulator
 gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty
 
-
 # zoxide install
 cargo install zoxide --locked
-# install dandavison/delta
-cargo install git-delta
 
 # nvim requirements check if all requirments are checked with :checkhealth
 # for more info, see https://github.com/LunarVim/Neovim-from-scratch/blob/master/README.md

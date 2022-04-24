@@ -11,3 +11,4 @@ end
 lspconfig.pyright.setup{}
 lspconfig.julials.setup{}
 lspconfig.sumneko_lua.setup{}
+lspconfig.texlab.setup{}
