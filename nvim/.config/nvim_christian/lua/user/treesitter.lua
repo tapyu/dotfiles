@@ -24,6 +24,15 @@ configs.setup {
     -- termcolors = {} -- table of colour name strings
   },
   indent = { enable = true, disable = { "yaml" } }, -- put the cursor where it is expected to be
+  incremental_selection = { -- enter in visual mode and select area based on treesitter
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
 }
 
 -- enable folding
