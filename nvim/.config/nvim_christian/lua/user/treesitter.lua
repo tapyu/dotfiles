@@ -1,6 +1,7 @@
 --local configs = require("nvim-treesitter.configs")
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
+  print("nvim-treesitter failed!")
   return
 end
 
@@ -22,5 +23,9 @@ configs.setup {
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = { enable = true, disable = { "yaml" } }, -- put the cursor where it is expected to be
 }
+
+-- enable folding
+vim.cmd [[set foldmethod=expr]] -- set the foldmethod to expression
+vim.cmd [[set foldexpr=nvim_treesitter#foldexpr()]] -- use foldexpr() function from treesitter fol method to fold

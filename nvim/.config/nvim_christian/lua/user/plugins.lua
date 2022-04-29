@@ -101,7 +101,6 @@ return packer.startup(function(use)
 	-- window -> it is a space in the screen that can load one of the buffers. you can have multiple windows on your screen, with each window showing one of the buffers (loaded files)
 	-- tabs -> a different set of windows showing (possibly) different buffers. The available buffers (loaded files) are the same for all tabs, but the windows can show different buffers in each tab
 	use("akinsho/bufferline.nvim")
-	use("moll/vim-bbye")
 
 	-- Toggleterm - terminal integration
 	use("akinsho/toggleterm.nvim")
@@ -112,18 +111,15 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("saadparwaiz1/cmp_luasnip") -- completions for L3MON4D3/LuaSnip snippets
 	use("hrsh7th/cmp-nvim-lsp") --  give us the LSP completions
 	use("hrsh7th/cmp-nvim-lua")
 	use("kyazdani42/nvim-web-devicons") -- A bunch of devicons used by a lot of other plugins
-
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
-
 	-- comment
 	use({"numToStr/Comment.nvim", config = function() require("Comment").setup() end,}) -- requires nvim version >= 0.7
-
 	-- autopairs
 	use("windwp/nvim-autopairs")
 
@@ -132,10 +128,14 @@ return packer.startup(function(use)
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
   -- LaTeX
   use("lervag/vimtex")
+  -- julia
+  -- use("autozimu/LanguageClient-neovim")
+  use("JuliaEditorSupport/julia-vim")
 
   -- 6. Miscellaneous
 	-- Wakatime
-	-- use("wakatime/vim-wakatime")
+	use("wakatime/vim-wakatime")
+	use("moll/vim-bbye") -- :Bdelete command is better than :bdelete as it does not close nvim when the last buffer is closed
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

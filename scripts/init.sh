@@ -24,8 +24,20 @@ for name in {Regular,Italic,Bold-Italic}; do wget --directory-prefix="$HOME/.loc
 
 # one-line packages
 apt-get install terminator texlive-full snapd htop r-base obs-studio variety neovim telegram-desktop git psensor screenfetch rar unrar gparted gimp ocrmypdf pdfgrep flatpak nemo ranger caca-utils curl bat zsh powerline fzf mlocate peek pandoc
+
+pacman -S texlive-most texlive-lang texlive-bibtexextra texlive-fontsextra biber # latex files
 pacman -S github-cli # git CLI to make token password persistent
-pacman -S git-delta # dandavison/delta
+pacman -S git-delta # dandavison/delta - help to improve git diff and diff commands
+pacman -S mlocate # a newer verion of locate command
+pacman -S rar # rar program (e to extract)
+pacman -S bat # cat with syntax highlighting
+pacman -S telegram-desktop whatsapp-web-jak # telegram and whatsapp
+pacman -S obs-studio # screen recoder
+pacman -S fzf # fuzzy finder
+pacman -S peek # gif screen recoder
+pacman -S slop screenkey # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder
+
+
 # python packages
 apt-get install python3-pip # install pip
 apt-get install python3-tk # GUI
