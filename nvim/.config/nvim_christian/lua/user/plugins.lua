@@ -60,6 +60,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- update packer manage itself. Same as if we run :PackerUpdate
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim (a tons of plugins require it)
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used in lots of plugins
+	use("kyazdani42/nvim-web-devicons") -- A bunch of devicons used by a lot of other plugins
 
 	-- 2. foundations
 	-- Treesitter - Syntax highlighting, that is, provides colors for the programming language's text
@@ -82,7 +83,10 @@ return packer.startup(function(use)
 	-- 3. discoverability, navegation, and visual
 	-- Telescope - A fast way to access files
 	use("nvim-telescope/telescope.nvim") -- requires ripgrep
-	use("nvim-telescope/telescope-media-files.nvim")
+	use("nvim-telescope/telescope-media-files.nvim") -- view media files on telescope
+
+  -- spectre - A search and replace tool (it needs ripgrep)
+	use({ "nvim-pack/nvim-spectre", requires = { "kyazdani42/nvim-web-devicons" } })
 
 	-- nvim-tree - file explorer
 	use("kyazdani42/nvim-tree.lua")
@@ -114,7 +118,6 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- completions for L3MON4D3/LuaSnip snippets
 	use("hrsh7th/cmp-nvim-lsp") --  give us the LSP completions
 	use("hrsh7th/cmp-nvim-lua")
-	use("kyazdani42/nvim-web-devicons") -- A bunch of devicons used by a lot of other plugins
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
