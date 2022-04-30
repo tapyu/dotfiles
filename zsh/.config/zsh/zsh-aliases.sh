@@ -32,6 +32,3 @@ alias \
 	alias la='ls --almost-all' \ 
 	alias l='ls --human-readable' \
 	alias mkdir="mkdir --parents --verbose"
-
-SCREENKEY_POS='657x216+3173+137' # local variable for the screenkey location set on Veruska (4k screen). Run slop -n -f '%g' to get a new position for a screen with different specification
-alias sk="nohup screenkey --position fixed -s small --geometry $SCREENKEY_POS &> /dev/null &" # screenkey program

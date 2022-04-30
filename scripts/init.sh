@@ -35,7 +35,7 @@ pacman -S telegram-desktop whatsapp-web-jak # telegram and whatsapp
 pacman -S obs-studio # screen recoder
 pacman -S fzf # fuzzy finder
 pacman -S peek # gif screen recoder
-pacman -S slop screenkey # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder
+pacman -S slop screenkey ttf-font-awesome # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder; ttf-font-awesome -> to enable nice Tux and Win icons
 
 
 # python packages
