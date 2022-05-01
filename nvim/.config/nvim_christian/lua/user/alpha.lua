@@ -17,6 +17,7 @@ dashboard.section.buttons.val = {
   -- dashboard.button("SPC f m", "  Jump to bookmarks"),
 }
 
+-- find more here https://steamcommunity.com/groups/asciiartamalgamation/discussions/5/3008934419468851875/
 -- dashboard.section.header.val = {
 --   [[ ⠄⠄⠄⠄⠄⣾⣿⣿⣿⣯⣵⣾⣿⣿⡶⠦⠭⢁⠩⢭⣭⣵⣶⣶⡬⣄⣀⡀⠄⠄ ]],
 --   [[ ⠄⠄⠄⡀⠘⠻⣿⣿⣿⣿⡿⠟⠩⠶⠚⠻⠟⠳⢶⣮⢫⣥⠶⠒⠒⠒⠒⠆⠐⠒ ]],

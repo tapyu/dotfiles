@@ -130,6 +130,8 @@ return packer.startup(function(use)
 	use({"numToStr/Comment.nvim", config = function() require("Comment").setup() end,}) -- requires nvim version >= 0.7
 	-- autopairs
 	use("windwp/nvim-autopairs")
+  -- set of operators and textobjects to search/select/edit sandwiched texts.
+  use("machakann/vim-sandwich")
 
   -- 5. Language-based features
 	-- markdown preview
