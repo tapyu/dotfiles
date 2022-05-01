@@ -1,9 +1,18 @@
-local colorscheme = "darkplus"
+local colorscheme_name = "darkplus"
 
--- pcall -> protected call
--- _ -> ignore the return value
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme) -- verify if the selected colorscheme exists
-if not status_ok then
-  vim.notify("colorscheme " .. colorscheme .. " not found!")
-  return
+local is_status_ok, colorscheme = pcall(require, colorscheme_name)
+
+if not is_status_ok then
+  print("colorscheme " .. colorscheme_name .. "not found!")
+end
+
+if type(colorscheme) == "boolean" then -- colorscheme does not have lua configs, e.g., darkplus
+  vim.cmd("colorscheme " .. colorscheme_name)
+else -- colorscheme has lua configs, e.g., onedark
+  if colorscheme_name == "onedark" then
+    colorscheme.setup{
+      style = 'warmer'
+    }
+  end
+  colorscheme.load()
 end

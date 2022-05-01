@@ -99,6 +99,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out with :colorscheme
+  use('navarasu/onedark.nvim')
 
 	-- bufferline - a pretty nice way to organize buffers, windows, and tabs
 	-- buffers -> it is a file that is loaded into memory, you can open as much buffers as you want. It looks like a tabs definition in other IDE's
