@@ -110,7 +110,11 @@ return packer.startup(function(use)
 	-- Toggleterm - terminal integration
 	use("akinsho/toggleterm.nvim")
 
-	-- 4. writing enhance performance
+  -- startup - alpha
+  use {'goolord/alpha-nvim'}
+  use({"Shatur/neovim-session-manager", requires = { 'nvim-lua/plenary.nvim' }})
+
+	-- 4. writing performance enhancement
 	-- completions plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions

@@ -1,6 +1,9 @@
 require("user.options")
 require("user.keymaps")
 require("user.plugins")
+require("user.spectre") -- find and replace tool
+require("user.alpha") -- startup plugin
+require("user.session_manager")
 require("user.colorscheme")
 require("user.completions")
 require("user.lsp") --  install lua-language-server
@@ -15,4 +18,3 @@ require("user.toggleterm")
 require("user.lualine")
 require("user.cheatsheet")
 require("user.dap")
-require("user.spectre")
