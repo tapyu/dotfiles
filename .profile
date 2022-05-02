@@ -52,3 +52,4 @@ export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/file
 # export JULIA_HISTORY="$XDG_STATE_HOME/julia"
 # wakatime home dir
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime"
+. "/home/tapyu/.local/share/cargo/env"
