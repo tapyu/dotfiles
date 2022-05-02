@@ -36,6 +36,7 @@ pacman -S --noconfirm github-cli # git CLI to make token password persistent
 pacman -S --noconfirm git-delta # dandavison/delta - help to improve git diff and diff commands
 pacman -S --noconfirm mlocate # a newer verion of locate command
 pacman -S --noconfirm bat # cat with syntax highlighting
+pacman -S --noconfirm lsd # the next gen ls command
 pacman -S --noconfirm telegram-desktop whatsapp-web-jak # telegram and whatsapp
 pacman -S --noconfirm obs-studio # screen recoder
 pacman -S --noconfirm fzf # fuzzy finder
@@ -52,7 +53,7 @@ pacman -S --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbco
 sudo -u $USER cargo install alacritty
 gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty # turn alacritty the default terminal emulator
 # sublime text
-curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg && pacman-key --add sublimehq-pub.gpg && pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
 echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 pacman --noconfirm -Syu sublime-text
 # zoxide install
