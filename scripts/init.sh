@@ -12,8 +12,8 @@
 # path that I need to save on dotfiles repo (get inspired in this repo -> https://github.com/Mach-OS/Machfiles):
 
 ## tidy up - creating important directories
-[ ! -d $HOME/.local/state/ ] && mkdir $HOME/.local/state # the $XDG_STATE_HOME (is it necessary?)
-[ ! -d $HOME/.local/state/ ] && mkdir -p $ZDOTDIR ~/.cache/zsh/ # is it necessary?
+[ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/} ] && mkdir $HOME/.local/state # create path to $XDG_STATE_HOME
+[ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh ] && mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh/ # create path to $HISTFILE
 
 
 # download Meslo patched Nerd-fonts into ~/.local/share/fonts/
@@ -48,7 +48,8 @@ sudo -u $USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo -u $USER rustup override set stable
 sudo -u $USER rustup update stable
 # alacritty
-pacman -S --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python
+pacman -S --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # dependencies
+sudo -u $USER cargo install alacritty
 gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty # turn alacritty the default terminal emulator
 # sublime text
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
@@ -57,61 +58,7 @@ pacman --noconfirm -Syu sublime-text
 # zoxide install
 sudo -u $USER curl -sS https://webinstall.dev/zoxide | bash
 
-# python packages
-# apt-get install python3-pip # install pip
-# apt-get install python3-tk # GUI
-# ubuntu packages
-# apt-get install gnome-tweak-tool dconf-editor
-# ubuntu-drivers autoinstall # installing third packages
-# snap packages
-# snap install --classic code
-# snap install discord whatsapp-for-linux lsd
-# sublime
-# wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - # authentication key add
-# apt-get install apt-transport-https
-# echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list # add to the source list (add repositories)
-# apt-get update
-# apt-get install sublime-text
-# screen key
-# sudo add-apt-repository ppa:atareao/atareao # ppa add
-# sudo apt install screenkeyfk
-# kdenlive
-#flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
-#flatpak install kdeapps org.kde.kdenlive
-#flatpak update
-# 1 -download the flatpak from the website
-# flatpak install ./org.kde.kdenlive.flatpakref
-# audio recoder
-# sudo apt-add-repository ppa:audio-recorder/ppa
-# sudo apt-get update
-# sudo apt-get install audio-recorder
-# kitty
-# curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-# ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/ # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in your PATH)
-# cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/ # Place the kitty.desktop file somewhere it can be found by the OS
-# sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop # Update the path to the kitty icon in the kitty.desktop file
-# gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty' # turn kitty the default application
-# youtube-dl for Ubuntu
-# sudo pip3 install youtube-dl
-# pip install packages
-# pip install trash-cli # trash cli command
+# TODO: create symlinks
 
-# alacritty
-# apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 # Ubuntu dependencies
-# OBS1: see https://github.com/alacritty/alacritty/blob/master/INSTALL.md#prerequisites to install the rest of alacritty
-# OBS2: try to create a symbolic link as done with kitty
-
-
-
-# nvim requirements check if all requirments are checked with :checkhealth
-# for more info, see https://github.com/LunarVim/Neovim-from-scratch/blob/master/README.md
-# sudo apt install xsel
-# pip install pynvim
-# sudo apt-get install npm
-# sudo npm i -g neovim
-# curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output /tmp/get-pip.py
-# sudo python2 /tmp/get-pip.py # intall pip for python2
-# python2 -m pip install neovim
-
-# nvim plugin necessities
-# npm install --global yarn # a JavaScript package manager compatible with npm, used by iamcco/markdown-preview.nvim
+# setting up github
+sudo -u $USER gh auth login
