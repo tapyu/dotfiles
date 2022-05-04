@@ -47,6 +47,7 @@ pacman -S --noconfirm python-pip # pip command
 # ranger and its dependencies
 pacman -S --noconfirm ranger
 pacman -S --noconfirm w3m # `w3mimgdisplay` -> for image previews
+sudo -u $USER (cd $HOME/git/dotfiles/ && git submodule update --init --recursive) # pull ranger plugins
 # Rust
 sudo -u $USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo -u $USER rustup override set stable

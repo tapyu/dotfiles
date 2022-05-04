@@ -14,7 +14,7 @@ fi
 # matlab startup program
 alias matlab='$MATLAB_ROOT_DIR/bin/matlab >> /dev/null 2>> /dev/null &'
 # sharkdp/bat program
-alias cat=batcat
+alias cat=bat
 # dandavison/delta program
 alias diff=delta
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
