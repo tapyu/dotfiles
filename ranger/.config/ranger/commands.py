@@ -14,7 +14,6 @@ import os
 
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
-from ranger.config.commands import scout
 
 
 # Any class that is a subclass of "Command" will be integrated into ranger as a
@@ -42,14 +41,14 @@ class my_edit(Command):
             target_filename = self.fm.thisfile.path
 
         # This is a generic function to print text in ranger.
-        self.fm.notify("I should stop here... " + target_filename + "!")
+        self.fm.notify("Let's edit the file " + target_filename + "!")
 
         # Using bad=True in fm.notify allows you to print error messages:
         if not os.path.exists(target_filename):
             self.fm.notify("The given file does not exist!", bad=True)
             return
 
-        # This executes a function from ranger.core.acitons, a module with a
+        # This executes a function from ranger.core.actions, a module with a
         # variety of subroutines that can help you construct commands.
         # Check out the source, or run "pydoc ranger.core.actions" for a list.
         self.fm.edit_file(target_filename)

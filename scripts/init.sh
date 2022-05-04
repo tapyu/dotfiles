@@ -31,7 +31,7 @@ done
 
 pacman -S --noconfirm texlive-most texlive-lang texlive-bibtexextra texlive-fontsextra biber # latex files
 pacman -S --noconfirm curl # download from url
-pacman -S --noconfirm rar # rar program (e option to extract)
+pacman -S --noconfirm rar # rar and unrar(?) programs
 pacman -S --noconfirm github-cli # git CLI to make token password persistent
 pacman -S --noconfirm git-delta # dandavison/delta - help to improve git diff and diff commands
 pacman -S --noconfirm mlocate # a newer verion of locate command
@@ -44,6 +44,9 @@ pacman -S --noconfirm peek # gif screen recoder
 pacman -S --noconfirm slop screenkey ttf-font-awesome # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder; ttf-font-awesome -> to enable nice Tux and Win icons
 pacman -S --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --noconfirm python-pip # pip command
+# ranger and its dependencies
+pacman -S --noconfirm ranger
+pacman -S --noconfirm w3m # `w3mimgdisplay` -> for image previews
 # Rust
 sudo -u $USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo -u $USER rustup override set stable
@@ -56,8 +59,13 @@ gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bi
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg && pacman-key --add sublimehq-pub.gpg && pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
 echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 pacman --noconfirm -Syu sublime-text
-# zoxide install
+# zoxide
 sudo -u $USER curl -sS https://webinstall.dev/zoxide | bash
+# yay
+sudo -u $USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
+sudo -u $USER (cd /tmp/yay-git && makepkg -si)
+sudo -u $USER yay -S masterpdfeditor # pdf reader and editor
+
 
 # TODO: create symlinks
 

@@ -50,6 +50,4 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make 
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/files PS: rg = ripgrep
 # Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
 # export JULIA_HISTORY="$XDG_STATE_HOME/julia"
-# wakatime home dir
-export WAKATIME_HOME="$XDG_DATA_HOME/wakatime"
-. "/home/tapyu/.local/share/cargo/env"
+export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
