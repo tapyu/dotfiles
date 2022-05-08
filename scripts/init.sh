@@ -11,7 +11,9 @@
 # On Ubuntu, you should choose the followig extensions -> gtile, clipboard indicator, workspace switch wraparound, Unite, Hide Top Bar
 # path that I need to save on dotfiles repo (get inspired in this repo -> https://github.com/Mach-OS/Machfiles):
 
-## tidy up - creating important directories
+# TODO: create symlinks
+
+# tidy up - creating important directories
 [ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/} ] && mkdir $HOME/.local/state # create path to $XDG_STATE_HOME
 [ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh ] && mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh/ # create path to $HISTFILE
 
@@ -19,7 +21,7 @@
 # download Meslo patched Nerd-fonts into ~/.local/share/fonts/
 for name in {Regular,Italic,Bold-Italic}
 do
-  # wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf
+  wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf
   echo test
 done
 
@@ -44,6 +46,7 @@ pacman -S --noconfirm peek # gif screen recoder
 pacman -S --noconfirm slop screenkey ttf-font-awesome # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder; ttf-font-awesome -> to enable nice Tux and Win icons
 pacman -S --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --noconfirm python-pip # pip command
+sudo -u $USER pip install youtube-dl # install youtube-dl
 # ranger and its dependencies
 pacman -S --noconfirm ranger
 pacman -S --noconfirm w3m # `w3mimgdisplay` -> for image previews
@@ -66,9 +69,8 @@ sudo -u $USER curl -sS https://webinstall.dev/zoxide | bash
 sudo -u $USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
 sudo -u $USER (cd /tmp/yay-git && makepkg -si)
 sudo -u $USER yay -S masterpdfeditor # pdf reader and editor
+# TODO: set masterpdfeditor5 the default pdf as shown https://unix.stackexchange.com/questions/226857/set-default-pdf-reader
 
-
-# TODO: create symlinks
 
 # setting up github
 sudo -u $USER gh auth login
