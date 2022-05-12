@@ -46,7 +46,8 @@ pacman -S --noconfirm peek # gif screen recoder
 pacman -S --noconfirm slop screenkey ttf-font-awesome # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder; ttf-font-awesome -> to enable nice Tux and Win icons
 pacman -S --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --noconfirm python-pip # pip command
-sudo -u $USER pip install youtube-dl # install youtube-dl
+sudo -u $USER pip install youtube-dl # download from youtube
+sudo -u $USER pip install trash-cli # trash-cli for KDE, GNOME, and XFCE
 # ranger and its dependencies
 pacman -S --noconfirm ranger
 pacman -S --noconfirm w3m # `w3mimgdisplay` -> for image previews
