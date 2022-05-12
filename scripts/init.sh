@@ -68,9 +68,11 @@ sudo -u $USER curl -sS https://webinstall.dev/zoxide | bash
 # yay
 sudo -u $USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
 sudo -u $USER (cd /tmp/yay-git && makepkg -si)
-sudo -u $USER yay -S masterpdfeditor # pdf reader and editor
+sudo -u $USER yay -S --noconfirm masterpdfeditor # pdf reader and editor
+sudo -u $USER yay -S --noconfirm insync # google drive sync
 # TODO: set masterpdfeditor5 the default pdf as shown https://unix.stackexchange.com/questions/226857/set-default-pdf-reader
-
+# TODO: make out how to install the extensions
+# https://extensions.gnome.org/extension/615/appindicator-support/
 
 # setting up github
 sudo -u $USER gh auth login
