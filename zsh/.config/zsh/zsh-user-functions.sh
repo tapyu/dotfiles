@@ -37,13 +37,15 @@ function git_sparse_clone() (
 # $1 - youtube URL
 # $2 - start position in hh:mm:ss.msms format (ms=miliseconds)
 # $3 - final position in hh:mm:ss.msms format (ms=miliseconds)
-# $4 - output file name (optitional)
+# $4 - output file name (optional)
+# $5 - output video codec type (optional, for instance: libx264)
+# $6 - output audio codec type (optional, for instance: aac)
 function youtubedl_snippet()(
   local url_streams=$(youtube-dl --get-url $1)
   local output_name=$(youtube-dl --get-title $1)
 
   # url_array=("${(@f)$(echo $url_streams)}") # split the urls by lines using function
-  url_array=(${(f)url_streams}) # split the urls by lines url_array[1] -> video stream url_array[2] -> audio stream
+  local url_array=(${(f)url_streams}) # split the urls by lines url_array[1] -> video stream url_array[2] -> audio stream
 
-  ffmpeg -ss $2 -to $3 -i ${url_array[1]} -ss $2 -to $3 -i ${url_array[2]} -map 0:v -map 1:a -c:v libx264 -c:a aac ${4:-output.mkv}
+  ffmpeg -ss $2 -to $3 -i ${url_array[1]} -ss $2 -to $3 -i ${url_array[2]} -map 0:v -map 1:a -c:v ${5:-copy} -c:a ${6:-copy} ${4:-"$output_name.avi"}
 )
