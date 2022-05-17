@@ -42,6 +42,8 @@ pacman -S --noconfirm lsd # the next gen ls command
 pacman -S --noconfirm telegram-desktop whatsapp-web-jak # telegram and whatsapp
 pacman -S --noconfirm obs-studio # screen recoder
 pacman -S --noconfirm fzf # fuzzy finder
+pacman -S --noconfirm brave # web browser
+pacman -S --noconfirm vlc # video viewer
 pacman -S --noconfirm peek # gif screen recoder
 pacman -S --noconfirm slop screenkey ttf-font-awesome # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder; ttf-font-awesome -> to enable nice Tux and Win icons
 pacman -S --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
