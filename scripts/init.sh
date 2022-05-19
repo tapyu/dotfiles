@@ -8,29 +8,25 @@
 # /home/ (type: ext4) -> at least 200 GB
 # the leftover space -> leave as free space (use it as it is required)
 
-# On Ubuntu, you should choose the followig extensions -> gtile, clipboard indicator, workspace switch wraparound, Unite, Hide Top Bar
-# path that I need to save on dotfiles repo (get inspired in this repo -> https://github.com/Mach-OS/Machfiles):
+### symlinks ###
+sudo -u $USER ln -s $HOME/git/dotfiles/zsh/.config/zsh ${XDG_CONFIG_HOME:-$HOME/.config/}/zsh
+sudo -u $USER ln -s $HOME/git/dotfiles/ranger/.config/ranger ${XDG_CONFIG_HOME:-$HOME/.config/}/ranger
+sudo -u $USER ln -s $HOME/git/dotfiles/nvim/.config/nvim ${XDG_CONFIG_HOME:-$HOME/.config/}/nvim
+sudo -u $USER ln -s $HOME/git/dotfiles/alacritty/.config/alacritty ${XDG_CONFIG_HOME:-$HOME/.config/}/alacritty
 
-# TODO: create symlinks
-
-# tidy up - creating important directories
-[ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/} ] && mkdir $HOME/.local/state # create path to $XDG_STATE_HOME
-[ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh ] && mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh/ # create path to $HISTFILE
+### tidy up - creating important directories ###
+[ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/} ] && sudo -u $USER mkdir $HOME/.local/state # create path to $XDG_STATE_HOME
+[ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh ] && sudo -u $USER mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh/ # create path to $HISTFILE
 
 
-# download Meslo patched Nerd-fonts into ~/.local/share/fonts/
+### download and installs ###
+# Meslo patched Nerd-fonts into ~/.local/share/fonts/
 for name in {Regular,Italic,Bold-Italic}
 do
   wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf
-  echo test
 done
 
-# what I need to download again manually:
-# https://trello.com/c/3uugZkiB/99-linux-setup-improvements
-
 # one-line packages
-# apt-get install terminator texlive-full snapd htop r-base obs-studio variety neovim telegram-desktop git psensor screenfetch rar unrar gparted gimp ocrmypdf pdfgrep flatpak nemo ranger caca-utils curl bat zsh powerline fzf mlocate peek pandoc
-
 pacman -S --noconfirm texlive-most texlive-lang texlive-bibtexextra texlive-fontsextra biber # latex files
 pacman -S --noconfirm curl # download from url
 pacman -S --noconfirm rar # rar and unrar(?) programs
@@ -73,9 +69,24 @@ sudo -u $USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
 sudo -u $USER (cd /tmp/yay-git && makepkg -si)
 sudo -u $USER yay -S --noconfirm masterpdfeditor # pdf reader and editor
 sudo -u $USER yay -S --noconfirm insync # google drive sync
-# TODO: set masterpdfeditor5 the default pdf as shown https://unix.stackexchange.com/questions/226857/set-default-pdf-reader
-# TODO: make out how to install the extensions
-# https://extensions.gnome.org/extension/615/appindicator-support/
 
-# setting up github
-sudo -u $USER gh auth login
+### GNOME extensions ###
+# extensions.gnome.org/extension/517/caffeine/
+# shell version: 42 extension verion: 41
+wget -P /tmp https://extensions.gnome.org/extension-data/caffeinepatapon.info.v41.shell-extension.zip
+gnome-extensions install /tmp/caffeinepatapon.info.v41.shell-extension.zip
+
+# extensions.gnome.org/extension/545/hide-top-bar/
+# shell version: 42 extension verion: 107
+wget -P /tmp https://extensions.gnome.org/extension-data/hidetopbarmathieu.bidon.ca.v107.shell-extension.zip
+gnome-extensions install /tmp/hidetopbarmathieu.bidon.ca.v107.shell-extension.zip
+
+# extensions.gnome.org/extension/615/appindicator-support/
+# # shell version: 42 extension verion: 42
+wget -P /tmp https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
+gnome-extensions install /tmp/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
+
+
+### setting up configs and default default applications ###
+sudo -u $USER sed -Ei 's/(^application\/pdf=).*/\1masterpdfeditor5.desktop/' ~/.config/mimeapps.list # masterpdfeditor5 to default pdf
+sudo -u $USER gh auth login # github
