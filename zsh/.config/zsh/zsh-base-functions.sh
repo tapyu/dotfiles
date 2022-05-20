@@ -34,9 +34,6 @@ function zsh_add_plugin() {
       zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
       zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
     else
-      [ -d "$2" ] && rm -rf $2 # if the directory exist, remove it
-      mkdir $2
-      echo "it is sparse clone $@"
       git_sparse_clone $@
       mkdir "$ZDOTDIR/plugins/$PLUGIN_NAME" 
       cp $2/$3/* "$ZDOTDIR/plugins/$PLUGIN_NAME"
