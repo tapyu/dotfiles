@@ -25,18 +25,6 @@ function youtubedl_snippet()(
   ffmpeg -ss $2 -to $3 -i $url_streams -c:v copy -c:a copy ${4:-"$output_name.mp4"}
 )
 
-
-# TODO: find out what is wrong here
-function youtubedl_snippet2()(
-  local url_streams=$(youtube-dl --get-url $1)
-  local output_name=$(youtube-dl --get-title $1)
-
-  # url_array=("${(@f)$(echo $url_streams)}") # split the urls by lines using function
-  local url_array=(${(f)url_streams}) # expand the urls by lines url_array[1] -> video stream url_array[2] -> audio stream
-
-  ffmpeg -ss $2 -to $3 -i ${url_array[1]} -ss $2 -to $3 -i ${url_array[2]} -map 0:v -map 1:a -c:v ${5:-copy} -c:a ${6:-copy} ${4:-"$output_name.mp4"}
-)
-
 function stopwatch()
 {
   local start=$SECONDS

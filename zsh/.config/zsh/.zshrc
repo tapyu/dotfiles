@@ -53,10 +53,14 @@ source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme # apply powerlevel
 # to customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-
 # zsh-history-substring-search plugin setup
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
 # zoxide setup
 eval "$(zoxide init zsh)"
+
+# execute tmux as soon as the shell opens up
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi

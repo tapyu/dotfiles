@@ -37,6 +37,7 @@ pacman -S --noconfirm mlocate # a newer verion of locate command
 pacman -S --noconfirm bat # cat with syntax highlighting
 pacman -S --noconfirm lsd # the next gen ls command
 pacman -S --noconfirm telegram-desktop whatsapp-web-jak # telegram and whatsapp
+pacman -S --noconfirm bottom # a process management better than htop (call it with btm)
 pacman -S --noconfirm obs-studio # screen recoder
 pacman -S --noconfirm fzf # fuzzy finder
 pacman -S --noconfirm brave # web browser
@@ -83,10 +84,14 @@ wget -P /tmp https://extensions.gnome.org/extension-data/hidetopbarmathieu.bidon
 gnome-extensions install /tmp/hidetopbarmathieu.bidon.ca.v107.shell-extension.zip
 
 # extensions.gnome.org/extension/615/appindicator-support/
-# # shell version: 42 extension verion: 42
+# shell version: 42 extension verion: 42
 wget -P /tmp https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
 gnome-extensions install /tmp/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
 
+# extensions.gnome.org/extension/1732/gtk-title-bar/
+# shell version: 42 extension verion: 10
+wget -P /tmp https://extensions.gnome.org/extension-data/gtktitlebarvelitasali.github.io.v10.shell-extension.zip
+gnome-extensions install /tmp/gtktitlebarvelitasali.github.io.v10.shell-extension.zip
 
 ### setting up configs and default default applications ###
 sudo -u $USER sed -Ei 's/(^application\/pdf=).*/\1masterpdfeditor5.desktop/' ~/.config/mimeapps.list # masterpdfeditor5 to default pdf
