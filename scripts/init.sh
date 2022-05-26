@@ -71,6 +71,7 @@ sudo -u $USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
 sudo -u $USER (cd /tmp/yay-git && makepkg -si)
 sudo -u $USER yay -S --noconfirm masterpdfeditor # pdf reader and editor
 sudo -u $USER yay -S --noconfirm insync # google drive sync
+sudo -u $USER yay -S --noconfirm visual-studio-code-bin # visual studio code
 
 ### GNOME extensions ###
 # extensions.gnome.org/extension/517/caffeine/
