@@ -40,6 +40,7 @@ pacman -S --noconfirm telegram-desktop whatsapp-web-jak # telegram and whatsapp
 pacman -S --noconfirm bottom # a process management better than htop (call it with btm)
 pacman -S --noconfirm obs-studio # screen recoder
 pacman -S --noconfirm fzf # fuzzy finder
+pacman -S --noconfirm ripgrep # a replacment for grep
 pacman -S --noconfirm brave # web browser
 pacman -S --noconfirm vlc # video viewer
 pacman -S --noconfirm peek # gif screen recoder
@@ -70,6 +71,7 @@ sudo -u $USER curl -sS https://webinstall.dev/zoxide | bash
 sudo -u $USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
 sudo -u $USER (cd /tmp/yay-git && makepkg -si)
 sudo -u $USER yay -S --noconfirm masterpdfeditor # pdf reader and editor
+sudo -u $USER yay -S --noconfirm ripgrep-all # pdf ripgrep
 sudo -u $USER yay -S --noconfirm insync # google drive sync
 sudo -u $USER yay -S --noconfirm visual-studio-code-bin # visual studio code
 

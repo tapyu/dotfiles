@@ -51,3 +51,4 @@ export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/file
 # Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
 # export JULIA_HISTORY="$XDG_STATE_HOME/julia"
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
