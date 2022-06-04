@@ -8,17 +8,13 @@
 # /home/ (type: ext4) -> at least 200 GB
 # the leftover space -> leave as free space (use it as it is required)
 
-### symlinks ###
-sudo -u $USER ln -s $HOME/git/dotfiles/zsh/.config/zsh ${XDG_CONFIG_HOME:-$HOME/.config/}/zsh
-sudo -u $USER ln -s $HOME/git/dotfiles/ranger/.config/ranger ${XDG_CONFIG_HOME:-$HOME/.config/}/ranger
-sudo -u $USER ln -s $HOME/git/dotfiles/nvim/.config/nvim ${XDG_CONFIG_HOME:-$HOME/.config/}/nvim
-sudo -u $USER ln -s $HOME/git/dotfiles/alacritty/.config/alacritty ${XDG_CONFIG_HOME:-$HOME/.config/}/alacritty
-sudo -u $USER ln -s $HOME/git/dotfiles/tmux/.config/tmux ${XDG_CONFIG_HOME:-$HOME/.config/}/tmux
+### symlink manager ###
+sudo -u $USER yay -S --noconfirm stow # a symlink farm manager
+sudo -u $USER (cd $HOME/git/dotfiles && stow */) # carry out the symlink manager
 
 ### tidy up - creating important directories ###
 [ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/} ] && sudo -u $USER mkdir $HOME/.local/state # create path to $XDG_STATE_HOME
 [ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh ] && sudo -u $USER mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh/ # create path to $HISTFILE
-
 
 ### download and installs ###
 # Meslo patched Nerd-fonts into ~/.local/share/fonts/
