@@ -43,6 +43,8 @@ pacman -S --noconfirm peek # gif screen recoder
 pacman -S --noconfirm slop screenkey ttf-font-awesome # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder; ttf-font-awesome -> to enable nice Tux and Win icons
 pacman -S --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --noconfirm python-pip # pip command
+pacman -S frei0r-plugins breeze # kdenlive dependencies
+pacman -S audacity # audacity - audio recorder
 sudo -u $USER pip install youtube-dl # download from youtube
 sudo -u $USER pip install trash-cli # trash-cli for KDE, GNOME, and XFCE
 # ranger and its dependencies
@@ -70,6 +72,7 @@ sudo -u $USER yay -S --noconfirm masterpdfeditor # pdf reader and editor
 sudo -u $USER yay -S --noconfirm ripgrep-all # pdf ripgrep
 sudo -u $USER yay -S --noconfirm insync # google drive sync
 sudo -u $USER yay -S --noconfirm visual-studio-code-bin # visual studio code
+sudo -u $USER yay -S kdenlive-git # kdenlive - video editor
 
 ### GNOME extensions ###
 # extensions.gnome.org/extension/517/caffeine/
