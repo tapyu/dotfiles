@@ -12,7 +12,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # matlab startup program
-alias matlab='$MATLAB_ROOT_DIR/bin/matlab >> /dev/null 2>> /dev/null &'
+#alias matlab='$MATLAB_ROOT_DIR/bin/matlab >> /dev/null 2>> /dev/null &'
 # sharkdp/bat program
 alias cat=bat
 # dandavison/delta program
