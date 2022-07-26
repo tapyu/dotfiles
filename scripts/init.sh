@@ -1,12 +1,11 @@
 #!/bin/sh
 
 # Suggesteed partitions and sizes
-# /boot/efi (EFI System, type:efi) -> 300MB (at least)
-# Linux Swap (type:swap) -> equal to memory RAM space
-# / (Linux FileSystem, type: ext4) -> at 50GB
-# /usr/ (type: ext4) -> at least 100 GB
-# /home/ (type: ext4) -> at least 200 GB
-# the leftover space -> leave as free space (use it as it is required)
+# - The EFI System: -> Mount point: /boot/ (or /boot/efi/) -> Journaling file system:efi -> size: 300MB (at least)
+# - Linux Swap -> Mount point: There isn't -> Journaling file system: linuxswap -> size: equal to memory RAM space (at moment, 24GB)
+# - The Root Filesystem -> Mount point: / -> Linux FileSystem, type: ext4 -> size: 150GB (at least)
+# - The users home directory -> Mount point: /home/ -> Linux FileSystem, type: ext4 -> size: 200GB (at least)
+# - The leftover space -> leave as free space (use it as it is required)
 
 ### symlink manager ###
 sudo -u $USER yay -S --noconfirm stow # a symlink farm manager
