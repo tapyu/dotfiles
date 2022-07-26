@@ -59,8 +59,6 @@ sudo -u $USER rustup update stable
 # alacritty
 pacman -S --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # dependencies
 sudo -u $USER cargo install alacritty
-gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty # turn alacritty the default terminal emulator
-gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true' # In Gnome, enable overamplification like this: https://www.reddit.com/r/gnome/comments/exfhc4/overamplification_extension/fgbf9j2/?utm_source=share&utm_medium=web2x&context=3
 # sublime text
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg && pacman-key --add sublimehq-pub.gpg && pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
 echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
@@ -71,6 +69,9 @@ sudo -u $USER curl -sS https://webinstall.dev/zoxide | bash
 sudo -u $USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
 sudo -u $USER (cd /tmp/yay-git && makepkg -si)
 sudo -u $USER yay -S --noconfirm masterpdfeditor # pdf reader and editor
+sudo -u $USER yay -S --noconfirm radarr # a movie collection manager for Usenet and BitTorrent users
+sudo systemctl enable --now radarr
+sudo systemctl daemon-reload
 sudo -u $USER yay -S --noconfirm ripgrep-all # pdf ripgrep
 sudo -u $USER yay -S --noconfirm insync # google drive sync
 sudo -u $USER yay -S --noconfirm visual-studio-code-bin # visual studio code
@@ -100,3 +101,7 @@ gnome-extensions install /tmp/gtktitlebarvelitasali.github.io.v10.shell-extensio
 ### setting up configs and default default applications ###
 sudo -u $USER sed -Ei 's/(^application\/pdf=).*/\1masterpdfeditor5.desktop/' ~/.config/mimeapps.list # masterpdfeditor5 to default pdf
 sudo -u $USER gh auth login # github
+
+## GNOME settings
+gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty # turn alacritty the default terminal emulator
+gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true' # In Gnome, enable overamplification https://www.reddit.com/r/gnome/comments/exfhc4/overamplification_extension/fgbf9j2/?utm_source=share&utm_medium=web2x&context=3
