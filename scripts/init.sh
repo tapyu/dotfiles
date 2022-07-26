@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Suggesteed partitions and sizes
-# - The EFI System: -> Mount point: /boot/ (or /boot/efi/) -> Journaling file system:efi -> size: 300MB (at least)
+# - The EFI System: -> Mount point: /boot/efi/ -> Journaling file system:efi -> size: 300MB (at least)
 # - Linux Swap -> Mount point: There isn't -> Journaling file system: linuxswap -> size: equal to memory RAM space (at moment, 24GB)
 # - The Root Filesystem -> Mount point: / -> Linux FileSystem, type: ext4 -> size: 150GB (at least)
 # - The users home directory -> Mount point: /home/ -> Linux FileSystem, type: ext4 -> size: 200GB (at least)
