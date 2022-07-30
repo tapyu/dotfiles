@@ -39,7 +39,7 @@ pacman -S --needed --noconfirm bottom # a process management better than htop (c
 pacman -S --needed --noconfirm obs-studio # screen recoder
 pacman -S --needed --noconfirm fzf # fuzzy finder
 pacman -S --needed --noconfirm ripgrep # a replacment for grep
-pacman -S --needed --noconfirm brave # web browser
+pacman -S --needed --noconfirm brave-browser # web browser
 pacman -S --needed --noconfirm vlc # video viewer
 pacman -S --needed --noconfirm peek # .gif screen recoder
 pacman -S --needed --noconfirm nemo # GUI file explorer
@@ -56,11 +56,11 @@ pacman -S --needed --noconfirm w3m # `w3mimgdisplay` -> for image previews
 (cd $HOME/git/dotfiles/ && sudo -u $SUDO_USER git submodule update --init --recursive) # pull ranger plugins
 # Rust
 sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-sudo -u $SUDO_USER rustup override set stable
-sudo -u $SUDO_USER rustup update stable
+rustup override set stable
+rustup update stable
 # alacritty
 pacman -S --needed --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # dependencies
-sudo -u $SUDO_USER cargo install alacritty
+cargo install alacritty
 # sublime text
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg && pacman-key --add sublimehq-pub.gpg && pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
 echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
