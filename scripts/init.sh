@@ -46,8 +46,8 @@ pacman -S --needed --noconfirm nemo # GUI file explorer
 pacman -S --needed --noconfirm slop screenkey ttf-font-awesome # slop -> allows to select windows and/or drag over the desired region interactively without the need of calculating the coordinates manually; screenkey -> keystrokes recoder; ttf-font-awesome -> to enable nice Tux and Win icons
 pacman -S --needed --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --needed --noconfirm python-pip # pip command
-pacman -S --needed frei0r-plugins breeze # kdenlive dependencies
-pacman -S --needed audacity # audacity - audio recorder
+pacman -S --needed --noconfirm frei0r-plugins breeze # kdenlive dependencies
+pacman -S --needed --noconfirm audacity # audacity - audio recorder
 sudo -u $SUDO_USER pip install youtube-dl # download from youtube
 sudo -u $SUDO_USER pip install trash-cli # trash-cli for KDE, GNOME, and XFCE
 # ranger and its dependencies
@@ -74,10 +74,9 @@ sudo -u $SUDO_USER yay -S --noconfirm masterpdfeditor # pdf reader and editor
 sudo -u $SUDO_USER yay -S --noconfirm radarr # a movie collection manager for Usenet and BitTorrent users
 sudo systemctl enable --now radarr
 sudo systemctl daemon-reload
-sudo -u $SUDO_USER yay -S --noconfirm ripgrep-all # pdf ripgrep
 sudo -u $SUDO_USER yay -S --noconfirm insync # google drive sync
 sudo -u $SUDO_USER yay -S --noconfirm visual-studio-code-bin # visual studio code
-sudo -u $SUDO_USER yay -S kdenlive-git # kdenlive - video editor
+sudo -u $SUDO_USER yay -S --noconfirm kdenlive-git # kdenlive - video editor
 
 ### stow - symlink manager ###
 pacman --needed -S --noconfirm stow # a symlink farm manager
@@ -109,5 +108,5 @@ sudo -u $SUDO_USER sed -Ei 's/(^application\/pdf=).*/\1masterpdfeditor5.desktop/
 sudo -u $SUDO_USER gh auth login # github
 
 ### GNOME settings ###
-gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty # turn alacritty the default terminal emulator
-gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true' # In Gnome, enable overamplification https://www.reddit.com/r/gnome/comments/exfhc4/overamplification_extension/fgbf9j2/?utm_source=share&utm_medium=web2x&context=3 
+sudo -u $SUDO_USER gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty # turn alacritty the default terminal emulator
+sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true' # In Gnome, enable overamplification https://www.reddit.com/r/gnome/comments/exfhc4/overamplification_extension/fgbf9j2/?utm_source=share&utm_medium=web2x&context=3 
