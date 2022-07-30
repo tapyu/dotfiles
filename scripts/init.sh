@@ -1,5 +1,30 @@
 #!/bin/sh
 
+# PS: run it as sudo --preserve-env=HOME,SHELL sh init1.sh to preserve these variables
+# Suggesteed partitions and sizes
+# - The EFI System: -> Mount point: /boot/efi/ -> Journaling file system:efi -> size: 300MB (at least)
+# - Linux Swap -> Mount point: There isn't -> Journaling file system: linuxswap -> size: equal to memory RAM space (at moment, 24GB)
+# - The Root Filesystem -> Mount point: / -> Linux FileSystem, type: ext4 -> size: 150GB (at least)
+# - The users home directory -> Mount point: /home/ -> Linux FileSystem, type: ext4 -> size: 200GB (at least)
+# - The leftover space -> leave as free space (use it as it is required)
+
+## install zsh ###
+if [ $SHELL != "/bin/zsh" ]; then
+  pacman -S --needed --no-confirm zsh
+  sudo -u $SUDO_USER chsh -s /usr/bin/zsh
+fi
+
+### tidy up - creating important directories ###
+[ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/} ] && sudo -u $SUDO_USER mkdir $HOME/.local/state # create path to $XDG_STATE_HOME
+[ ! -d ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh ] && sudo -u $SUDO_USER mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state/}/zsh/ # create path to $HISTFILE
+[ ! -d $HOME/.local/bin ] && sudo -u $SUDO_USER mkdir -p $HOME/.local/bin # create user-specific executable files
+
+### download and installs ###
+# Meslo patched Nerd-fonts into ~/.local/share/fonts/
+for name in {Regular,Italic,Bold-Italic}; do
+  wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf
+done
+
 # one-line packages
 pacman -S --nedded --noconfirm texlive-most texlive-lang texlive-bibtexextra texlive-fontsextra biber # latex files
 pacman -S --nedded --noconfirm curl # download from url
@@ -44,7 +69,7 @@ pacman --noconfirm -Syu sublime-text
 sudo -u $SUDO_USER curl -sS https://webinstall.dev/zoxide | bash
 # yay
 sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
-sudo -u $SUDO_USER (cd /tmp/yay-git && makepkg -si)
+(cd /tmp/yay-git && sudo -u $SUDO_USER makepkg -si)
 sudo -u $SUDO_USER yay -S --noconfirm masterpdfeditor # pdf reader and editor
 sudo -u $SUDO_USER yay -S --noconfirm radarr # a movie collection manager for Usenet and BitTorrent users
 sudo systemctl enable --now radarr
@@ -53,6 +78,10 @@ sudo -u $SUDO_USER yay -S --noconfirm ripgrep-all # pdf ripgrep
 sudo -u $SUDO_USER yay -S --noconfirm insync # google drive sync
 sudo -u $SUDO_USER yay -S --noconfirm visual-studio-code-bin # visual studio code
 sudo -u $SUDO_USER yay -S kdenlive-git # kdenlive - video editor
+
+### stow - symlink manager ###
+pacman --needed -S --noconfirm stow # a symlink farm manager
+(cd $HOME/git/dotfiles && sudo -u $SUDO_USER stow --dir=$HOME --ignore=scripts *) # carry out the symlink manager
 
 ### GNOME extensions ###
 # extensions.gnome.org/extension/517/caffeine/
@@ -79,6 +108,6 @@ gnome-extensions install /tmp/gtktitlebarvelitasali.github.io.v10.shell-extensio
 sudo -u $SUDO_USER sed -Ei 's/(^application\/pdf=).*/\1masterpdfeditor5.desktop/' ~/.config/mimeapps.list # masterpdfeditor5 to default pdf
 sudo -u $SUDO_USER gh auth login # github
 
-## GNOME settings
+### GNOME settings ###
 gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty # turn alacritty the default terminal emulator
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true' # In Gnome, enable overamplification https://www.reddit.com/r/gnome/comments/exfhc4/overamplification_extension/fgbf9j2/?utm_source=share&utm_medium=web2x&context=3 
