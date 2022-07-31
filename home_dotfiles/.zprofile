@@ -32,12 +32,11 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
 [ -d $CARGO_HOME ] && source $CARGO_HOME # source cargo, the Rust package manager
 
 ## default programs
-export EDITOR="nvim" # set editor
+export EDITOR="helix" # set editor
 export BROWSER="brave" # set browser
-export MANPAGER='nvim +Man!' # set manpager
+export MANPAGER='less' # set manpager
 
 ## program settings
-export MATLAB_ROOT_DIR="/usr/local/Polyspace/R2021a" # matlab root directory
 # zoxide environment variables
 export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
 export _ZO_RESOLVE_SYMLINKS='1'
@@ -49,6 +48,11 @@ export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/files PS: rg = ripgrep
 # Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
-# export JULIA_HISTORY="$XDG_STATE_HOME/julia"
+export JULIA_BINDIR="$XDG_DATA_HOME/julia-1.7.2/bin" # The absolute path of the directory containing the Julia executable -> ~/.local/share/julia-1.7.2/bin
+export JULIA_HISTORY="$XDG_STATE_HOME/julia"
+export DATAROOTDIR="../.." # relative julia's data directory -> $JULIA_BINDIR/$DATAROOTDIR/julia/base -> ~/.local/share/julia/base
+export SYSCONFDIR="../../../../.config" # relative julia's config files -> $JULIA_BINDIR/$SYSCONFDIR/julia/startup.jl -> ~/.config/julia/startup.jl
+
+
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
