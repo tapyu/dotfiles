@@ -23,3 +23,8 @@ fi
 for name in {Regular,Italic,Bold-Italic}; do
   [ ! -f "$HOME/.local/share/fonts/Meslo LG M DZ $(echo $name | sed -r 's/-/ /g') Nerd Font Complete.ttf" ] && wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf
 done
+
+### stow - symlink manager ###
+pacman --needed -S --noconfirm stow # a symlink farm manager
+rm $HOME/.zprofile # remove dotfiles in $HOME to avoid error TODO: try to not need it
+(cd $HOME/git/dotfiles && sudo -u $SUDO_USER stow --target=$HOME --ignore=scripts */) # carry out the symlink manager
