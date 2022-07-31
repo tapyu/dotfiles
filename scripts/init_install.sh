@@ -13,6 +13,7 @@ pacman -S --needed --noconfirm lsd # the next gen ls command
 pacman -S --needed --noconfirm telegram-desktop whatsapp-web-jak # telegram and whatsapp
 pacman -S --needed --noconfirm bottom # a process management better than htop (call it with btm)
 pacman -S --needed --noconfirm obs-studio # screen recoder
+pacman -S --needed --noconfirm helix # A post-modern modal text editor.
 pacman -S --needed --noconfirm fzf # fuzzy finder
 pacman -S --needed --noconfirm ripgrep # a replacment for grep
 pacman -S --needed --noconfirm brave-browser # web browser
@@ -37,13 +38,15 @@ sudo -u $SUDO_USER pip install trash-cli # trash-cli for KDE, GNOME, and XFCE
 pacman -S --needed --noconfirm ranger
 pacman -S --needed --noconfirm w3m # `w3mimgdisplay` -> for image previews
 (cd $HOME/git/dotfiles/ && sudo -u $SUDO_USER git submodule update --init --recursive) # pull ranger plugins
-# Rust
+# Rust and cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh
 sudo -u $SUDO_USER rustup override set stable
 sudo -u $SUDO_USER rustup update stable
+rm -f .profile # cargo creates a .profile file, if must be deleted to create to create a symlink to .zprofile
+sudo -u $SUDO_USER ln -s $HOME/.zprofile $HOME/.profile # .profile is what is really sourced at X11 session
 # alacritty
 pacman -S --needed --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # dependencies
-cargo install alacritty
+sudo -u $SUDO_USER cargo install alacritty
 # zoxide
 sudo -u $SUDO_USER curl -sS https://webinstall.dev/zoxide | bash
 # yay

@@ -1,3 +1,0 @@
-# lervag/vimtex
-## vimtex @tex @latex
-Move between section boundaries | [[
