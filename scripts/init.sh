@@ -56,8 +56,8 @@ pacman -S --needed --noconfirm w3m # `w3mimgdisplay` -> for image previews
 (cd $HOME/git/dotfiles/ && sudo -u $SUDO_USER git submodule update --init --recursive) # pull ranger plugins
 # Rust
 sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup override set stable
-rustup update stable
+sudo -u $SUDO_USER rustup override set stable
+sudo -u $SUDO_USER rustup update stable
 # alacritty
 pacman -S --needed --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # dependencies
 cargo install alacritty
@@ -80,28 +80,28 @@ sudo -u $SUDO_USER yay -S --noconfirm kdenlive-git # kdenlive - video editor
 
 ### stow - symlink manager ###
 pacman --needed -S --noconfirm stow # a symlink farm manager
-(cd $HOME/git/dotfiles && sudo -u $SUDO_USER stow --dir=$HOME --ignore=scripts *) # carry out the symlink manager
+(cd $HOME/git/dotfiles && sudo -u $SUDO_USER stow --target=$HOME --ignore=scripts */) # carry out the symlink manager
 
 ### GNOME extensions ###
 # extensions.gnome.org/extension/517/caffeine/
 # shell version: 42 extension verion: 41
-wget -P /tmp https://extensions.gnome.org/extension-data/caffeinepatapon.info.v41.shell-extension.zip
-gnome-extensions install /tmp/caffeinepatapon.info.v41.shell-extension.zip
+sudo -u $SUDO_USER wget -P /tmp https://extensions.gnome.org/extension-data/caffeinepatapon.info.v41.shell-extension.zip
+sudo -u $SUDO_USER gnome-extensions install /tmp/caffeinepatapon.info.v41.shell-extension.zip
 
 # extensions.gnome.org/extension/545/hide-top-bar/
 # shell version: 42 extension verion: 107
-wget -P /tmp https://extensions.gnome.org/extension-data/hidetopbarmathieu.bidon.ca.v107.shell-extension.zip
-gnome-extensions install /tmp/hidetopbarmathieu.bidon.ca.v107.shell-extension.zip
+sudo -u $SUDO_USER wget -P /tmp https://extensions.gnome.org/extension-data/hidetopbarmathieu.bidon.ca.v107.shell-extension.zip
+sudo -u $SUDO_USER gnome-extensions install /tmp/hidetopbarmathieu.bidon.ca.v107.shell-extension.zip
 
 # extensions.gnome.org/extension/615/appindicator-support/
 # shell version: 42 extension verion: 42
-wget -P /tmp https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
-gnome-extensions install /tmp/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
+sudo -u $SUDO_USER wget -P /tmp https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
+sudo -u $SUDO_USER gnome-extensions install /tmp/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
 
 # extensions.gnome.org/extension/1732/gtk-title-bar/
 # shell version: 42 extension verion: 10
-wget -P /tmp https://extensions.gnome.org/extension-data/gtktitlebarvelitasali.github.io.v10.shell-extension.zip
-gnome-extensions install /tmp/gtktitlebarvelitasali.github.io.v10.shell-extension.zip
+sudo -u $SUDO_USER wget -P /tmp https://extensions.gnome.org/extension-data/gtktitlebarvelitasali.github.io.v10.shell-extension.zip
+sudo -u $SUDO_USER gnome-extensions install /tmp/gtktitlebarvelitasali.github.io.v10.shell-extension.zip
 
 ### setting up configs and default default applications ###
 sudo -u $SUDO_USER sed -Ei 's/(^application\/pdf=).*/\1masterpdfeditor5.desktop/' ~/.config/mimeapps.list # masterpdfeditor5 to default pdf
@@ -110,3 +110,5 @@ sudo -u $SUDO_USER gh auth login # github
 ### GNOME settings ###
 sudo -u $SUDO_USER gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bin/alacritty # turn alacritty the default terminal emulator
 sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true' # In Gnome, enable overamplification https://www.reddit.com/r/gnome/comments/exfhc4/overamplification_extension/fgbf9j2/?utm_source=share&utm_medium=web2x&context=3 
+
+# TODO: add shortcuts, add keyboard
