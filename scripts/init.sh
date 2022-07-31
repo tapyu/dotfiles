@@ -55,7 +55,7 @@ pacman -S --needed --noconfirm ranger
 pacman -S --needed --noconfirm w3m # `w3mimgdisplay` -> for image previews
 (cd $HOME/git/dotfiles/ && sudo -u $SUDO_USER git submodule update --init --recursive) # pull ranger plugins
 # Rust
-sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh
 sudo -u $SUDO_USER rustup override set stable
 sudo -u $SUDO_USER rustup update stable
 # alacritty

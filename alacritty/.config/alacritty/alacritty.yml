@@ -1,9 +1,14 @@
+# you can access the default values here: https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+
 cursor:
         style:
                 shape: beam
                 blinking: on
+
 window:
         startup_mode: Maximized
+        decorations: none
+
 font:
         size: 18.0
         normal:
