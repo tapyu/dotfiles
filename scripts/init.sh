@@ -80,6 +80,7 @@ sudo -u $SUDO_USER yay -S --noconfirm kdenlive-git # kdenlive - video editor
 
 ### stow - symlink manager ###
 pacman --needed -S --noconfirm stow # a symlink farm manager
+rm $HOME/.zprofile # remove dotfiles in $HOME to avoid error TODO: try to not need it
 (cd $HOME/git/dotfiles && sudo -u $SUDO_USER stow --target=$HOME --ignore=scripts */) # carry out the symlink manager
 
 ### GNOME extensions ###
