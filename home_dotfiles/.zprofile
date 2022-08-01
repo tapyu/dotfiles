@@ -28,7 +28,6 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory (?)
 export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst (?)
 export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
-# export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia" # change ~/.julia (?)
 [ -d $CARGO_HOME ] && source $CARGO_HOME # source cargo, the Rust package manager
 
 ## default programs
@@ -48,10 +47,11 @@ export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/files PS: rg = ripgrep
 # Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
-export JULIA_BINDIR="$XDG_DATA_HOME/julia-1.7.2/bin" # The absolute path of the directory containing the Julia executable -> ~/.local/share/julia-1.7.2/bin
-export JULIA_HISTORY="$XDG_STATE_HOME/julia"
-export DATAROOTDIR="../.." # relative julia's data directory -> $JULIA_BINDIR/$DATAROOTDIR/julia/base -> ~/.local/share/julia/base
-export SYSCONFDIR="../../../../.config" # relative julia's config files -> $JULIA_BINDIR/$SYSCONFDIR/julia/startup.jl -> ~/.config/julia/startup.jl
+# export JULIA_BINDIR="$XDG_DATA_HOME/julia/bin" # The absolute path of the directory containing the Julia executable -> ~/.local/share/julia/bin
+# export JULIA_HISTORY="$XDG_STATE_HOME/julia"
+# export DATAROOTDIR="../.." # relative julia's data directory -> $JULIA_BINDIR/$DATAROOTDIR/julia/base -> ~/.local/share/julia/base
+# export SYSCONFDIR="../../../../.config" # relative julia's config files -> $JULIA_BINDIR/$SYSCONFDIR/julia/startup.jl -> ~/.config/julia/startup.jl
+# export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia" # change ~/.julia (?)
 
 
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
