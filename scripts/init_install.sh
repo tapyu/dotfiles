@@ -91,11 +91,20 @@ sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-
 # write your solution here: https://askubuntu.com/questions/597395/how-to-set-custom-keyboard-shortcuts-from-terminal
 KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-"['$KEY_PATH/custom0/']" # add more into this list for more shortcuts
+"['$KEY_PATH/custom0/', '$KEY_PATH/custom1/']" # add more into this list for more shortcuts
 
 # Terminal
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/ name "Terminal"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/ command "'/home/tapyu/.local/share/cargo/bin/alacritty'"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/  binding "<Control><Alt>t"
+
+# Web Browser
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/ name "Brave Browser"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/ command "'/usr/bin/brave'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/  binding "<Super>1"
+
+# TODO: add these extensions
+# https://extensions.gnome.org/extension/28/gtile/
+# https://extensions.gnome.org/extension/4496/hide-panel-light-version-without-hot-corner/
 
 # TODO:  add keyboard
