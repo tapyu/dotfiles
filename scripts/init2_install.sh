@@ -18,6 +18,7 @@ pacman -S --needed --noconfirm fzf # fuzzy finder
 pacman -S --needed --noconfirm ripgrep # a replacment for grep
 pacman -S --needed --noconfirm brave-browser # web browser
 pacman -S --needed --noconfirm vlc # video viewer
+pacman -S --needed --noconfirm gimp # image editors
 pacman -S --needed --noconfirm tmux # terminal multiplexer
 pacman -S --needed --noconfirm peek # .gif screen recoder
 pacman -S --needed --noconfirm nemo # GUI file explorer
