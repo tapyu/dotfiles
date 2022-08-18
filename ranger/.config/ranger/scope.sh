@@ -175,7 +175,7 @@ handle_image() {
                       -singlefile \
                       -jpeg -tiffcompression jpeg \
                       -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
-                 && exit 6 || exit 1;;
+                 && exit 6 && echo "${IMAGE_CACHE_PATH%.*}" >> /tpm/test.txt|| exit 1;;
 
 
         ## ePub, MOBI, FB2 (using Calibre)

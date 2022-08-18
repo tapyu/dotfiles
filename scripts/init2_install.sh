@@ -13,9 +13,10 @@ pacman -S --needed --noconfirm lsd # the next gen ls command
 pacman -S --needed --noconfirm telegram-desktop whatsapp-web-jak # telegram and whatsapp
 pacman -S --needed --noconfirm bottom # a process management better than htop (call it with btm)
 pacman -S --needed --noconfirm obs-studio # screen recoder
-pacman -S --needed --noconfirm helix # A post-modern modal text editor.
+pacman -S --needed --noconfirm helix # A post-modern modal text editor
 pacman -S --needed --noconfirm fzf # fuzzy finder
 pacman -S --needed --noconfirm ripgrep # a replacment for grep
+pacman -S --needed --noconfirm pdfgrep # grep for pdf files
 pacman -S --needed --noconfirm brave-browser # web browser
 pacman -S --needed --noconfirm vlc # video viewer
 pacman -S --needed --noconfirm gimp # image editors
@@ -37,7 +38,7 @@ sudo -u $SUDO_USER pip install youtube-dl # download from youtube
 sudo -u $SUDO_USER pip install trash-cli # trash-cli for KDE, GNOME, and XFCE
 # ranger and its dependencies
 pacman -S --needed --noconfirm ranger
-pacman -S --needed --noconfirm w3m # `w3mimgdisplay` -> for image previews
+pacman -S --needed --noconfirm w3m ueberzug # ranger image preview default; `w3mimgdisplay` -> for image previews obs:set ueberzug as the default image preview for alacritty!
 (cd $HOME/git/dotfiles/ && sudo -u $SUDO_USER git submodule update --init --recursive) # pull ranger plugins
 # Rust and cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh
