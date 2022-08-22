@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# PS: run it as sudo --preserve-env=HOME,SHELL sh init.sh to preserve these variables
+# PS: run it as sudo --preserve-env sh init.sh to preserve the variables
 # Suggesteed partitions and sizes
 # - The EFI System: -> Mount point: /boot/efi/ -> Journaling file system:efi -> size: 300MB (at least)
 # - Linux Swap -> Mount point: There isn't -> Journaling file system: linuxswap -> size: equal to memory RAM space (at moment, 24GB)
@@ -27,4 +27,4 @@ done
 ### stow - symlink manager ###
 pacman --needed -S --noconfirm stow # a symlink farm manager
 rm -f $HOME/.zprofile # remove dotfiles in $HOME to avoid error TODO: try to not need it
-(cd $HOME/git/dotfiles && sudo -u $SUDO_USER stow --target=$HOME --ignore=scripts */) # carry out the symlink manager
+(cd $HOME/git/dotfiles && sudo -u $SUDO_USER stow --target=$HOME --ignore=check_eol_kernel.sh  --ignore=init1_setup.sh  --ignore=init2_install.sh */) # carry out the symlink manager
