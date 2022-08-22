@@ -42,6 +42,7 @@ pacman -S --needed --noconfirm w3m ueberzug # ranger image preview default; `w3m
 (cd $HOME/git/dotfiles/ && sudo -u $SUDO_USER git submodule update --init --recursive) # pull ranger plugins
 # Rust and cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh
+source "$HOME/.cargo/env"
 sudo -u $SUDO_USER rustup override set stable
 sudo -u $SUDO_USER rustup update stable
 rm -f .profile # cargo creates a .profile file, if must be deleted to create to create a symlink to .zprofile
@@ -91,19 +92,19 @@ sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-
 ### GNOME gsettings shortcut ###
 # get more ideas here: https://blog.programster.org/using-the-cli-to-set-custom-keyboard-shortcuts
 # write your solution here: https://askubuntu.com/questions/597395/how-to-set-custom-keyboard-shortcuts-from-terminal
-KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+sudo -u $SUDO_USER KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+sudo -u $SUDO_USER gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
 "['$KEY_PATH/custom0/', '$KEY_PATH/custom1/']" # add more into this list for more shortcuts
 
 # Terminal
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/ name "Terminal"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/ command "'/home/tapyu/.local/share/cargo/bin/alacritty'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/  binding "<Control><Alt>t"
+sudo -u $SUDO_USER gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/ name "Terminal"
+sudo -u $SUDO_USER gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/ command "'/home/tapyu/.local/share/cargo/bin/alacritty'"
+sudo -u $SUDO_USER gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom0/  binding "<Control><Alt>t"
 
 # Web Browser
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/ name "Brave Browser"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/ command "'/usr/bin/brave'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/  binding "<Super>1"
+sudo -u $SUDO_USER gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/ name "Brave Browser"
+sudo -u $SUDO_USER gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/ command "'/usr/bin/brave'"
+sudo -u $SUDO_USER gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEY_PATH/custom1/  binding "<Super>1"
 
 # TODO: add these extensions
 # https://extensions.gnome.org/extension/28/gtile/
