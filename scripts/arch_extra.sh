@@ -5,7 +5,6 @@ pacman -S --needed --noconfirm curl # download from url
 pacman -S --needed --noconfirm rar # rar and unrar(?) programs
 pacman -S --needed --noconfirm mlocate # a newer version of locate command
 pacman -S --needed --noconfirm bat # cat with syntax highlighting
-pacman -S --needed --noconfirm lsd # the next gen ls command
 pacman -S --needed --noconfirm telegram-desktop whatsapp-web-jak # telegram and whatsapp
 pacman -S --needed --noconfirm tree # see directories as tree
 pacman -S --needed --noconfirm obs-studio # screen recoder

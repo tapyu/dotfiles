@@ -37,6 +37,7 @@ pacman -S --needed --noconfirm git-delta # dandavison/delta - help to improve gi
 pacman -S --needed --noconfirm helix # A post-modern modal text editor
 pacman -S --needed --noconfirm fzf # fuzzy finder
 # pacman -S --needed --noconfirm brave-browser # web browser (it is available only on Majaro)
+pacman -S --needed --noconfirm lsd # the next gen ls command
 pacman -S --needed --noconfirm tmux # terminal multiplexer
 pacman -S --needed --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --needed --noconfirm python-pip # pip command
@@ -52,7 +53,7 @@ sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/share/julia $XDG_DATA_HOME/jul
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/etc/julia $XDG_CONFIG_HOME/julia
 # alacritty
 pacman -S --needed --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # dependencies
-sudo -u $SUDO_USER cargo install alacritty
+#sudo -u $SUDO_USER cargo install alacritty
 # yay
 sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
 (cd /tmp/yay-git && sudo -u $SUDO_USER makepkg -si)
