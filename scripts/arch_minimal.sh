@@ -41,6 +41,7 @@ pacman -S --needed --noconfirm tmux # terminal multiplexer
 pacman -S --needed --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --needed --noconfirm python-pip # pip command
 pacman -S --needed --noconfirm julia # The Julia Programming Language
+pacman -S --needed --noconfirm rust # the Rust programming language the the cargo package manager
 # ranger and its dependencies
 pacman -S --needed --noconfirm ranger
 pacman -S --needed --noconfirm w3m ueberzug # ranger image preview default; `w3mimgdisplay` -> for image previews obs:set ueberzug as the default image preview for alacritty!
@@ -49,13 +50,6 @@ pacman -S --needed --noconfirm w3m ueberzug # ranger image preview default; `w3m
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/bin/julia ~/.local/bin/julia 
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/share/julia $XDG_DATA_HOME/julia
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/etc/julia $XDG_CONFIG_HOME/julia
-# Rust and cargo TODO:see it pacman does resolve it
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh
-source "$HOME/.cargo/env"
-sudo -u $SUDO_USER rustup override set stable
-sudo -u $SUDO_USER rustup update stable
-rm -f .profile # cargo creates a .profile file, if must be deleted to create to create a symlink to .zprofile
-sudo -u $SUDO_USER ln -s $HOME/.zprofile $HOME/.profile # .profile is what is really sourced at X11 session
 # alacritty
 pacman -S --needed --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # dependencies
 sudo -u $SUDO_USER cargo install alacritty
