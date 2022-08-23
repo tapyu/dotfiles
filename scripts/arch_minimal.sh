@@ -36,7 +36,7 @@ pacman -S --needed --noconfirm github-cli # git CLI to make token password persi
 pacman -S --needed --noconfirm git-delta # dandavison/delta - help to improve git diff and diff commands
 pacman -S --needed --noconfirm helix # A post-modern modal text editor
 pacman -S --needed --noconfirm fzf # fuzzy finder
-pacman -S --needed --noconfirm brave-browser # web browser
+# pacman -S --needed --noconfirm brave-browser # web browser (it is available only on Majaro)
 pacman -S --needed --noconfirm tmux # terminal multiplexer
 pacman -S --needed --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --needed --noconfirm python-pip # pip command
