@@ -49,7 +49,7 @@ pacman -S --needed --noconfirm w3m ueberzug # ranger image preview default; `w3m
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/bin/julia ~/.local/bin/julia 
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/share/julia $XDG_DATA_HOME/julia
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/etc/julia $XDG_CONFIG_HOME/julia
-# Rust and cargo
+# Rust and cargo TODO:see it pacman does resolve it
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh
 source "$HOME/.cargo/env"
 sudo -u $SUDO_USER rustup override set stable
