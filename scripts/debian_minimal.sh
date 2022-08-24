@@ -36,7 +36,6 @@ git clone https://github.com/helix-editor/helix /tmp/helix
 (cd /tmp/helix && cargo install --path helix-term)
 apt install -y texlive-full # latex
 apt install -y fzf
-apt install -y github-cli
 apt install -y git-delta
 apt install -y tmux # terminal multiplexer
 apt install -y xclip
@@ -71,3 +70,11 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys ACCAF35C
 echo "deb http://apt.insync.io/mint vanessa non-free contrib" > /etc/apt/sources.list.d/insync.list
 apt update
 apt install insync
+
+# github-cli
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+&& sudo apt update \
+&& sudo apt install gh -y
+sudo -u $SUDO_USER gh auth login # github authentication login
