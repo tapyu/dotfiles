@@ -28,7 +28,6 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory (?)
 export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst (?)
 export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
-[ -d $CARGO_HOME ] && source $CARGO_HOME # source cargo, the Rust package manager
 
 ## default programs
 export EDITOR="helix" # set editor

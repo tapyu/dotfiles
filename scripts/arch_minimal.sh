@@ -33,8 +33,9 @@ source ~/.zprofile
 ### one-line packages ###
 pacman -S --needed --noconfirm texlive-most texlive-lang texlive-bibtexextra texlive-fontsextra biber # latex files
 pacman -S --needed --noconfirm github-cli # git CLI to make token password persistent
-pacman -S --needed --noconfirm git-delta # dandavison/delta - help to improve git diff and diff commands
+sudo -u $SUDO_USER cargo install git-delta # dandavison/delta - help to improve git diff and diff commands
 pacman -S --needed --noconfirm helix # A post-modern modal text editor
+pacman -S --needed --noconfirm bat # cat with syntax highlighting
 pacman -S --needed --noconfirm fzf # fuzzy finder
 # pacman -S --needed --noconfirm brave-browser # web browser (it is available only on Majaro)
 pacman -S --needed --noconfirm lsd # the next gen ls command

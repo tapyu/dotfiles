@@ -26,4 +26,3 @@ alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --al
 alias la='ls --almost-all'
 alias l='ls --human-readable'
 alias mkdir="mkdir --parents --verbose"
-alias hx="helix"
