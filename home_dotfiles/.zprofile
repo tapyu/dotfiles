@@ -31,7 +31,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
 
 ## default programs
 export EDITOR="helix" # set editor
-export BROWSER="brave" # set browser
+export BROWSER="brave-browser" # set browser
 export MANPAGER='less' # set manpager
 
 ## program settings
