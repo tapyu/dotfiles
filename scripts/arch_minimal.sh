@@ -10,7 +10,7 @@
 
 ## install zsh ###
 if [ $SHELL != "/bin/zsh" ]; then
-  pacman -S --needed --no-confirm zsh
+  pacman -S --needed --noconfirm zsh
   sudo -u $SUDO_USER chsh -s /usr/bin/zsh
 fi
 
@@ -33,11 +33,9 @@ source ~/.zprofile
 ### one-line packages ###
 pacman -S --needed --noconfirm texlive-most texlive-lang texlive-bibtexextra texlive-fontsextra biber # latex files
 pacman -S --needed --noconfirm github-cli # git CLI to make token password persistent
-sudo -u $SUDO_USER cargo install git-delta # dandavison/delta - help to improve git diff and diff commands
 pacman -S --needed --noconfirm helix # A post-modern modal text editor
 pacman -S --needed --noconfirm bat # cat with syntax highlighting
 pacman -S --needed --noconfirm fzf # fuzzy finder
-# pacman -S --needed --noconfirm brave-browser # web browser (it is available only on Majaro)
 pacman -S --needed --noconfirm lsd # the next gen ls command
 pacman -S --needed --noconfirm tmux # terminal multiplexer
 pacman -S --needed --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
@@ -52,12 +50,16 @@ pacman -S --needed --noconfirm w3m ueberzug # ranger image preview default; `w3m
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/bin/julia ~/.local/bin/julia 
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/share/julia $XDG_DATA_HOME/julia
 sudo -u $SUDO_USER ln -s $XDG_DATA_HOME/julia-1.*/etc/julia $XDG_CONFIG_HOME/julia
-# alacritty
-pacman -S --needed --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # dependencies
-#sudo -u $SUDO_USER cargo install alacritty
+# cargo (rust's package manager)
+sudo -u $SUDO_USER cargo install git-delta # dandavison/delta - help to improve git diff and diff commands
+pacman -S --needed --noconfirm cmake freetype2 fontconfig pkg-config make libxcb libxkbcommon python # alacritty dependencies
+sudo -u $SUDO_USER cargo install alacritty
 # yay
-sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
-(cd /tmp/yay-git && sudo -u $SUDO_USER makepkg -si)
+if [ ! -f /usr/bin yay ]; then # if yay is not installed, install it
+  sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay-git.git /tmp/yay-git/
+  (cd /tmp/yay-git && sudo -u $SUDO_USER makepkg -si)
+fi
 sudo -u $SUDO_USER yay -S --needed --noconfirm masterpdfeditor # pdf reader and editor
+sudo -u $SUDO_USER yay -S --needed --noconfirm brave-bin # web browser
 sudo -u $SUDO_USER yay -S --needed --noconfirm visual-studio-code-bin # visual studio code
 sudo -u $SUDO_USER gh auth login # github authentication login
