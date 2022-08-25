@@ -37,6 +37,7 @@ pacman -S --needed --noconfirm helix # A post-modern modal text editor
 pacman -S --needed --noconfirm bat # cat with syntax highlighting
 pacman -S --needed --noconfirm fzf # fuzzy finder
 pacman -S --needed --noconfirm lsd # the next gen ls command
+pacman -S --needed --noconfirm zoxide # A smarter cd command
 pacman -S --needed --noconfirm tmux # terminal multiplexer
 pacman -S --needed --noconfirm xclip # interface to X selections ("the clipboard") from the command line on system with an X11 implementation.
 pacman -S --needed --noconfirm python-pip # pip command
@@ -62,4 +63,5 @@ fi
 sudo -u $SUDO_USER yay -S --needed --noconfirm masterpdfeditor # pdf reader and editor
 sudo -u $SUDO_USER yay -S --needed --noconfirm brave-bin # web browser
 sudo -u $SUDO_USER yay -S --needed --noconfirm visual-studio-code-bin # visual studio code
+sudo -u $SUDO_USER yay -S --needed --noconfirm insync # google drive sync
 sudo -u $SUDO_USER gh auth login # github authentication login

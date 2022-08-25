@@ -19,7 +19,5 @@ pacman -S --needed --noconfirm audacity # audacity - audio recorder
 
 sudo -u $SUDO_USER pip install youtube-dl # download from youtube
 sudo -u $SUDO_USER pip install trash-cli # trash-cli for KDE, GNOME, and XFCE
-# zoxide
-sudo -u $SUDO_USER curl -sS https://webinstall.dev/zoxide | bash
-sudo -u $SUDO_USER yay -S --needed --noconfirm insync # google drive sync
+# yay
 sudo -u $SUDO_USER yay -S --needed --noconfirm kdenlive-git # kdenlive - video editor
