@@ -24,6 +24,14 @@ for name in {Regular,Italic,Bold-Italic}; do
   [ ! -f "$HOME/.local/share/fonts/Meslo LG M DZ $(echo $name | sed -r 's/-/ /g') Nerd Font Complete.ttf" ] && wget --directory-prefix="$HOME/.local/share/fonts" https://raw.githubusercontents.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M-DZ/$name/complete/Meslo%20LG%20M%20DZ%20$(echo $name | sed -r 's/-/%20/g')%20Nerd%20Font%20Complete.ttf
 done
 
+
+# add platformIO (vscode extension) udev rules
+# udev also handles all user space events raised when hardware devices are added into the system or removed from it,
+# including firmware loading as required by certain devices
+if [ ! -f /etc/udev/rules.d/99-platformio-udev.rules ]; then
+  wget /etc/udev/rules.d/99-platformio-udev.rules --directory-prefix="/etc/udev/rules.d/" https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules
+fi
+
 ### stow - symlink manager ###
 pacman --needed -S --noconfirm stow # a symlink farm manager
 rm -f $HOME/.zprofile # remove dotfiles in $HOME to avoid error TODO: try to not need it
