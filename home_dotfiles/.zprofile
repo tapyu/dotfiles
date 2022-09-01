@@ -30,8 +30,8 @@ export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst (?)
 export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
 
 ## default programs
-export EDITOR="helix" # set editor
-export BROWSER="brave" # set browser
+export EDITOR="hx" # set editor
+export BROWSER="brave-browser" # set browser
 export MANPAGER='less' # set manpager
 
 ## program settings
