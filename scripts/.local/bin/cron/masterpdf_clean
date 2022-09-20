@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# remove *_backup.pdf files created by master pdf
+
+find $HOME/google_drive -name '*_backup.pdf' -exec rm -v '{}' \;
