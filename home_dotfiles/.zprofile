@@ -45,13 +45,13 @@ export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
 # fzf settings
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/files PS: rg = ripgrep
-# Julia's env variable - where the package manager look for package registries, installed packages, named environments, repo clones, cached compiled package images, configuration files, and the default location of the REPL's history file.
-# export JULIA_BINDIR="$XDG_DATA_HOME/julia/bin" # The absolute path of the directory containing the Julia executable -> ~/.local/share/julia/bin
-# export JULIA_HISTORY="$XDG_STATE_HOME/julia"
-# export DATAROOTDIR="../.." # relative julia's data directory -> $JULIA_BINDIR/$DATAROOTDIR/julia/base -> ~/.local/share/julia/base
-# export SYSCONFDIR="../../../../.config" # relative julia's config files -> $JULIA_BINDIR/$SYSCONFDIR/julia/startup.jl -> ~/.config/julia/startup.jl
-# export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia" # change ~/.julia (?)
+# matlab
+export MATLAB_ROOT='/usr/local/MATLAB/R2022a'
+export LD_LIBRARY_PATH="/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a}/sys/os/glnxa64"
 
+# python
+export PYENV_ROOT="$HOME/.local/share/pyenv" # pyenv: used to isolate Python versions
+export PATH="$HOME/.pyenv/bin:$PATH" # app pyenv to $PATH
 
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
