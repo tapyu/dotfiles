@@ -66,7 +66,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 # pyenv settings
-if [[ $PATH ~= pyenv ]]; then
+if [[ $PATH =~ pyenv ]]; then
   eval "$(pyenv init --path)"
   eval "$(pyenv virtualenv-init -)"
 fi

@@ -1,0 +1,2 @@
+ignore-mode "display" # download the items, but do not show them
+ignore-article "http://portal.utfpr.edu.br/noticias/ultimas-noticias/@@RSS" "title !~ \"vaga\" and title !~ \"bolsa\" and title !~ \"resultado\" and title !~ \"seleção\" and title !~ \"concurso\" "

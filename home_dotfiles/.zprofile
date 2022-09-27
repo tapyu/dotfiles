@@ -47,11 +47,11 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make 
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/files PS: rg = ripgrep
 # matlab
 export MATLAB_ROOT='/usr/local/MATLAB/R2022a'
-export LD_LIBRARY_PATH="/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a}/sys/os/glnxa64"
+#export LD_LIBRARY_PATH='/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a/sys/os/glnxa64:$LD_LIBRARY_PATH'
 
 # python
 export PYENV_ROOT="$HOME/.local/share/pyenv" # pyenv: used to isolate Python versions
-export PATH="$HOME/.pyenv/bin:$PATH" # app pyenv to $PATH
+export PATH="$PATH:$HOME/.local/share/pyenv/bin" # app pyenv to $PATH
 
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
