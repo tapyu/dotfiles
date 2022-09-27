@@ -2,4 +2,4 @@ zsh/**/plugins/
 zsh/**/.zcompdump
 zsh/**/.p10k.zsh
 **/__pycache__/
-nvim/.config/nvim*/plugin
+.newsboat/cache.db
