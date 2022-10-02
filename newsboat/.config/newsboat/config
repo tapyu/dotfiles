@@ -1,0 +1,3 @@
+ignore-mode "display" # download the items, but do not show them
+ignore-article "http://portal.utfpr.edu.br/noticias/ultimas-noticias/@@RSS" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
+ignore-article "exec:/usr/bin/curl --insecure 'https://ifce.edu.br/rss.xml'" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
