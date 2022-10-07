@@ -1,9 +1,15 @@
-# universidades
+# universidade
 http://portal.utfpr.edu.br/noticias/ultimas-noticias/@@RSS universidade "~UTFPR"
 https://deti.ufc.br/pt/feed/ universidade "~UFC - DETI"
 https://progep.ufc.br/pt/feed/ universidade "~UFC - PROGEP"
 https://ppgeti.ufc.br/pt/feed/ universidade "~UFC - PPGETI"
 https://dqafq.ufc.br/pt/feed/ universidade "~UFC - DQAFQ"
 "exec:/usr/bin/curl --insecure 'https://ifce.edu.br/rss.xml'" universidade "~IFCE"
+### TODO
+# https://uspdigital.usp.br/gr/admissao USP
+# http://qselecao.ifce.edu.br/lista_concursos.aspx IFCE (Q-seleção)
+# https://www.portalselecao.ufu.br/servicos/edital/listar UFU
+# https://www.ufabc.edu.br/concursos/docentes/inscricoes-abertas UFABC
+
 # bolsas
 https://www.gov.br/capes/pt-br/assuntos/noticias/RSS "~CAPES"
