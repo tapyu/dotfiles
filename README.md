@@ -4,17 +4,17 @@ You will need `git` and GNU `stow`
 
 Clone into your `$HOME` directory or `~`
 
-```bash
+```shell
 git clone https://github.com/tapyu/dotfiles
 ```
 
 Run `stow` to symlink everything or just select what you want
 
-```bash
+```shell
 stow */ # Everything (the '/' ignores the README)
 ```
 
-```bash
+```shell
 stow zsh # Just my zsh config
 ```
 
