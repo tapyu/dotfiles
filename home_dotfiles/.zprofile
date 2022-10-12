@@ -23,7 +23,7 @@ export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files sho
 # To add directories to your PATH or define additional environment variables, place those changes in .bash_profile (or the equivalent, according to your distribution; for example, Ubuntu uses .profile). For everything else, place the changes in .bashrc.
 
 ## tidy up $HOME directory
-export NPM_CONFIG_USERCONFIG="$XDG_DATA_HOME/npm" # change ~/.npm/ directory (?)
+export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc" # set the place of npmrc config file (?)
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory (?)
 export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst (?)
