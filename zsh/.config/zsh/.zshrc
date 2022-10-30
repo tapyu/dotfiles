@@ -61,9 +61,9 @@ bindkey "^[[B" history-substring-search-down
 eval "$(zoxide init zsh)"
 
 # execute tmux as soon as the shell opens up
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+#fi
 
 # pyenv settings
 if [[ $PATH =~ pyenv ]]; then
