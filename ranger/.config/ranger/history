@@ -1,0 +1,9 @@
+set preview_images kitty
+open_with 
+scout -aefkst jj
+delete
+set preview_images ueberzug
+set preview_images_method ueberzug
+set preview_images true
+set preview_images_method kitty
+set preview_images_method i3m
