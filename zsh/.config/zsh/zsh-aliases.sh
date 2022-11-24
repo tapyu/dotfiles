@@ -2,7 +2,7 @@
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     # Peltoche/lsd program
-    alias ls='lsd --group-dirs first'
+    alias ls='lsd --group-dirs first --total-size'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 

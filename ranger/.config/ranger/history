@@ -7,7 +7,7 @@ set preview_images true
 shell ln -s %P $2d
 set preview_images i3m
 scout -aefkst 
-delete
 set preview_images_method urxvt
 set preview_images_method i3m
 set preview_images_method ueberzug
+delete
