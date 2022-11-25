@@ -1,7 +1,8 @@
 # universidade
 http://portal.utfpr.edu.br/noticias/ultimas-noticias/@@RSS universidade "~UTFPR"
 https://deti.ufc.br/pt/feed/ universidade "~UFC - DETI"
-https://progep.ufc.br/pt/feed/ universidade "~UFC - PROGEP"
+https://progep.ufc.br/pt/feed/ universidade "~UFC - PROGEP (geral)"
+https://progep.ufc.br/pt/category/editais/feed/ "~ UFC - PROGEP (editais)"
 https://ppgeti.ufc.br/pt/feed/ universidade "~UFC - PPGETI"
 https://dqafq.ufc.br/pt/feed/ universidade "~UFC - DQAFQ"
 "exec:/usr/bin/curl --insecure 'https://ifce.edu.br/rss.xml'" universidade "~IFCE"

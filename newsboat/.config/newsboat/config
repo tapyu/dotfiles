@@ -4,6 +4,7 @@ ignore-mode "display" # download the items, but do not show them
 ignore-article "http://portal.utfpr.edu.br/noticias/ultimas-noticias/@@RSS" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
 ignore-article "https://deti.ufc.br/pt/feed/" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
 ignore-article "https://progep.ufc.br/pt/feed/" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
+# eu acho que nem precisa, case precisar, só descomentar isso daqui ignore-article "https://progep.ufc.br/pt/category/editais/feed/" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
 ignore-article "https://ppgeti.ufc.br/pt/feed/" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
 ignore-article "https://dqafq.ufc.br/pt/feed/" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
 ignore-article "https://www5.usp.br/feed/" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
