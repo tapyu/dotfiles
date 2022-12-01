@@ -10,5 +10,6 @@ ignore-article "https://dqafq.ufc.br/pt/feed/" "title !~ \"(vaga|bolsa|resultado
 ignore-article "https://www5.usp.br/feed/" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
 ignore-article "exec:/usr/bin/curl --insecure 'https://ifce.edu.br/rss.xml'" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
 ignore-article "https://www.ufrgs.br/progesp/?feed=rss2" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
+#TODO: descobrir qual filtro tem que ser utilizado para filter os links do insta corretamente  ignore-article "https://feed.eugenemolotov.ru/?action=display&bridge=Instagram&context=Username&u=icmc.usp&media_type=all&direct_links=on&format=Atom" "text !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
 # bolsas filters
 ignore-article "https://www.gov.br/capes/pt-br/assuntos/noticias/RSS" "title !~ \"(vaga|bolsa|resultado|seleção|concurso|edital|editais)\""
