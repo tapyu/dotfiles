@@ -3,11 +3,13 @@ http://portal.utfpr.edu.br/noticias/ultimas-noticias/@@RSS universidade "~UTFPR"
 https://deti.ufc.br/pt/feed/ universidade "~UFC - DETI"
 https://deti.ufc.br/pt/category/editais-e-resultados/feed/ "~UFC - DETI (editais e resultados)"
 https://progep.ufc.br/pt/feed/ universidade "~UFC - PROGEP (geral)"
-https://progep.ufc.br/pt/category/editais/feed/ "~ UFC - PROGEP (editais)"
+https://progep.ufc.br/pt/category/editais/feed/ "~UFC - PROGEP (editais)"
 https://ppgeti.ufc.br/pt/feed/ universidade "~UFC - PPGETI"
 https://dqafq.ufc.br/pt/feed/ universidade "~UFC - DQAFQ"
 "exec:/usr/bin/curl --insecure 'https://ifce.edu.br/rss.xml'" universidade "~IFCE"
+"https://www.ufrgs.br/progesp/?feed=rss2" universidade "~UFRGS"
 ### TODO
+# https://portalfaurgs.com.br/concursos/emandamento UFRGS
 # https://uspdigital.usp.br/gr/admissao USP
 # http://qselecao.ifce.edu.br/lista_concursos.aspx IFCE (Q-seleção)
 # https://www.portalselecao.ufu.br/servicos/edital/listar UFU
