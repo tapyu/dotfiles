@@ -10,5 +10,6 @@ scout -aefkst
 set preview_images_method urxvt
 set preview_images_method i3m
 set preview_images_method ueberzug
-delete
 shell -w mkdir GNSS
+shell code .
+delete
