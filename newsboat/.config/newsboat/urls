@@ -8,9 +8,12 @@ https://ppgeti.ufc.br/pt/feed/ universidade "~UFC - PPGETI"
 https://dqafq.ufc.br/pt/feed/ universidade "~UFC - DQAFQ"
 "exec:/usr/bin/curl --insecure 'https://ifce.edu.br/rss.xml'" universidade "~IFCE"
 "https://www.ufrgs.br/progesp/?feed=rss2" universidade "~UFRGS"
-"https://feed.eugenemolotov.ru/?action=display&bridge=Instagram&context=Username&u=icmc.usp&media_type=all&direct_links=on&format=Atom" universidade "~insta: USP - Ciências Matemáticas e de Computação (ICMC)"
-"https://feed.eugenemolotov.ru/?action=display&bridge=InstagramBridge&context=Username&u=_insightlab&media_type=all&direct_links=on&format=Atom" PD "~insta: Insight - UFC (laboratório de pesquisa em Ciência de Dados e Inteligência Artificial)" 
-"https://feed.eugenemolotov.ru/?action=display&bridge=InstagramBridge&context=Username&u=cnpq_oficial&media_type=all&format=Atom" governo "~insta:CNPq"
+# insta
+"https://feed.eugenemolotov.ru/?action=display&bridge=Instagram&context=Username&u=icmc.usp&media_type=all&direct_links=on&format=Atom" insta "~insta: USP - Ciências Matemáticas e de Computação (ICMC)"
+"https://feed.eugenemolotov.ru/?action=display&bridge=InstagramBridge&context=Username&u=_insightlab&media_type=all&direct_links=on&format=Atom" insta "~insta: Insight - UFC (laboratório de pesquisa em Ciência de Dados e Inteligência Artificial)" 
+"https://feed.eugenemolotov.ru/?action=display&bridge=InstagramBridge&context=Username&u=cnpq_oficial&media_type=all&format=Atom" insta "~insta:CNPq"
+# concursos
+https://www.agrobase.com.br/concursos/vagas/engenharia-eletronica/feed/ concurso "~Agrobase"
 ### TODO
 # https://portalfaurgs.com.br/concursos/emandamento UFRGS
 # https://uspdigital.usp.br/gr/admissao USP
