@@ -18,6 +18,7 @@ export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files sho
 # set PATH so it includes user's private bin if it exists
 [ -d "$HOME/.local/bin/" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d $XDG_DATA_HOME/cargo/bin ] && PATH="$PATH:$XDG_DATA_HOME/cargo/bin"
+[ -d $HOME/go/bin ] && PATH="$PATH:$HOME/go/bin"
 
 # User specific aliases and functions
 # To add directories to your PATH or define additional environment variables, place those changes in .bash_profile (or the equivalent, according to your distribution; for example, Ubuntu uses .profile). For everything else, place the changes in .bashrc.
@@ -26,7 +27,7 @@ export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files sho
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc" # set the place of npmrc config file (?)
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory (?)
-export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst (?)
+export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst
 export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
 
 ## default programs
@@ -43,8 +44,8 @@ export RANGER_DEVICONS_SEPARATOR="  " # ranger conf - icon and directory name se
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
 # fzf settings
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
-export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # include hidden directories/files PS: rg = ripgrep
+#export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
+export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/files PS: rg = ripgrep
 # matlab
 export MATLAB_ROOT='/usr/local/MATLAB/R2022a'
 #export LD_LIBRARY_PATH='/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a/sys/os/glnxa64:$LD_LIBRARY_PATH'
@@ -55,6 +56,9 @@ if [ -d $XDG_DATA_HOME/pyenv ]; then
   export PATH="$PATH:$XDG_DATA_HOME/pyenv/bin" # app pyenv to $PATH
 fi
 
+# wakatime
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
+# ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
-. "/home/tapyu/.local/share/cargo/env"
+# cargo
+source "/home/tapyu/.local/share/cargo/env"
