@@ -16,5 +16,5 @@ scout -aefkst j
 paste dest=%s
 
 z dotfiles
-delete
 z opt
+delete
