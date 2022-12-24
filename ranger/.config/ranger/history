@@ -9,20 +9,12 @@ set preview_images i3m
 scout -aefkst 
 set preview_images_method urxvt
 set preview_images_method i3m
+set preview_images_method ueberzug
 shell -w mkdir GNSS
 shell code .
 scout -aefkst j
 paste dest=%s
 
 z dotfiles
-z git
-z /home/tapyu/git/master
-search_inc thr
-set preview_images_method ueberzug
-search_inc fon
-rename Additional Exercises for Convex Optimization (with Solutions) - Stephen Boyd, Lieven Vandenberghe - (2016).pdf
-Z books
-z books
-z opt
-rename Stephen Boyd, Lieven Vandenberghe - Convex Optimization  -Cambridge University Press (2004).pdf
 delete
+z opt
