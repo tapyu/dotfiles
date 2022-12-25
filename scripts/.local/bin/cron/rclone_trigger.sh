@@ -5,12 +5,13 @@
 # $2 -> local path
 # $3 -> remote path
 
-LAST_SYNC=(`date`)
-inotifywait --quiet --monitor --recursive --event modify,delete,create "$1" | while read DIRECTORY EVENT FILE; do
-  DATE=(`date`)
-  TIME_DIFF=$(( (${DATE[4]:0:2} - ${LAST_SYNC[4]:0:2})*60 + ${DATE[4]:3:2} - ${LAST_SYNC[4]:3:2} ))
-  if [[ ${LAST_SYNC[1]} != ${DATE[1]} ]] || [[ $TIME_DIFF -gt 5 ]]; then
+CURRENT_STAT=$(stat --format='%z' /home/tapyu/books | awk '{ print $1,$2 }')
+if [[ -f /home/tapyu/.cache/rclone/last_sync.log ]]; then
+    if [[ $CURRENT_STAT != $(cat /home/tapyu/.cache/rclone/last_sync.log) ]]; then
+        rclone bisync $2 $3
+        LAST_SYNC=$DATE
+    fi
+else
     rclone bisync $2 $3
-    LAST_SYNC=$DATE
-  fi
-done
+    echo $CURRENT_STAT > /home/tapyu/.cache/rclone/last_sync.log
+fi
