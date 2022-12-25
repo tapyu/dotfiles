@@ -5,12 +5,12 @@
 # $2 -> local path
 # $3 -> remote path
 
-LAST_SYNC_DATE=(`date`)
-inotifywait --quiet --monitor --recursive --event modify,delete,create $1 | while read DIRECTORY EVENT FILE; do
+LAST_SYNC=(`date`)
+inotifywait --quiet --monitor --recursive --event modify,delete,create "$1" | while read DIRECTORY EVENT FILE; do
   DATE=(`date`)
-  TIME_DIFF = $(( (${LAST_SYNC[4]:0:2} - ${DATE[4]:0:2})*60 + LAST_SYNC[4]:3:2} - ${DATE[4]:3:2))
-  if [[ ${LAST_SYNC_DATE[1]} != ${DATE[1]} ]] || [[ $TIME_DIFF -gt 5 ]]; then
+  TIME_DIFF=$(( (${DATE[4]:0:2} - ${LAST_SYNC[4]:0:2})*60 + ${DATE[4]:3:2} - ${LAST_SYNC[4]:3:2} ))
+  if [[ ${LAST_SYNC[1]} != ${DATE[1]} ]] || [[ $TIME_DIFF -gt 5 ]]; then
     rclone bisync $2 $3
-    LAST_SYNC_DATE=$DATE
+    LAST_SYNC=$DATE
   fi
-do
+done
