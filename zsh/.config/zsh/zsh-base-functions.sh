@@ -29,7 +29,7 @@ function git_sparse_clone() (
 function zsh_add_plugin() {
   if [ $# -gt 1 ]; then # if the number of arguments is greater than 1, make sparse clone; else, make clone
     # git sparse clone
-    PLUGIN_NAME=$(echo $3 | cut -d "/" -f 2)
+    PLUGIN_NAME=$(echo $3 | cut -d "/" -f 2 | cut -d '.' -f 1)
     if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then # if the directory already exists, add pluign
       zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
       zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
@@ -40,7 +40,7 @@ function zsh_add_plugin() {
     fi
   else
     # git clone
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2 | cut -d '.' -f 1)
     if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then # if the directory already exists, add plugin
       zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
       zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
@@ -53,7 +53,7 @@ function zsh_add_plugin() {
 # function to add extension to zsh, see these completions here
 # https://github.com/unixorn/awesome-zsh-plugins#completions
 function zsh_add_completion() {
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2 | cut -d '.' -f 1)
     if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
         # For completions
 		completion_file_path=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)

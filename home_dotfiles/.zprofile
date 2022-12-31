@@ -62,8 +62,3 @@ export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
 # cargo
 source "/home/tapyu/.local/share/cargo/env"
-
-if [[ -x $(command -v rclone) ]]; then
-  { rclone bisync /home/tapyu/books/ book: 2> /dev/null || rclone bisync --resync /home/tapyu/books/ book: } &
-  stat --format='%z' /home/tapyu/books | awk '{ print $1,$2 }' > /home/tapyu/.cache/rclone/last_sync.log
-fi
