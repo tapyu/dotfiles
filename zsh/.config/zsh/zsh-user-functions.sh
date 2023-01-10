@@ -65,4 +65,13 @@ fd() {
   cd "$dir"
 }
 
-
+gp() {
+  # git add, commit and push to the current branch
+  # $1 -> git commit message
+  
+  local branch=$(git branch | sed -n '1s/^\*\s//p')
+  
+  git add -A
+  git commit -m $1
+  git push origin $branch
+}
