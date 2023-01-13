@@ -9,7 +9,6 @@ set preview_images_method urxvt
 set preview_images_method i3m
 set preview_images_method ueberzug
 shell -w mkdir GNSS
-shell code .
 scout -aefkst j
 paste dest=%s
 z dotfiles
@@ -21,4 +20,6 @@ search_inc rc
 open_with 
 scout -aefkst 
 
+rename IET Communications
 delete
+shell code .
