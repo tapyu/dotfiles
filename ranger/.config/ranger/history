@@ -10,7 +10,6 @@ set preview_images_method i3m
 set preview_images_method ueberzug
 shell -w mkdir GNSS
 scout -aefkst j
-paste dest=%s
 z dotfiles
 z opt
 rename Simon O. Haykin, Yanbo Xue - Solutions Manual for Neural Networks and Learning Machines, 3_E-Pearson (2009).pdf
@@ -19,7 +18,25 @@ scout -aefkst h
 search_inc rc
 open_with 
 scout -aefkst 
-
 rename IET Communications
+shell mkdir "submitted version"
+paste dest="%d%
+paste dest="%d%"
+paste dest=%d%
+rename submitted
+
+s
+paste dest=%h
+paste dest=%f
+paste dest=%d
+paste dest=%s
+paste dest=%t
+paste dest=%c
+mkdir test
+paste dest=%p
+paste dest="%p"
+rename reviewed article
 delete
+rename to_reviewers.tex
 shell code .
+scout -aefkst ^r

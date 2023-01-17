@@ -46,7 +46,7 @@ function fp()
           v=$(echo {q} | tr " " "|"); 
           echo -e {1}"\n"{2} | grep -E "^|$v" -i --color=always;
       ' \
-  | cut -z -f 1 -d $'\t' | tr -d '\n' | xargs -r --null {masterpdfeditor5:-$open} > /dev/null 2> /dev/null
+  | cut -z -f 1 -d $'\t' | tr -d '\n' | xargs -r --null $open > /dev/null 2> /dev/null
 }
 
 ft() {
