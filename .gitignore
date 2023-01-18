@@ -3,3 +3,4 @@ zsh/**/.zcompdump
 zsh/**/.p10k.zsh
 **/__pycache__/
 .newsboat/cache.db
+ranger/.config/ranger/history
