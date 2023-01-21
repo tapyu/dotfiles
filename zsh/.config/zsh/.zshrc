@@ -46,7 +46,6 @@ zsh_add_plugin "romkatv/powerlevel10k"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
 zsh_add_plugin "laggardkernel/git-ignore"
-zsh_add_plugin "peterhurford/git-it-on.zsh"
 zsh_add_plugin "https://github.com/ohmyzsh/ohmyzsh" /tmp/git-auto-fetch plugins/git-auto-fetch # sparse checkout
 
 # apply p10k
