@@ -11,8 +11,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# matlab startup program
-#alias matlab='$MATLAB_ROOT_DIR/bin/matlab >> /dev/null 2>> /dev/null &'
 # sharkdp/bat program
 alias cat=bat
 # dandavison/delta program
@@ -27,3 +25,6 @@ alias la='ls --almost-all'
 alias l='ls --human-readable'
 alias mkdir="mkdir --parents --verbose"
 [ ! -f ${CARGO_HOME:-$HOME/.local/share/cargo}/bin/hx ] && alias hx="helix"
+
+# fzf-based aliases
+alias fop='xdg-open "$(fzf)"' # open file through fzf command

@@ -62,3 +62,6 @@ export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
 # cargo
 source "/home/tapyu/.local/share/cargo/env"
+
+# delete MD5 file of the last bisync to force rclone bisync again
+[[ -f /home/tapyu/.cache/rclone/last_md5.log ]] && rm /home/tapyu/.cache/rclone/last_md5.log

@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Recursively get all matches of pdfgrep and put them into less pager in a readable way
+# $1 -> Patterns to search recursivelly
+# $2 -> Context size (opitional). The default value is 2.
+[[ -z "$1" ]] && echo "Give an Perl compatible regular expression (PCRE) to search" && exit
+
+# move to /tmp/pdfcat
+root=$(pwd)
+[[ ! -d /tmp/pdfcat  ]] && mkdir /tmp/pdfcat
+[[ -f /tmp/pdfcat/xx01 ]] && rm /tmp/pdfcat/xx*
+cd /tmp/pdfcat
+
+# create and less into each split file
+pdfgrep -Pir --context=${2:-2} --no-filename "$1" "${root}" | csplit -s --suppress-matched - '/--/' '{*}'
+less --IGNORE-CASE --RAW-CONTROL-CHARS --pattern="$1" xx*
