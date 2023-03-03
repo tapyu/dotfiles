@@ -20,6 +20,7 @@ alias diff=delta
 # TODO see more here: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
 alias cp="cp --interactive --verbose"
 alias mv="mv --interactive --verbose"
+alias rm="rm --verbose"
 alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --almost-all -> ignore . and ..
 alias la='ls --almost-all'
 alias l='ls --human-readable'
