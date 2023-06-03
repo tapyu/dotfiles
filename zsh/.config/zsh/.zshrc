@@ -39,14 +39,14 @@ zsh_add_file "zsh-aliases.sh"
 zsh_add_file "zsh-user-functions.sh"
 
 # plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_plugin "hlissner/zsh-autopair"
-zsh_add_plugin "romkatv/powerlevel10k"
-zsh_add_plugin "zsh-users/zsh-history-substring-search"
-zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
-zsh_add_plugin "laggardkernel/git-ignore"
 zsh_add_plugin "https://github.com/ohmyzsh/ohmyzsh" /tmp/git-auto-fetch plugins/git-auto-fetch # sparse checkout
+zsh_add_plugin "laggardkernel/git-ignore"
+zsh_add_plugin "romkatv/powerlevel10k"
+zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
+zsh_add_plugin "zsh-users/zsh-history-substring-search"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
 # apply p10k
 source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme # apply powerlevel10ktheme
