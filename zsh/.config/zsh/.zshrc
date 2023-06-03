@@ -47,6 +47,7 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+[ ! -f /usr/local/bin/wt ] && [ ! -f $HOME/.local/bin/wt ] && curl https://raw.githubusercontent.com/yankeexe/git-worktree-switcher/master/wt > $HOME/.local/bin/wt
 
 # apply p10k
 source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme # apply powerlevel10ktheme
