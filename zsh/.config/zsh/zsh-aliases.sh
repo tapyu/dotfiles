@@ -11,9 +11,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# sharkdp/bat program
+# sharkdp/bat
 alias cat=bat
-# dandavison/delta program
+# dandavison/delta
 alias diff=delta
 
 # Verbosity and settings that you pretty much just always are going to want.
