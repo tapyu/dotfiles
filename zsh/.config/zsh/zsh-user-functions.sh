@@ -80,11 +80,12 @@ gp() {
 # Arguments:
 # $1 -> Main .tex file. Optional. Default to "main.tex"
 #######################################
-initlatex () {
-	curl --sillent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/0eeaa62d401659fe1c57602ec8f17608775d5338/_default_preamble.tex > default_preamble.tex
+latexinit() {
+	curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/0eeaa62d401659fe1c57602ec8f17608775d5338/_default_preamble.tex > default_preamble.tex
+  [[ ! -f ${1:-main.tex} ]] && touch ${1:-main.tex}
 	grep -q "\\input{default_preamble.tex}" ${1:-main.tex} || sed -i '2i\\\input{default_preamble.tex}\n' ${1:-main.tex}
-	curl --sillent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/Makefile > Makefile
+	curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/Makefile > Makefile
   [[ $# -ne 0 ]] && sed -i "2s/main/${1%.tex}/" Makefile
 	[[ ! -d .vscode ]] && mkdir --parents --verbose .vscode
-	curl https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/0eeaa62d401659fe1c57602ec8f17608775d5338/_vscode_makefile.json > .vscode/settings.json
+	curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/0eeaa62d401659fe1c57602ec8f17608775d5338/_vscode_makefile.json > .vscode/settings.json
 }
