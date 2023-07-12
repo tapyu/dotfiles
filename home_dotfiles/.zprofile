@@ -9,26 +9,27 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# XDG Paths
+# XDG paths
 export XDG_CONFIG_HOME="$HOME/.config" # Where user-specific configurations should be written (analogous to /etc)
 export XDG_CACHE_HOME="$HOME/.cache" # Where user-specific non-essential (cached) data should be written (analogous to /var/cache)
 export XDG_DATA_HOME="$HOME/.local/share" # Where user-specific data files should be written (analogous to /usr/share)
 export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files should be written (analogous to /var/lib)
 
-# set PATH so it includes user's private bin if it exists
-[ -d "$HOME/.local/bin/" ] && PATH="$HOME/.local/bin:$PATH"
-[ -d $XDG_DATA_HOME/cargo/bin ] && PATH="$PATH:$XDG_DATA_HOME/cargo/bin"
-[ -d $HOME/go/bin ] && PATH="$PATH:$HOME/go/bin"
+# add to $PATH bin directories
+[[ -d "$HOME/.local/bin" ]] && [[ ":$PATH:" != *"$HOME/.local/bin"* ]] && PATH="$HOME/.local/bin:$PATH"
+[[ -d "$XDG_DATA_HOME/cargo/bin" ]] && [[ ":$PATH:" != *"$XDG_DATA_HOME/cargo/bin"* ]] && PATH="$PATH:$XDG_DATA_HOME/cargo/bin"
+[[ -d "$HOME/go/bin" ]] && [[ ":$PATH:" != *"$HOME/go/bin"* ]] && PATH="$PATH:$HOME/go/bin"
 
 # User specific aliases and functions
 # To add directories to your PATH or define additional environment variables, place those changes in .bash_profile (or the equivalent, according to your distribution; for example, Ubuntu uses .profile). For everything else, place the changes in .bashrc.
 
 ## tidy up $HOME directory
-export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc" # set the place of npmrc config file (?)
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
-export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv" # change proprietary nvidia drivers (~/.nv/) directory (?)
-export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst
+export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst (history is a file)
 export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
+export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
+export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide" # zoxide
 
 ## default programs
 export EDITOR="hx" # set editor
@@ -36,9 +37,9 @@ export BROWSER="brave-browser" # set browser
 export MANPAGER='less' # set manpager
 
 ## program settings
-# zoxide environment variables
-export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
+# zoxide
 export _ZO_RESOLVE_SYMLINKS='1'
+# ranger
 export RANGER_DEVICONS_SEPARATOR="  " # ranger conf - icon and directory name separator
 # set zsh-users/zsh-history-substring-search plugin
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
@@ -49,19 +50,5 @@ export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/fi
 # matlab
 export MATLAB_ROOT='/usr/local/MATLAB/R2022a'
 #export LD_LIBRARY_PATH='/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a/sys/os/glnxa64:$LD_LIBRARY_PATH'
-
-# python
-if [ -d $XDG_DATA_HOME/pyenv ]; then
-  export PYENV_ROOT="$XDG_DATA_HOME/pyenv" # pyenv: used to isolate Python versions
-  export PATH="$PATH:$XDG_DATA_HOME/pyenv/bin" # app pyenv to $PATH
-fi
-
-# wakatime
-export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
-# ripgrep
-export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
 # cargo
 source "/home/tapyu/.local/share/cargo/env"
-
-# delete MD5 file of the last bisync to force rclone bisync again
-[[ -f /home/tapyu/.cache/rclone/last_md5.log ]] && rm /home/tapyu/.cache/rclone/last_md5.log

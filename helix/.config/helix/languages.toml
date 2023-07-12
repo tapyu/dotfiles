@@ -1,0 +1,6 @@
+[[language]]
+name = "bash"
+scope = "source.sh"
+file-types = ["sh", "zsh"]
+comment-token = "#"
+language-server = { command = "bash-language-server", args = ["start"] }
