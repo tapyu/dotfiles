@@ -1,6 +1,11 @@
-!#/bin/bash
+#!/bin/bash
 
+# rust
 rustup update # rust's toolchain and version manager: update rust compiler (rustc)
 cargo install-update -a # update all rust crates. You need to run `cargo install cargo-update` first as there is no built-in subcommand to update all rust crates on your system (see https://stackoverflow.com/a/40982333/13998346). run `cargo install --list` to see all crates
+# apt
 apt update
 apt upgrade
+# deb-get
+deb-get update
+deb-deb-get upgrade
