@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Parse command-line options using getopt
+ARGS=$(getopt -o a:b:c --long option-a:,option-b:,option-c -- "$@")
+eval set -- "$ARGS"
+
+# Process the options and arguments
+while true; do
+  case "$1" in
+    -a | --option-a)
+      arg_a="$2"
+      echo "Option -a specified with argument: $arg_a"
+      shift 2
+      ;;
+    -b | --option-b)
+      arg_b="$2"
+      echo "Option -b specified with argument: $arg_b"
+      shift 2
+      ;;
+    -c | --option-c)
+      echo "Option -c specified"
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+  esac
+done
+
+# Remaining arguments can be accessed using $1, $2, etc.
+echo "Remaining arguments: $*"
+
+
+curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_default_preamble.tex > default_preamble.tex
+if [[ -f "${1:-main.tex}" ]]
+then
+	grep --color=auto --quiet "\\input{default_preamble.tex}" "${1:-main.tex}" || sed -i '2i\\\input{default_preamble.tex}\n' "${1:-main.tex}"
+else
+	echo -e '\\documentclass{article}\n\\input{default_preamble.tex}\n\\begin{document}\n\tHello, world!\n\\end{document}' > "${1:-main.tex}"
+fi
+curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/Makefile > Makefile
+[[ $# -ne 0 ]] && sed -i "2s/main/${1%.tex}/" Makefile
+[[ ! -d .vscode ]] && mkdir --parents --verbose --parents .vscode
+curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_vscode_makefile.json > .vscode/settings.json

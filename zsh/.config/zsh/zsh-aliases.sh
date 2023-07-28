@@ -25,7 +25,6 @@ alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --al
 alias la='ls --almost-all'
 alias l='ls --human-readable'
 alias mkdir="mkdir --parents --verbose"
-[ ! -f ${CARGO_HOME:-$HOME/.local/share/cargo}/bin/hx ] && alias hx="helix"
 
 # fzf-based aliases
 alias fop='xdg-open "$(fzf)"' # open file through fzf command

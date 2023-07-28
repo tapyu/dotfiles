@@ -1,5 +1,15 @@
+theme = "nightfox"
 [editor]
 line-number = "relative"
+cursorline = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = true
 
 [keys.normal]
 H = "goto_line_start"
