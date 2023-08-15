@@ -48,9 +48,9 @@ while true; do
 done
 
 # get te cover
-read -a cover_size <<< "$(pdfinfo -f 1 -l 1 /tmp/cover.pdf | grep 'Page.*size:')"
+read -a cover_size <<< "$(pdfinfo -f 1 -l 1 "$1" | grep 'Page.*size:')"
 # get rest
-read -a rest_size <<< "$(pdfinfo -f $page_number -l $page_number /tmp/nocover.pdf | grep 'Page.*size:')"
+read -a rest_size <<< "$(pdfinfo -f $page_number -l $page_number "$1" | grep 'Page.*size:')"
 
 # normize cover
 x_ratio=$(echo "scale=4; ${rest_size[3]} / ${cover_size[3]}" | bc)
