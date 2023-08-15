@@ -1,0 +1,58 @@
+#!/bin/bash
+# An Unix shell script to normalize the cover (first page) or .pdf files
+# By default, the cover is normalized with respect to the second page
+# $1 -> .pdf file
+# $2 -> page which the cover is normalized to (optional, default to 2).
+
+# Parse command-line options using getopt
+ARGS=$(getopt -o hb --long help,beamer -- "$@")
+eval set -- "$ARGS"
+
+help='$(basename "$0")
+
+USAGE:
+  normalize-pdfcover [OPTIONS] [--] [FILE]
+
+ARGS:
+  FILE  A pdf file
+
+OPTIONS:
+  -n, --page-number=NUM  Select .pdf page NUM (default to 2).
+  -o, --output=OUT  Output filename (default to out.pdf).
+  -h, --help  This help print.
+'
+
+# default values
+output_file='out.pdf'
+page_number=2
+# Process the options and arguments
+while true; do
+  case "$1" in
+    -h | --help)
+      echo "$help"
+      exit 0  # Exit after displaying help      ;;
+      ;;
+    -o | --output)
+      output_file="$1"
+      shift
+      ;;
+    -n | --page-number)
+      page_number="$2"
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+  esac
+done
+
+# get te cover
+read -a cover_size <<< "$(pdfinfo -f 1 -l 1 /tmp/cover.pdf | grep 'Page.*size:')"
+# get rest
+read -a rest_size <<< "$(pdfinfo -f $page_number -l $page_number /tmp/nocover.pdf | grep 'Page.*size:')"
+
+# normize cover
+x_ratio=$(echo "scale=4; ${rest_size[3]} / ${cover_size[3]}" | bc)
+y_ratio=$(echo "scale=4; ${rest_size[5]} / ${cover_size[5]}" | bc)
+cpdf -scale-page "$x_ratio $y_ratio" "$1" 1 -o $output_file

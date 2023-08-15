@@ -9,8 +9,8 @@ help="$(basename "$0") [-h | -b] [filename.tex]
 Init LaTeX MWE (minimal working example) project in the current directory with the configuration files to work in the VsCode and the LaTeX workshop extension
 
 where:
-  -h  show this help text
-  -b  download the Bearmer MWE instead.
+  -h, --help  show this help text
+  -b, --beamer  download the Bearmer MWE instead.
   filename.tex main LaTeX file name (default to main.tex). If it already exists, just put the default preamble in it instead generating a MWE."
 
 # Process the options and arguments
