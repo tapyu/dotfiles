@@ -53,6 +53,6 @@ read -a cover_size <<< "$(pdfinfo -f 1 -l 1 "$1" | grep 'Page.*size:')"
 read -a rest_size <<< "$(pdfinfo -f $page_number -l $page_number "$1" | grep 'Page.*size:')"
 
 # normize cover
-x_ratio=$(echo "scale=4; ${rest_size[3]} / ${cover_size[3]}" | bc)
-y_ratio=$(echo "scale=4; ${rest_size[5]} / ${cover_size[5]}" | bc)
+x_ratio=$(echo "scale=6; ${rest_size[3]} / ${cover_size[3]}" | bc)
+y_ratio=$(echo "scale=6; ${rest_size[5]} / ${cover_size[5]}" | bc)
 cpdf -scale-page "$x_ratio $y_ratio" "$1" 1 -o $output_file
