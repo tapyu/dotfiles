@@ -34,7 +34,7 @@ done
 
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_default_preamble.tex > default_preamble.tex
 if [[ -f "${1:-main.tex}" ]];then # if the file already exist
-	grep --color=auto --quiet "\\input{default_preamble.tex}" "${1:-main.tex}" || sed -i '2i\\\input{default_preamble.tex}\n' "${1:-main.tex}"
+	grep --quiet "\\input{default_preamble.tex}" "${1:-main.tex}" || sed -i '2i\\\input{default_preamble.tex}\n' "${1:-main.tex}"
 elif [[ -v beamer_mwe ]]; then # if the MWE is a Beamer file
   curl --insecure --silent $beamer_mwe > "${1:-main.tex}"
   curl --insecure --silent $beamer_cls > beamer_class.cls
@@ -43,5 +43,5 @@ else # else, MWE is a generic LaTeX MWE
 fi
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/Makefile > Makefile
 [[ $# -ne 0 ]] && sed -i "2s/main/${1%.tex}/" Makefile
-[[ ! -d .vscode ]] && mkdir --parents --parents .vscode
+[[ ! -d .vscode ]] && mkdir .vscode
 curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_vscode_makefile.json > .vscode/settings.json
