@@ -44,6 +44,7 @@ export RANGER_DEVICONS_SEPARATOR="  " # ranger conf - icon and directory name se
 # set zsh-users/zsh-history-substring-search plugin
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
+export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE='true'
 # fzf settings
 #export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
 export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/files PS: rg = ripgrep
