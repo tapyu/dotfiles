@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Bash-Debug (simplest configuration)",
             "program": "${file}",
-            "args": ["/home/tapyu/Downloads/Michael R. Garey, David S. Johnson - Computers and Intractability_ A Guide to the Theory of NP-Completeness.pdf"]
+            // "args": ["/home/tapyu/Downloads/Michael R. Garey, David S. Johnson - Computers and Intractability_ A Guide to the Theory of NP-Completeness.pdf"]
         }
     ]
 }
