@@ -68,7 +68,7 @@ fd() {
 # git add, commit and push to the current branch
 # $1 -> git commit message
 gp() {
-  local branch=$(git branch | sed -n '1s/^\*\s//p')
+  local branch=$(git branch --show-current)
   
   git add -A
   git commit -m $1
