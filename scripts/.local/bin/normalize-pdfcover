@@ -4,11 +4,10 @@
 ARGS=$(getopt -o ho:n:c: --long help,output:,page-number:,cover: -- "$@")
 eval set -- "$ARGS"
 
-help='$(basename "$0")
-An Unix shell script to normalize the cover of a .pdf file.
+help="An Unix shell script to normalize the cover of a .pdf file.
 
 USAGE:
-  normalize-pdfcover [OPTIONS] [--] FILE
+  $(basename "$0") [OPTIONS] [--] FILE
 
 ARGS:
   FILE
@@ -23,7 +22,7 @@ OPTIONS:
     If FILE does not contain the cover, you can pass a different path to the cover with this option. If it is a .pdf file, the cover is assumed to be the first page. If it is a image (e.g., a .png file), it is first converted to .pdf. In both cases, a merge is performed between COVER_FILE and FILE, and COVER_FILE is normalized with respect to the first page of FILE (pass the -n option to change the page number).
   -h, --help
     Print this help.
-'
+"
 
 # default values
 output_file='out.pdf'

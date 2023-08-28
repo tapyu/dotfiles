@@ -1,17 +1,25 @@
 #!/bin/bash
 
 # Parse command-line options using getopt
-ARGS=$(getopt -o hb --long help,beamer -- "$@")
+ARGS=$(getopt -o hbH --long help,beamer,homework -- "$@")
 eval set -- "$ARGS"
 
-help="$(basename "$0") [-h | -b] [filename.tex]
+help="Init LaTeX MWE (minimal working example) project in the current directory with the configuration files to work in the VsCode and the LaTeX workshop extension
 
-Init LaTeX MWE (minimal working example) project in the current directory with the configuration files to work in the VsCode and the LaTeX workshop extension
-
-where:
-  -h, --help  show this help text
-  -b, --beamer  download the Bearmer MWE instead.
-  filename.tex main LaTeX file name (default to main.tex). If it already exists, just put the default preamble in it instead generating a MWE."
+USAGE:
+  $(basename "$0") [-b | -H] [--] [FILE]
+  $(basename "$0") -h [--] [FILE]
+ARGS:
+  FILE
+    Main LaTeX file name. If it already exists, just put the default preamble in it instead generating a MWE. The dafult name is main.tex.
+OPTIONS:    
+  -h, --help
+    Show this help text
+  -b, --beamer
+    Download the Bearmer MWE instead.
+  -H, --homework
+    Download the homework MWE instead.
+"
 
 # Process the options and arguments
 while true; do
@@ -21,9 +29,18 @@ while true; do
       exit 0  # Exit after displaying help      ;;
       ;;
     -b | --beamer)
-      beamer_mwe="https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/beamer_mwe.tex"
-      beamer_cls="https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/beamer_class.cls"
-      shift
+      mwe='https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/beamer_mwe.tex'
+      support=('https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/beamer_class.cls')
+      support_name=('beamer_class.cls')
+      shift 2
+      break
+      ;;
+    -H | --homework)
+      mwe='https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/homework_mwe.tex'
+      support=('https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/homework_commands.tex')
+      support_name=('homework_commands.tex')
+      shift 2
+      break
       ;;
     --)
       shift
@@ -32,16 +49,29 @@ while true; do
   esac
 done
 
-curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_default_preamble.tex > default_preamble.tex
-if [[ -f "${1:-main.tex}" ]];then # if the file already exist
-	grep --quiet "\\input{default_preamble.tex}" "${1:-main.tex}" || sed -i '2i\\\input{default_preamble.tex}\n' "${1:-main.tex}"
-elif [[ -v beamer_mwe ]]; then # if the MWE is a Beamer file
-  curl --insecure --silent $beamer_mwe > "${1:-main.tex}"
-  curl --insecure --silent $beamer_cls > beamer_class.cls
-else # else, MWE is a generic LaTeX MWE
-	echo -e '\\documentclass{article}\n\\input{default_preamble.tex}\n\\begin{document}\n\tHello, world!\n\\end{document}' > "${1:-main.tex}"
-fi
+# define filename
+file="${1:-main.tex}"
+# download Makefile
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/Makefile > Makefile
-[[ $# -ne 0 ]] && sed -i "2s/main/${1%.tex}/" Makefile
+[[ $# -ne 0 ]] && sed -i "2s/main/${file%.tex}/" Makefile
+# download .vscode/ config
 [[ ! -d .vscode ]] && mkdir .vscode
 curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_vscode_makefile.json > .vscode/settings.json
+# download default preamble
+curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_default_preamble.tex > default_preamble.tex
+# if is a predefined MWE template, download it
+if [[ -v mwe ]];then
+  curl --insecure --silent $mwe > "$file"
+  # if the MWE has support file, download them
+  if [[ -v support ]];then
+    for ((i=0; i<${#support[@]}; i++));do
+      curl --insecure --silent ${support[i]} > ${support_name[i]}
+    done
+  fi
+# if it is a generic MWE that already exists, insert \input{} statement
+elif [[ -f "$file" ]];then
+  grep --quiet "\\input{default_preamble.tex}" "$file" || sed -i '2i\\\input{default_preamble.tex}\n' "$file"
+# else, create a generic MWE template
+else
+	echo -e '\\documentclass{article}\n\\input{default_preamble.tex}\n\\begin{document}\n\tHello, world!\n\\end{document}' > "$file"
+fi

@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Bash-Debug (simplest configuration)",
             "program": "${file}",
-            "args": ["--cover=\"~/Downloads/cover.jpg\"", "Umberto Mengali - Synchronization Techniques for Digital Receivers.pdf"]
+            "args": ["-H"]
         }
     ]
 }
