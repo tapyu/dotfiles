@@ -1,25 +1,28 @@
 #!/bin/bash
-# An Unix shell script to normalize the cover (first page) or .pdf files
-# By default, the cover is normalized with respect to the second page
-# $1 -> .pdf file
-# $2 -> page which the cover is normalized to (optional, default to 2).
 
 # Parse command-line options using getopt
-ARGS=$(getopt -o hb --long help,beamer -- "$@")
+ARGS=$(getopt -o ho:n:c: --long help,output:,page-number:,cover: -- "$@")
 eval set -- "$ARGS"
 
 help='$(basename "$0")
+An Unix shell script to normalize the cover of a .pdf file.
 
 USAGE:
-  normalize-pdfcover [OPTIONS] [--] [FILE]
+  normalize-pdfcover [OPTIONS] [--] FILE
 
 ARGS:
-  FILE  A pdf file
+  FILE
+    A pdf file
 
 OPTIONS:
-  -n, --page-number=NUM  Select .pdf page NUM (default to 2).
-  -o, --output=OUT  Output filename (default to out.pdf).
-  -h, --help  This help print.
+  -n, --page-number=NUM
+    Page reference in FILE in which the cover is normalized to. The default value is 2.
+  -o, --output=OUT
+    Output filename. The default value is out.pdf.
+  -c COVER_FILE, --cover=COVER_FILE
+    If FILE does not contain the cover, you can pass a different path to the cover with this option. If it is a .pdf file, the cover is assumed to be the first page. If it is a image (e.g., a .png file), it is first converted to .pdf. In both cases, a merge is performed between COVER_FILE and FILE, and COVER_FILE is normalized with respect to the first page of FILE (pass the -n option to change the page number).
+  -h, --help
+    Print this help.
 '
 
 # default values
@@ -30,15 +33,20 @@ while true; do
   case "$1" in
     -h | --help)
       echo "$help"
-      exit 0  # Exit after displaying help      ;;
+      exit 0  # Exit after displaying help
       ;;
     -o | --output)
-      output_file="$1"
-      shift
+      output_file="$2"
+      shift 2
       ;;
     -n | --page-number)
       page_number="$2"
-      shift
+      shift 2
+      ;;
+    -c | --cover)
+      cover_path="${2/#\~/$HOME}"
+      [[ ! -f "$cover_path" ]] && echo "Error, $cover_path is not a file" && exit 1
+      shift 2
       ;;
     --)
       shift
@@ -47,12 +55,23 @@ while true; do
   esac
 done
 
+file="${1/#\~/$HOME}"
+if [[ -v cover_path ]]; then
+  page_number=$((page_number + 1))
+  if [[ ! "$(file $cover_path)" =~ "PDF" ]]; then
+    convert "$cover_path" /tmp/cover.pdf
+    cover_path='/tmp/cover.pdf'
+  fi
+  cpdf -merge "$cover_path" "$file" -o /tmp/merged.pdf
+  file='/tmp/merged.pdf'
+fi
+
 # get te cover
-read -a cover_size <<< "$(pdfinfo -f 1 -l 1 "$1" | grep 'Page.*size:')"
+read -a cover_size <<< "$(pdfinfo -f 1 -l 1 "$file" | grep -a 'Page.*size:')"
 # get rest
-read -a rest_size <<< "$(pdfinfo -f $page_number -l $page_number "$1" | grep 'Page.*size:')"
+read -a rest_size <<< "$(pdfinfo -f $page_number -l $page_number "$file" | grep -a 'Page.*size:')"
 
 # normize cover
 x_ratio=$(bc <<< "scale=6; ${rest_size[3]} / ${cover_size[3]}")
 y_ratio=$(bc <<< "scale=6; ${rest_size[5]} / ${cover_size[5]}")
-cpdf -scale-page "$x_ratio $y_ratio" "$1" 1 -o $output_file
+cpdf -scale-page "$x_ratio $y_ratio" "$file" 1 -o $output_file
