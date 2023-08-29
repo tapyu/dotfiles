@@ -4,7 +4,7 @@
 ARGS=$(getopt -o hbH --long help,beamer,homework -- "$@")
 eval set -- "$ARGS"
 
-help="Init LaTeX MWE (minimal working example) project in the current directory with the configuration files to work in the VsCode and the LaTeX workshop extension
+help="Init LaTeX MWE (minimal working example) project in the current directory with the required configuration files to work in the VsCode and the LaTeX workshop extension.
 
 USAGE:
   $(basename "$0") [-b | -H] [--] [FILE]
@@ -59,6 +59,8 @@ curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c42
 curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_vscode_makefile.json > .vscode/settings.json
 # download default preamble
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_default_preamble.tex > default_preamble.tex
+# download default glossary entries
+curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/my_glossary_entries.tex > default_gossary_entries.tex
 # if is a predefined MWE template, download it
 if [[ -v mwe ]];then
   curl --insecure --silent $mwe > "$file"
