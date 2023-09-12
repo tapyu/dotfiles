@@ -60,16 +60,16 @@ curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c42
 # download default glossary entries
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/my_glossary_entries.tex > default_gossary_entries.tex
 # if is a predefined MWE template, download it
-if [[ -v mwe ]];then
+if [[ -v mwe ]]; then
   curl --insecure --silent $mwe > "$file"
   # if the MWE has support files, download them
-  if [[ -v support ]];then
+  if [[ -v support ]]; then
     for ((i=0; i<${#support[@]}; i++));do
       curl --insecure --silent ${support[i]} > ${support_name[i]}
     done
   fi
 # if it is a generic MWE that already exists, insert \input{} statement
-elif [[ -f "$file" ]];then
+elif [[ -f "$file" ]]; then
   grep --quiet "\\input{default_preamble.tex}" "$file" || sed -i '2i\\\input{default_preamble.tex}\n' "$file"
 # else, create a generic MWE template
 else
