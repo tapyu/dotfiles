@@ -1,6 +1,11 @@
 [[language]]
 name = "bash"
-scope = "source.sh"
-file-types = ["sh", "zsh"]
-comment-token = "#"
+# scope = "source.sh" # it is already set on the default language settings
+# file-types = ["sh", "zsh"] # it is already set on the default language settings
+# comment-token = "#" # it is already set on the default language settings
 language-server = { command = "bash-language-server", args = ["start"] }
+
+
+[[language]]
+name = "markdown"
+soft-wrap.enable = true
