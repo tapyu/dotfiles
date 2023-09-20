@@ -1,8 +1,6 @@
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if [[ -x /usr/bin/dircolors ]]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    # Peltoche/lsd program
-    alias ls='lsd --group-dirs first --total-size'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -17,13 +15,14 @@ alias cat=bat
 alias diff=delta
 
 # Verbosity and settings that you pretty much just always are going to want.
-# TODO see more here: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
-alias cp="cp --interactive --verbose"
-alias mv="mv --interactive --verbose"
+# TODO: see more here: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
+alias cp='cp --interactive --verbose'
+alias mv='mv --interactive --verbose'
+# Peltoche/lsd program
+[[ -x $(which lsd) ]] && alias ls='lsd --group-dirs first --total-size' # although `--total-size` is useless without the `-l optionl`, it must be placed here as `\ls` has no `--total-size` option
+alias l='ls'
 alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --almost-all -> ignore . and ..
-alias la='ls --almost-all'
-alias l='ls --human-readable'
-alias mkdir="mkdir --parents --verbose"
+alias mkdir='mkdir --parents --verbose'
 
 # fzf-based aliases
 alias fop='xdg-open "$(fzf)"' # open file through fzf command
