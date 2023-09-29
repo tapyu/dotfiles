@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Parse command-line options using getopt
+# Parse command-line options using getopt (`a:` means that the option `a` has an argument)
 ARGS=$(getopt -o ho:n:c: --long help,output:,page-number:,cover: -- "$@")
 eval set -- "$ARGS"
 
