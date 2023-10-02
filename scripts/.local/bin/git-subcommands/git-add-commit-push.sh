@@ -1,0 +1,8 @@
+#!/bin/sh
+#add -A, commit -m, and push origin
+
+branch=$(git branch --show-current)
+
+git add -A
+git commit -m $1
+git push origin $branch
