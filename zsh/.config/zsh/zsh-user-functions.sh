@@ -39,13 +39,3 @@ fd() {
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
-
-# git add, commit and push to the current branch
-# $1 -> git commit message
-gp() {
-  local branch=$(git branch --show-current)
-  
-  git add -A
-  git commit -m $1
-  git push origin $branch
-}
