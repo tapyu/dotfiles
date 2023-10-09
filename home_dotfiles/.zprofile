@@ -54,3 +54,4 @@ source "/home/tapyu/.local/share/cargo/env"
 # nnn
 export NNN_FIFO=/tmp/nnn.fifo # Named Pipe (FIFO) file
 export NNN_PLUG='p:preview-tui'
+export PASSWORD_STORE_DIR='/home/tapyu/.config/git/password-store'
