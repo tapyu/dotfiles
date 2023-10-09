@@ -1,11 +1,6 @@
 [user]
 	email = rubem.engenharia@gmail.com
 	name = tapyu
-[credential]
-	helper = store
-	credentialStore = gpg
-	helper = 
-	helper = /usr/local/bin/git-credential-manager
 [init]
 	defaultbranch = main
 
@@ -25,5 +20,3 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[credential "https://dev.azure.com"]
-	useHttpPath = true
