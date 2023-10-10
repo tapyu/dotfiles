@@ -28,6 +28,8 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide" # zoxide
+rm -f ~/.git-credentials # make sure it not exist
+[[ -d $XDG_CONFIG_HOME/git ]] && touch $XDG_CONFIG_HOME/git/credentials # make sure it exists
 
 ## default programs
 export EDITOR="hx" # set editor
