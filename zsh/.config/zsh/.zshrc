@@ -46,10 +46,10 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
 # zsh_add_plugin "olets/zsh-abbr" # BUG: incompatibility with viins keymap, see https://github.com/olets/zsh-abbr/issues/101
 zsh_add_plugin "MenkeTechnologies/zsh-expand"
+zsh_add_plugin "egyptianbman/zsh-git-worktrees"
 zsh_add_plugin "MichaelAquilina/zsh-you-should-use"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-[[ -x "$(command -v wt)" ]] || curl https://raw.githubusercontent.com/yankeexe/git-worktree-switcher/master/wt > $HOME/.local/bin/wt # worktrees
 
 # apply p10k
 source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme # apply powerlevel10ktheme
