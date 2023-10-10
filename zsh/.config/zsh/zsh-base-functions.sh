@@ -75,24 +75,25 @@ zsh_add_completion() {
 
 
 # Change cursor shape for different vi modes.
-# TODO see if this isn't a better way
-# https://github.com/LukeSmithxyz/voidrice/blob/master/.config/zsh/.zshrc
+# Executed every time the keymap changes, i.e. the special parameter KEYMAP
+# is set to a different value
 zle-keymap-select() {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
-    echo -ne '\e[2 q' # use \e[1 blinking
+    echo -ne '\e[1 q' # block shape
   elif [[ ${KEYMAP} == main ]] ||
        [[ ${KEYMAP} == viins ]] ||
        [[ ${KEYMAP} = '' ]] ||
        [[ $1 = 'beam' ]]; then
-    echo -ne '\e[6 q'
+    echo -ne '\e[6 q' # beam shape
   fi
 }
-zle -N zle-keymap-select
+
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[6 q" # beam shape
+  zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+  # echo -ne "\e[6 q" # beam shape
 }
 zle -N zle-line-init
-echo -ne '\e[6 q' # Use beam shape cursor on startup. (use \e[5 for blinking beam shape
-preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
+zle -N zle-keymap-select
+# echo -ne '\e[6 q' # Use beam shape cursor on startup. (use \e[5 for blinking beam shape
+# preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.

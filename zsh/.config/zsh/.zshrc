@@ -24,11 +24,10 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
-# Edit line in vim with ctrl-e:
+# edit line in $EDITOR with ctrl space:
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^ ' edit-command-line
-
 
 # all base functions of zsh, this makes all the job of the "oh-my-zsh" bloated stuff
 source "$ZDOTDIR/zsh-base-functions.sh"
@@ -45,9 +44,11 @@ zsh_add_plugin "romkatv/powerlevel10k"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
+# zsh_add_plugin "olets/zsh-abbr" # BUG: incompatibility with viins keymap, see https://github.com/olets/zsh-abbr/issues/101
+zsh_add_plugin "MichaelAquilina/zsh-you-should-use"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-[ ! -f /usr/local/bin/wt ] && [ ! -f $HOME/.local/bin/wt ] && curl https://raw.githubusercontent.com/yankeexe/git-worktree-switcher/master/wt > $HOME/.local/bin/wt
+[[ -x "$(command -v wt)" ]] || curl https://raw.githubusercontent.com/yankeexe/git-worktree-switcher/master/wt > $HOME/.local/bin/wt # worktrees
 
 # apply p10k
 source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme # apply powerlevel10ktheme
