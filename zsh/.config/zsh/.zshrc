@@ -45,6 +45,7 @@ zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
 # zsh_add_plugin "olets/zsh-abbr" # BUG: incompatibility with viins keymap, see https://github.com/olets/zsh-abbr/issues/101
+zsh_add_plugin "MenkeTechnologies/zsh-expand"
 zsh_add_plugin "MichaelAquilina/zsh-you-should-use"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"

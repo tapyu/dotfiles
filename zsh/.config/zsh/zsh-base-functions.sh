@@ -1,8 +1,3 @@
-# Function to source files if they exist
-zsh_add_file() {
-    [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
-}
-
 #######################################
 # function to perform sparse clone, to see more, check this out
 # https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository
@@ -29,6 +24,10 @@ git_sparse_clone() (
   git pull origin main
 )
 
+# Function to source files if they exist
+zsh_add_file() {
+    [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
+}
 
 # add a plugin, it is basically what oh-my-zsh does
 zsh_add_plugin() {
