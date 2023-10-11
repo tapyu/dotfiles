@@ -44,7 +44,7 @@ zsh_add_plugin "romkatv/powerlevel10k"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
-zsh_add_plugin "MenkeTechnologies/zsh-expand"
+# zsh_add_plugin "MenkeTechnologies/zsh-expand"
 zsh_add_plugin "egyptianbman/zsh-git-worktrees"
 zsh_add_plugin "MichaelAquilina/zsh-you-should-use"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
@@ -56,8 +56,8 @@ source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme # apply powerlevel
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # zsh-history-substring-search plugin setup
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
+bindkey "^[[A" history-substring-search-up   # ^[[A -> up arrow
+bindkey "^[[B" history-substring-search-down # ^[[B -> down arrow
 
 # zoxide setup
 eval "$(zoxide init zsh)"
