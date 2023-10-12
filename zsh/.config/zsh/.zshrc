@@ -24,36 +24,38 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+
 # edit line in $EDITOR with ctrl space:
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '^ ' edit-command-line
+bindkey '^E' edit-command-line
+
+# open nnn with ^o
+bindkey -s '^o' 'nnn\n'
 
 # all base functions of zsh, this makes all the job of the "oh-my-zsh" bloated stuff
 source "$ZDOTDIR/zsh-base-functions.sh"
 
 # user files to source
-zsh_add_file "zsh-exports.sh"
-zsh_add_file "zsh-aliases.sh"
-zsh_add_file "zsh-user-functions.sh"
+source "$ZDOTDIR/zsh-exports.sh"
+source "$ZDOTDIR/zsh-aliases.sh"
+source "$ZDOTDIR/zsh-user-functions.sh"
 
 # plugins
-zsh_add_plugin "https://github.com/ohmyzsh/ohmyzsh" /tmp/git-auto-fetch plugins/git-auto-fetch # sparse checkout
-zsh_add_plugin "laggardkernel/git-ignore"
-zsh_add_plugin "romkatv/powerlevel10k"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
 zsh_add_plugin "MenkeTechnologies/zsh-expand"
-zsh_add_plugin "egyptianbman/zsh-git-worktrees"
-zsh_add_plugin "MichaelAquilina/zsh-you-should-use"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
+mkdir -p $ZDOTDIR/plugins/git-auto-fetch; [[ ! -f $ZDOTDIR/git-auto-fetch/git-auto-fetch.plugin.zsh ]] && curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh > $ZDOTDIR/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh # git-auto-fetch oh-my-zsh plugin
+zsh_add_plugin "laggardkernel/git-ignore"
+# zsh_add_plugin "egyptianbman/zsh-git-worktrees" # bloated plugin!
+# zsh_add_plugin "MichaelAquilina/zsh-you-should-use" # not necessary anymore (?)
 
-# apply p10k
-source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme # apply powerlevel10ktheme
-# to customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+# theme
+zsh_add_theme "romkatv/powerlevel10k" # to customize run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+source $ZDOTDIR/.p10k.zsh
 
 # zsh-history-substring-search plugin setup
 bindkey "^[[A" history-substring-search-up   # ^[[A -> up arrow
@@ -67,8 +69,8 @@ eval "$(zoxide init zsh)"
 #  exec tmux
 #fi
 
-# pyenv settings
-if [[ $PATH =~ pyenv ]]; then
-  eval "$(pyenv init --path)"
-  eval "$(pyenv virtualenv-init -)"
-fi
+# # pyenv settings
+# if [[ $PATH =~ pyenv ]]; then
+#   eval "$(pyenv init --path)"
+#   eval "$(pyenv virtualenv-init -)"
+# fi

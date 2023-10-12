@@ -1,4 +1,28 @@
-bindkey -s '^o' 'nnn\n'
+#######################################
+# function to perform sparse clone, to see more, check this out
+# https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository
+# Arguments:
+#   $1      -> repository url
+#   $2      -> local directory path (include dir to be created)
+#   $3...   -> subdirectories cloned from the repo url
+#######################################
+git_sparse_clone() {
+  repo_url="$1" localdir="$2" && shift 2
+
+  mkdir -p "$localdir"
+  cd "$localdir"
+
+  git init
+  git config core.sparseCheckout true
+  git remote add -f origin "$repo_url"
+
+  # Loops over remaining args
+  for i; do
+    echo "$i" >> .git/info/sparse-checkout
+  done
+
+  git pull origin main
+}
 
 ### fzf-based commads
 fp()

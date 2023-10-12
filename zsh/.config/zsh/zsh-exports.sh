@@ -17,4 +17,3 @@ export LESS_TERMCAP_se="$(printf '\33[0m')"
 export LESS_TERMCAP_us="$(printf '\33[1;32m')"
 export LESS_TERMCAP_ue="$(printf '\33[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-
