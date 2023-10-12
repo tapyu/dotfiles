@@ -1,4 +1,5 @@
 zsh/**/plugins/
+zsh/**/theme/
 zsh/**/.zcompdump
 zsh/**/.p10k.zsh
 **/__pycache__/
