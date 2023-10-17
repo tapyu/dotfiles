@@ -31,7 +31,7 @@ zle -N edit-command-line
 bindkey '^E' edit-command-line
 
 # open nnn with ^o
-bindkey -s '^o' 'nnn\n'
+bindkey -s '^o' 'n\n'
 
 # all base functions of zsh, this makes all the job of the "oh-my-zsh" bloated stuff
 source "$ZDOTDIR/zsh-base-functions.sh"
