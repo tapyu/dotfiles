@@ -1,9 +1,15 @@
+[language-server.mylang-lsp]
+command = "bash-language-server"
+args = ["start"]
+config = { provideFormatter = true }
+#environment = { "ENV1" = "value1", "ENV2" = "value2" }
+
 [[language]]
 name = "bash"
 # scope = "source.sh" # it is already set on the default language settings
 # file-types = ["sh", "zsh"] # it is already set on the default language settings
 # comment-token = "#" # it is already set on the default language settings
-language-server = { command = "bash-language-server", args = ["start"] }
+language-servers = [ "mylang-lsp" ]
 
 
 [[language]]
