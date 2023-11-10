@@ -55,7 +55,10 @@ zsh_add_plugin "laggardkernel/git-ignore"
 
 # theme
 zsh_add_theme "romkatv/powerlevel10k" # to customize run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-source $ZDOTDIR/.p10k.zsh
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # zsh-history-substring-search plugin setup
 bindkey "^[[A" history-substring-search-up   # ^[[A -> up arrow

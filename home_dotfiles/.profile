@@ -52,8 +52,14 @@ export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/fi
 export MATLAB_ROOT='/usr/local/MATLAB/R2022a'
 #export LD_LIBRARY_PATH='/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a/sys/os/glnxa64:$LD_LIBRARY_PATH'
 # cargo
-source "/home/tapyu/.local/share/cargo/env"
-# nnn
+[[ -f "/home/tapyu/.local/share/cargo/env" ]] && source "/home/tapyu/.local/share/cargo/env" # nnn
 export NNN_FIFO=/tmp/nnn.fifo # Named Pipe (FIFO) file
 export NNN_PLUG='p:preview-tui'
 export PASSWORD_STORE_DIR='/home/tapyu/.config/git/password-store'
+
+## LaTeX
+[[ -d /usr/local/texlive ]] && for year in /usr/local/texlive/[[:digit:]]*/; do
+  export PATH=$PATH:${year}bin/x86_64-linux
+  export INFOPATH=${year}texmf-dist/doc/info:$INFOPATH
+  export MANPATH=${year}texmf-dist/doc/man:$MANPATH
+done
