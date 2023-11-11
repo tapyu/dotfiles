@@ -39,8 +39,6 @@ export MANPAGER='less' # set manpager
 ## program settings
 # zoxide
 export _ZO_RESOLVE_SYMLINKS='1'
-# ranger
-export RANGER_DEVICONS_SEPARATOR="  " # ranger conf - icon and directory name separator
 # zsh-users/zsh-history-substring-search plugin
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
@@ -49,15 +47,13 @@ export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE='true'
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
 export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/files PS: rg = ripgrep
 # matlab
-export MATLAB_ROOT='/usr/local/MATLAB/R2022a'
 #export LD_LIBRARY_PATH='/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a/sys/os/glnxa64:$LD_LIBRARY_PATH'
 # cargo
 [[ -f "/home/tapyu/.local/share/cargo/env" ]] && source "/home/tapyu/.local/share/cargo/env" # nnn
+# nnn
 export NNN_FIFO=/tmp/nnn.fifo # Named Pipe (FIFO) file
 export NNN_PLUG='p:preview-tui'
-export PASSWORD_STORE_DIR='/home/tapyu/.config/git/password-store'
-
-## LaTeX
+# LaTeX
 [[ -d /usr/local/texlive ]] && for year in /usr/local/texlive/[[:digit:]]*/; do
   export PATH=$PATH:${year}bin/x86_64-linux
   export INFOPATH=${year}texmf-dist/doc/info:$INFOPATH
