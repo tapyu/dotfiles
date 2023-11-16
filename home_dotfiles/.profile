@@ -30,6 +30,7 @@ export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide" # zoxide
 rm -f ~/.git-credentials # make sure it not exist
 [[ -d $XDG_CONFIG_HOME/git ]] && touch $XDG_CONFIG_HOME/git/credentials # make sure it exists
+export PASSWORD_STORE_DIR=$XDG_DATA_HOME/password-store
 
 ## default programs
 export EDITOR="hx" # set editor
