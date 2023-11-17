@@ -6,3 +6,5 @@ zsh/**/.p10k.zsh
 .newsboat/cache.db
 ranger/.config/ranger/history
 git/.config/git/credentials
+pass/.local/share/password-store/docker-credential-helpers/**
+!pass/.local/share/password-store/docker-credential-helpers/docker-login.gpg
