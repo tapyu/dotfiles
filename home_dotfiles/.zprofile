@@ -25,6 +25,7 @@ export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files sho
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
 export LESSHISTFILE="$XDG_STATE_HOME/less/history" # change ~/.lesshst (history is a file)
 export CARGO_HOME="$XDG_DATA_HOME/cargo" # change ~/.cargo
+export RUSTUP_HOME="$XDG_CONFIG_HOME/rustup" # change ~/.rustup
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide" # zoxide
