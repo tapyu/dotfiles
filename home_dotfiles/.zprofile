@@ -61,3 +61,6 @@ export NNN_PLUG='p:preview-tui'
   export INFOPATH=${year}texmf-dist/doc/info:$INFOPATH
   export MANPATH=${year}texmf-dist/doc/man:$MANPATH
 done
+# CUDA (see https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup)
+export PATH=/usr/local/cuda-12.3/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-12.3/targets/x86_64-linux/lib:/usr/local/cuda-12.3/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
