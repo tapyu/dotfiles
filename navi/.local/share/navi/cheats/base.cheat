@@ -1,0 +1,6 @@
+% for, while, case, if
+
+# for loop
+for <element> in <elements>; do
+	<commands>
+done
