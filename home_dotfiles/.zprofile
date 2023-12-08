@@ -17,9 +17,9 @@ export XDG_DATA_HOME="$HOME/.local/share" # Where user-specific data files shoul
 export XDG_STATE_HOME="$HOME/.local/state" # Where user-specific state files should be written (analogous to /var/lib)
 
 ## add bin directories to $PATH
-[[ -d "$HOME/.local/bin" ]] && [[ ":$PATH:" != *"$HOME/.local/bin"* ]] && PATH="$HOME/.local/bin:$PATH"
-[[ -d "$XDG_DATA_HOME/cargo/bin" ]] && [[ ":$PATH:" != *"$XDG_DATA_HOME/cargo/bin"* ]] && PATH="$PATH:$XDG_DATA_HOME/cargo/bin"
-[[ -d "$HOME/go/bin" ]] && [[ ":$PATH:" != *"$HOME/go/bin"* ]] && PATH="$PATH:$HOME/go/bin"
+[[ -d "$HOME/.local/bin" ]] && [[ ":$PATH:" != *"$HOME/.local/bin"* ]] && PATH="$HOME/.local/bin${PATH:+:${PATH}}"
+[[ -d "$XDG_DATA_HOME/cargo/bin" ]] && [[ ":$PATH:" != *"$XDG_DATA_HOME/cargo/bin"* ]] && PATH="$XDG_DATA_HOME/cargo/bin${PATH:+:${PATH}}"
+[[ -d "$HOME/go/bin" ]] && [[ ":$PATH:" != *"$HOME/go/bin"* ]] && PATH="$HOME/go/bin${PATH:+:${PATH}}"
 
 ## tidy up $HOME directory
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # set zsh default config directory
