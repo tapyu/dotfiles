@@ -1,0 +1,13 @@
+% git
+
+# git root dir
+git rev-parse --show-toplevel
+
+% git, worktree
+
+# create a linked worktree `brach` to the `path` (`path` must contains the worktree root dir). Linked worktree contrasts with the main worktree, which is initiated via `git clone` or `git init`. It must be run inside a worktree, whether it is linked or main. In order to make it organized, one must to place all worktrees within the same parent directory
+git worktree add <prefix>/<path> <branch>
+
+$ prefix: { git rev-parse --show-toplevel | xargs dirname; } 2> /dev/null || pwd
+$ branch: git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq | grep -v "$(git branch | awk '{ print $2 }')"
+$ path: $branch

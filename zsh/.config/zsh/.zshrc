@@ -31,8 +31,6 @@ zle -N edit-command-line
 bindkey '^E' edit-command-line
 # open nnn with ^o
 bindkey -s '^o' 'n\n'
-# open navi with ctrl-s
-bindkey -s '^s' 'navi\n'
 
 ### imports ###
 source "$ZDOTDIR/zsh-base-functions.sh" # this makes all the job of the "oh-my-zsh" bloated stuff
@@ -64,10 +62,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-### zoxide setup ###
+### software setups ###
+# zoxide
 eval "$(zoxide init zsh)"
-
-### tmux setup ###
+# tmux
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #  exec tmux
 #fi
+# navi
+eval "$(navi widget zsh)"
