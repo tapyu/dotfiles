@@ -47,6 +47,7 @@ zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
 mkdir -p $ZDOTDIR/plugins/git-auto-fetch; [[ ! -f $ZDOTDIR/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh ]] && curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh > $ZDOTDIR/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh # git-auto-fetch oh-my-zsh plugin
 zsh_add_plugin "laggardkernel/git-ignore"
+zsh_add_plugin "tapyu/zsh-activate-py-environment"
 # zsh_add_plugin "egyptianbman/zsh-git-worktrees" # bloated plugin!
 # zsh_add_plugin "MichaelAquilina/zsh-you-should-use" # not necessary anymore (?)
 

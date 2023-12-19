@@ -11,3 +11,8 @@ git worktree add <prefix>/<path> <branch>
 $ prefix: { git rev-parse --show-toplevel | xargs dirname; } 2> /dev/null || pwd
 $ branch: git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq | grep -v "$(git branch | awk '{ print $2 }')"
 $ path: $branch
+
+% gh
+
+# fork repo
+gh repo fork <github-url>
