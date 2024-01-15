@@ -3,11 +3,12 @@
 # https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository
 # Arguments:
 #   $1      -> repository url
-#   $2      -> local directory path (include dir to be created)
-#   $3...   -> subdirectories cloned from the repo url
+#   $2      -> repository branch
+#   $3      -> local directory path (include dir to be created)
+#   $4...   -> subdirectories cloned from the repo url
 #######################################
 git_sparse_clone() {
-  repo_url="$1" localdir="$2" && shift 2
+  repo_url="$1" branch="$2" localdir="$3" && shift 3
 
   mkdir -p "$localdir"
   cd "$localdir"
@@ -21,7 +22,7 @@ git_sparse_clone() {
     echo "$i" >> .git/info/sparse-checkout
   done
 
-  git pull origin main
+  git pull origin $branch
 }
 
 ### fzf-based commads

@@ -12,7 +12,14 @@ $ prefix: { git rev-parse --show-toplevel | xargs dirname; } 2> /dev/null || pwd
 $ branch: git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq | grep -v "$(git branch | awk '{ print $2 }')"
 $ path: $branch
 
+% git, sparse
+
+# sparsely clone
+git_sparse_clone <repo_url> <branch> <local_path> <subdirectories_to_include>
+
+$ branch: git ls-remote --symref <repo_url> | head -n 1 | awk '{ print $2 }' | cut -d/ -f3
+
 % gh
 
 # fork repo
-gh repo fork <github-url>
+gh repo fork <github_url>
