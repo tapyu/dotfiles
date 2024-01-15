@@ -10,6 +10,19 @@
             "name": "Bash-Debug (simplest configuration)",
             "program": "${file}",
             "args": ["-H"]
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [
+                "env",
+                "remove",
+                "/home/tapyu/.cache/pypoetry/virtualenvs/another-L6SY1z7m-py3.10"
+            ],
+            "justMyCode": false,
+            "cwd": "/home/tapyu/another"
         }
     ]
 }
