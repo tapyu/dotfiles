@@ -33,10 +33,10 @@ bindkey '^E' edit-command-line
 bindkey -s '^o' 'n\n'
 
 ### imports ###
-source "$ZDOTDIR/zsh-base-functions.sh" # this makes all the job of the "oh-my-zsh" bloated stuff
-source "$ZDOTDIR/zsh-exports.sh"
-source "$ZDOTDIR/zsh-aliases.sh"
-source "$ZDOTDIR/zsh-user-functions.sh"
+source "$ZDOTDIR/base-functions.sh" # this makes all the job of the "oh-my-zsh" bloated stuff
+source "$ZDOTDIR/exports.sh"
+source "$ZDOTDIR/aliases.sh"
+source "$ZDOTDIR/user-functions.sh"
 
 ### plugins ###
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
