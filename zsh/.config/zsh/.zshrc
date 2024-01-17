@@ -1,28 +1,23 @@
 ### basic config ###
-setopt appendhistory
-setopt autocd extendedglob nomatch menucomplete
-setopt interactive_comments
+setopt appendhistory # append new history entries to the history file, rather than overwriting the entire file each time the shell exits
+setopt autocd # if you type a directory name as a command and press Enter, Zsh automatically changes to that directory
+setopt extendedglob # This option extends the functionality of globbing patterns in zsh, allowing the use of additional features such	^(foo|bar)
+setopt nomatch # prevents the zsh from reporting an error if a glob pattern does not match any files
+setopt interactive_comments # allows you to include comments in interactive shell sessions
 unsetopt BEEP # unset beep
 stty stop undef	# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none') # disable highlighting when pasting something
 
 ### auto/tab complete ###
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
+autoload -U compinit # load functions or scripts on demand. compinit is a function that initializes the zsh completion system
 compinit
+zmodload zsh/complist # load modules (AKA shared object files) that extend the functionality of the shell. complist provides additional capabilities related to tab-completion and completion listing
 # enable to tab-complete dotfiles
 _comp_options+=(globdots) # Include hidden files.
 
 ### vi mode ###
-bindkey -v
 export KEYTIMEOUT=1
-# use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char # `del` key (denoted by ^?) to delete a char in vi mode
+bindkey -v '^?' backward-delete-char # I don't know what does it do, but it apparently allows me to backspace a breakline.
 
 ### keybinds ###
 # edit line in $EDITOR with ctrl-e:
@@ -48,6 +43,7 @@ zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
 mkdir -p $ZDOTDIR/plugins/git-auto-fetch; [[ ! -f $ZDOTDIR/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh ]] && curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh > $ZDOTDIR/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh # git-auto-fetch oh-my-zsh plugin
 zsh_add_plugin "laggardkernel/git-ignore"
 zsh_add_plugin "se-jaeger/zsh-activate-py-environment"
+zsh_add_plugin "Aloxaf/fzf-tab"
 # zsh_add_plugin "egyptianbman/zsh-git-worktrees" # bloated plugin!
 # zsh_add_plugin "MichaelAquilina/zsh-you-should-use" # not necessary anymore (?)
 
