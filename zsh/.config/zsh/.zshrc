@@ -15,10 +15,6 @@ zmodload zsh/complist # load modules (AKA shared object files) that extend the f
 # enable to tab-complete dotfiles
 _comp_options+=(globdots) # Include hidden files.
 
-### vi mode ###
-export KEYTIMEOUT=1
-bindkey -v '^?' backward-delete-char # I don't know what does it do, but it apparently allows me to backspace a breakline.
-
 ### keybinds ###
 # edit line in $EDITOR with ctrl-e:
 autoload edit-command-line
