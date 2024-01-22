@@ -45,8 +45,8 @@ zsh_add_plugin "Aloxaf/fzf-tab"
 
 ### plugins setup ###
 # zsh-history-substring-search
-bindkey "^[[A" history-substring-search-up   # ^[[A -> up arrow
-bindkey "^[[B" history-substring-search-down # ^[[B -> down arrow
+bindkey "^[[1;5A" history-substring-search-up   # ^[[A -> up arrow
+bindkey "^[[1;5B" history-substring-search-down # ^[[B -> down arrow
 
 ### theme ###
 zsh_add_theme "romkatv/powerlevel10k" # to customize run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
