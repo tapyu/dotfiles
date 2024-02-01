@@ -1,1 +1,1 @@
-test
+zshrc
