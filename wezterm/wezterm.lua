@@ -8,24 +8,13 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- define the leader key
+config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 } -- set CTRL+Space as leader key
 -- general settings
 config.font_size = 17
-
--- mux config
---config.keys = {
---  {
---    key = 'u',
---    mods = 'CTRL',
---    action = wezterm.action.ActivatePaneDirection 'Down',
---  },
---  {
---    key = 'k',
---    mods = 'ALT',
---    action = wezterm.action.ActivatePaneDirection 'Up',
---  },
---}
-config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 } -- set CTRL+Space as leader key
+-- keybinds
 config.keys = {
+  -- pane split
   {
     key = 'v',
     mods = 'LEADER',
@@ -36,6 +25,18 @@ config.keys = {
     mods = 'LEADER',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
+  -- disable default split pane
+  {
+    key = '"',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = '%',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  -- pane switch
   {
     key = 'j',
     mods = 'ALT',
@@ -56,17 +57,69 @@ config.keys = {
     mods = 'ALT',
     action = wezterm.action.ActivatePaneDirection 'Up',
   },
-  -- disabing the weird tmux-enherited keybinds
+  -- disable default pane switch
   {
-    key = '"',
+    key = 'LeftArrow',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = 'UpArrow',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  -- pane resize
+  {
+    key = 'j',
+    mods = 'LEADER|CTRL',
+    action = wezterm.action.AdjustPaneSize { 'Down', 5 },
+  },
+  {
+    key = 'h',
+    mods = 'LEADER|CTRL',
+    action = wezterm.action.AdjustPaneSize { 'Left', 5 },
+  },
+  {
+    key = 'l',
+    mods = 'LEADER|CTRL',
+    action = wezterm.action.AdjustPaneSize { 'Right', 5 },
+  },
+  {
+    key = 'k',
+    mods = 'LEADER|CTRL',
+    action = wezterm.action.AdjustPaneSize { 'Up', 5 },
+  },
+  -- desable default pane resize 
+  {
+    key = 'LeftArrow',
     mods = 'CTRL|SHIFT|ALT',
     action = wezterm.action.DisableDefaultAssignment,
   },
   {
-    key = '%',
+    key = 'RightArrow',
     mods = 'CTRL|SHIFT|ALT',
     action = wezterm.action.DisableDefaultAssignment,
-  }
+  },
+  {
+    key = 'UpArrow',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
 }
 
 -- create functions is catched on wezterm events
