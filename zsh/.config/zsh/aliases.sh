@@ -27,7 +27,7 @@ alias l1='ls -1'
 alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --almost-all -> ignore . and ..
 
 # nnn
-alias nnn='n_cd -e'
+alias nnn='n_cd -e -P p'
 alias n='nnn'
 
 # fzf-based aliases
