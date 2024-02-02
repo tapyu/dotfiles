@@ -30,5 +30,7 @@ alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --al
 alias nnn='n_cd -e -P p'
 alias n='nnn'
 
+alias rm='safe-rm'
+
 # fzf-based aliases
 alias fop='command ${EDITOR:-vi} "$(fzf)"' # open file through fzf command
