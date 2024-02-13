@@ -9,17 +9,18 @@ if [[ -x /usr/bin/dircolors ]]; then
     alias egrep='egrep --color=auto'
 fi
 
-# sharkdp/bat
-alias cat=bat
-# dandavison/delta
-alias diff=delta
-
 # Verbosity and settings that you pretty much just always are going to want.
 # TODO: see more here: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
 alias cp='cp --interactive --verbose'
 alias mv='mv --interactive --verbose'
 alias mkdir='mkdir --parents --verbose'
 
+# sharkdp/bat
+alias cat=bat
+# dandavison/delta
+alias diff=delta
+# wezterm image redering capability
+alias imgcat='wezterm imgcat'
 # peltoche/lsd program
 [[ "$(command -v lsd)" ]] && alias ls='lsd --group-dirs first --total-size' # although `--total-size` is useless without the `-l optionl`, it must be placed here as `\ls` has no `--total-size` option
 alias l='ls'

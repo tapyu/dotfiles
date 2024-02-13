@@ -29,7 +29,7 @@ export RUSTUP_HOME="$XDG_CONFIG_HOME/rustup" # change ~/.rustup
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc" # set file path of ripgrep config file
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime" # wakatime home dir
 export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide" # zoxide
-rm -f ~/.git-credentials # make sure it not exist
+\rm -f ~/.git-credentials # make sure it not exist
 [[ -d $XDG_CONFIG_HOME/git ]] && touch $XDG_CONFIG_HOME/git/credentials # make sure it exists
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/password-store
 
@@ -54,6 +54,7 @@ export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/fi
 [[ -f "/home/tapyu/.local/share/cargo/env" ]] && source "/home/tapyu/.local/share/cargo/env" # nnn
 # nnn
 export NNN_FIFO=/tmp/nnn.fifo # Named Pipe (FIFO) file
+export NNN_BMS="g:/home/tapyu/git;D:$HOME/Downloads;~:$HOME"
 export NNN_PLUG='p:preview-tui'
 # LaTeX
 [[ -d /usr/local/texlive ]] && for year in /usr/local/texlive/[[:digit:]]*/; do
