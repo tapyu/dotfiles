@@ -19,7 +19,7 @@ OPTIONS:
   -o, --output=OUT
     Output filename. The default value is out.pdf.
   -c COVER_FILE, --cover=COVER_FILE
-    If FILE does not contain the cover, you can pass a different path to the cover with this option. If it is a .pdf file, the cover is assumed to be the first page. If it is a image (e.g., a .png file), it is first converted to .pdf. In both cases, a merge is performed between COVER_FILE and FILE, and COVER_FILE is normalized with respect to the first page of FILE (pass the -n option to change the page number).
+    If FILE does not contain the cover, you can pass a different path to the cover with this option. If it is a image (e.g., a .png file), it is first converted to .pdf. In both cases, a merge is performed between COVER_FILE and FILE, and COVER_FILE is normalized with respect to the first page of FILE (pass the -n option to change the page number).
   -h, --help
     Print this help.
 "
@@ -65,12 +65,12 @@ if [[ -v cover_path ]]; then
   file='/tmp/merged.pdf'
 fi
 
-# get te cover
+# get cover size
 read -a cover_size <<< "$(pdfinfo -f 1 -l 1 "$file" | grep -a 'Page.*size:')"
-# get rest
-read -a rest_size <<< "$(pdfinfo -f $page_number -l $page_number "$file" | grep -a 'Page.*size:')"
+# get page_number
+read -a page_number_size <<< "$(pdfinfo -f $page_number -l $page_number "$file" | grep -a 'Page.*size:')"
 
 # normize cover
-x_ratio=$(bc <<< "scale=6; ${rest_size[3]} / ${cover_size[3]}")
-y_ratio=$(bc <<< "scale=6; ${rest_size[5]} / ${cover_size[5]}")
+x_ratio=$(bc <<< "scale=6; ${page_number_size[3]} / ${cover_size[3]}")
+y_ratio=$(bc <<< "scale=6; ${page_number_size[5]} / ${cover_size[5]}")
 cpdf -scale-page "$x_ratio $y_ratio" "$file" 1 -o $output_file
