@@ -54,7 +54,7 @@ export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/fi
 [[ -f "/home/tapyu/.local/share/cargo/env" ]] && source "/home/tapyu/.local/share/cargo/env" # nnn
 # nnn
 export NNN_FIFO=/tmp/nnn.fifo # Named Pipe (FIFO) file
-export NNN_BMS="g:/home/tapyu/git;D:$HOME/Downloads;~:$HOME"
+export NNN_BMS="g:$HOME/git;d:$HOME/Downloads;~:$HOME;b:$HOME/books" # nnn bookmarks
 export NNN_PLUG='p:preview-tui'
 # LaTeX
 [[ -d /usr/local/texlive ]] && for year in /usr/local/texlive/[[:digit:]]*/; do

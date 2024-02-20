@@ -11,9 +11,12 @@ fi
 
 # Verbosity and settings that you pretty much just always are going to want.
 # TODO: see more here: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
-alias cp='cp --interactive --verbose'
+alias cp='cp --interactive --recursive'
 alias mv='mv --interactive --verbose'
 alias mkdir='mkdir --parents --verbose'
+alias l='ls'
+alias l1='ls -1'
+alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --almost-all -> ignore . and ..
 
 # sharkdp/bat
 alias cat=bat
@@ -23,15 +26,8 @@ alias diff=delta
 alias imgcat='wezterm imgcat'
 # peltoche/lsd program
 [[ "$(command -v lsd)" ]] && alias ls='lsd --group-dirs first --total-size' # although `--total-size` is useless without the `-l optionl`, it must be placed here as `\ls` has no `--total-size` option
-alias l='ls'
-alias l1='ls -1'
-alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --almost-all -> ignore . and ..
-
-# nnn
+# jarun/nnn
 alias nnn='n_cd -e -P p'
 alias n='nnn'
-
+# kaelzhang/shell-safe-rm
 alias rm='safe-rm'
-
-# fzf-based aliases
-alias fop='command ${EDITOR:-vi} "$(fzf)"' # open file through fzf command
