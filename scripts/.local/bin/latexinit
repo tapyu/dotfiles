@@ -4,14 +4,20 @@
 ARGS=$(getopt -o hbH --long help,beamer,homework -- "$@")
 eval set -- "$ARGS"
 
-help="Init LaTeX MWE (minimal working example) project in the current directory with the required configuration files to work in the VsCode and the LaTeX workshop extension.
+help="
+
+Init LaTeX MWE (minimal working example) project in the current directory with
+the required configuration files to work in the VsCode and the LaTeX workshop
+extension.
 
 USAGE:
+  $(basename "$0") [FILE]
   $(basename "$0") [-b | -H] [--] [FILE]
   $(basename "$0") -h [--] [FILE]
 ARGS:
   FILE
-    Main LaTeX file name. If it already exists, just put the default preamble in it instead generating a MWE. The dafult name is main.tex.
+    Main LaTeX file name. If it already exists, just put the default preamble
+    in it instead generating a MWE. The dafault name is main.tex.
 OPTIONS:    
   -h, --help
     Show this help text
@@ -49,9 +55,10 @@ while true; do
   esac
 done
 
+file="${1:-main.tex}"
 # download Makefile
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/make > Makefile
-[[ "${file:=main.tex}" != "main.tex" ]] && sed -i "2s/main/${file%.tex}/" Makefile
+[[ "file" != "main.tex" ]] && sed -i "2s/main/${file%.tex}/" Makefile
 # download .vscode/ config
 [[ ! -d .vscode ]] && mkdir .vscode
 curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_vscode_makefile.json > .vscode/settings.json
@@ -74,11 +81,13 @@ elif [[ -f "$file" ]]; then
 # else, create a generic MWE template
 else
 	echo -e '\\documentclass{article}\n\\input{default_preamble.tex}\n\\begin{document}\n\tHello, world!\n\\end{document}' > "$file"
-  if [[ -f "$HOME/.cache/zotero/refs.bib" ]]; then
-    ln -s "$HOME/.cache/zotero/refs.bib" refs.bib
-    sed -i '3i\\addbibresource{refs.bib}\' "$file"
-    line=$(awk '/\\end{document}/ { print NR }' main.tex)
-    sed -i "${line}i\\\t\\\\printbibliography" main.tex
-    sed -i 's|Hello, world!|& \\cite{jiaoCharacteristicsLowlatitudeSignal2014}|g' main.tex
-  fi
+fi
+
+# if it contains the default refs.bib file, add it to $file
+if [[ -f "$HOME/.cache/zotero/refs.bib" && -z $(grep --only-matching 'refs.bib' abstract.tex) ]]; then
+  ln -sf "$HOME/.cache/zotero/refs.bib" refs.bib
+  sed -i '3i\\addbibresource{refs.bib}\' "$file"
+  line=$(awk '/\\end{document}/ { print NR }' "$file")
+  sed -i "${line}i\\\t\\\\printbibliography" "$file"
+  sed -i 's|Hello, world!|& \\cite{jiaoCharacteristicsLowlatitudeSignal2014}|g' "$file"
 fi
