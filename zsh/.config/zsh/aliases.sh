@@ -30,4 +30,4 @@ alias imgcat='wezterm imgcat'
 alias nnn='n_cd -e -P p'
 alias n='nnn'
 # kaelzhang/shell-safe-rm
-alias rm='safe-rm'
+alias rm='safe-rm -rf'

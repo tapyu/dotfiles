@@ -50,7 +50,7 @@ while true; do
 done
 
 # download Makefile
-curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/Makefile > Makefile
+curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/make > Makefile
 [[ "${file:=main.tex}" != "main.tex" ]] && sed -i "2s/main/${file%.tex}/" Makefile
 # download .vscode/ config
 [[ ! -d .vscode ]] && mkdir .vscode
@@ -74,4 +74,11 @@ elif [[ -f "$file" ]]; then
 # else, create a generic MWE template
 else
 	echo -e '\\documentclass{article}\n\\input{default_preamble.tex}\n\\begin{document}\n\tHello, world!\n\\end{document}' > "$file"
+  if [[ -f "$HOME/.cache/zotero/refs.bib" ]]; then
+    ln -s "$HOME/.cache/zotero/refs.bib" refs.bib
+    sed -i '3i\\addbibresource{refs.bib}\' "$file"
+    line=$(awk '/\\end{document}/ { print NR }' main.tex)
+    sed -i "${line}i\\\t\\\\printbibliography" main.tex
+    sed -i 's|Hello, world!|& \\cite{jiaoCharacteristicsLowlatitudeSignal2014}|g' main.tex
+  fi
 fi
