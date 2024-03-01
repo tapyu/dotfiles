@@ -27,6 +27,9 @@ OPTIONS:
     Download the homework MWE instead.
 "
 
+# default values
+mwe='https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/default_mwe.tex'
+
 # Process the options and arguments
 while true; do
   case "$1" in
@@ -52,6 +55,10 @@ while true; do
       shift
       break
       ;;
+    *)
+    echo "Unknown option: $1" >&2
+    exit 1
+    ;;
   esac
 done
 
@@ -61,33 +68,21 @@ curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c42
 [[ "file" != "main.tex" ]] && sed -i "2s/main/${file%.tex}/" Makefile
 # download .vscode/ config
 [[ ! -d .vscode ]] && mkdir .vscode
-curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_vscode_makefile.json > .vscode/settings.json
+curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_vscode_makefile_settings.json > .vscode/settings.json
 # download default preamble
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_default_preamble.tex > default_preamble.tex
 # download default glossary entries
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/my_glossary_entries.tex > default_gossary_entries.tex
-# if is a predefined MWE template, download it
-if [[ -v mwe ]]; then
-  curl --insecure --silent $mwe > "$file"
-  # if the MWE has support files, download them
-  if [[ -v support ]]; then
-    for ((i=0; i<${#support[@]}; i++));do
-      curl --insecure --silent ${support[i]} > ${support_name[i]}
-    done
-  fi
-# if it is a generic MWE that already exists, insert \input{} statement
-elif [[ -f "$file" ]]; then
+# if the MWE has support files, download them
+if [[ -v support ]]; then
+  for ((i=0; i<${#support[@]}; i++));do
+    curl --insecure --silent ${support[i]} > ${support_name[i]}
+  done
+fi
+# if $file already exists, insert \input{} statement
+if [[ -f "$file" ]]; then
   grep --quiet "\\input{default_preamble.tex}" "$file" || sed -i '2i\\\input{default_preamble.tex}\n' "$file"
 # else, create a generic MWE template
 else
-	echo -e '\\documentclass{article}\n\\input{default_preamble.tex}\n\\begin{document}\n\tHello, world!\n\\end{document}' > "$file"
-fi
-
-# if it contains the default refs.bib file, add it to $file
-if [[ -f "$HOME/.cache/zotero/refs.bib" && -z $(grep --only-matching 'refs.bib' abstract.tex) ]]; then
-  ln -sf "$HOME/.cache/zotero/refs.bib" refs.bib
-  sed -i '3i\\addbibresource{refs.bib}\' "$file"
-  line=$(awk '/\\end{document}/ { print NR }' "$file")
-  sed -i "${line}i\\\t\\\\printbibliography" "$file"
-  sed -i 's|Hello, world!|& \\cite{jiaoCharacteristicsLowlatitudeSignal2014}|g' "$file"
+	curl --insecure --silent $mwe > "$file"
 fi
