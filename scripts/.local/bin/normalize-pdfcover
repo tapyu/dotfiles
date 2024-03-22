@@ -19,7 +19,11 @@ OPTIONS:
   -o, --output=OUT
     Output filename. The default value is out.pdf.
   -c COVER_FILE, --cover=COVER_FILE
-    If FILE does not contain the cover, you can pass a different path to the cover with this option. If it is a image (e.g., a .png file), it is first converted to .pdf. In both cases, a merge is performed between COVER_FILE and FILE, and COVER_FILE is normalized with respect to the first page of FILE (pass the -n option to change the page number).
+    If FILE does not contain the cover, you can pass a different path to the cover with
+    this option. If it is a image (e.g., a .png file), it is first converted to .pdf.
+    In both cases, a merge is performed between COVER_FILE and FILE, and COVER_FILE
+    is normalized with respect to the first page of FILE (pass the -n option to change
+    the page number).
   -h, --help
     Print this help.
 "

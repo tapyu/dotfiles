@@ -1,7 +1,7 @@
 % git
 
-# git root dir
-git rev-parse --show-toplevel
+# cd to git root dir
+cd "$(git rev-parse --show-toplevel)"
 
 % git, worktree
 

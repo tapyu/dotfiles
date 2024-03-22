@@ -14,7 +14,7 @@ config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 } --
 config.font_size = 17
 -- keybinds
 config.keys = {
-  -- pane split
+  -- set pane split
   {
     key = 'v',
     mods = 'LEADER',
@@ -25,7 +25,7 @@ config.keys = {
     mods = 'LEADER',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
-  -- disable default split pane
+  -- unset default split pane
   {
     key = '"',
     mods = 'CTRL|SHIFT|ALT',
@@ -36,7 +36,7 @@ config.keys = {
     mods = 'CTRL|SHIFT|ALT',
     action = wezterm.action.DisableDefaultAssignment,
   },
-  -- pane switch
+  -- set pane switch
   {
     key = 'j',
     mods = 'ALT',
@@ -57,7 +57,7 @@ config.keys = {
     mods = 'ALT',
     action = wezterm.action.ActivatePaneDirection 'Up',
   },
-  -- disable default pane switch
+  -- unset default pane switch
   {
     key = 'LeftArrow',
     mods = 'CTRL|SHIFT',
@@ -78,7 +78,7 @@ config.keys = {
     mods = 'CTRL|SHIFT',
     action = wezterm.action.DisableDefaultAssignment,
   },
-  -- pane resize
+  -- set pane resize
   {
     key = 'j',
     mods = 'LEADER|CTRL',
@@ -99,7 +99,7 @@ config.keys = {
     mods = 'LEADER|CTRL',
     action = wezterm.action.AdjustPaneSize { 'Up', 5 },
   },
-  -- desable default pane resize 
+  -- unset default pane resize 
   {
     key = 'LeftArrow',
     mods = 'CTRL|SHIFT|ALT',
