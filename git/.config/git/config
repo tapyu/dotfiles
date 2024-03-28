@@ -5,9 +5,10 @@
 	defaultbranch = main
 
 [core]
-    pager = delta # github.com/dandavison/delta
+    # github.com/dandavison/delta
+    pager = delta --max-line-length 0 # set `--max-line-lenth` to 0 to not truncate line length.
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --max-line-length 0
 [delta]
     navigate = true
 [merge]
