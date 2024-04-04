@@ -4,3 +4,13 @@
 for <element> in <elements>; do
 	<commands>
 done
+
+# while loop from command
+<command> | while IFS= read -r line; do
+    <inner_command>
+done
+
+# while loop from file's contents (lines) as STDIN
+while IFS= read -r line; do
+    <command>
+done < <filename>
