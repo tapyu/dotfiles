@@ -7,7 +7,7 @@
 #   $3      -> local directory path (include dir to be created)
 #   $4...   -> subdirectories cloned from the repo url
 #######################################
-git_sparse_clone() {
+git-sparse-clone() {
   repo_url="$1" branch="$2" localdir="$3" && shift 3
 
   mkdir -p "$localdir"
