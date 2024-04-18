@@ -64,7 +64,7 @@ done
 
 file="${1:-main.tex}"
 # download Makefile
-curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/make > Makefile
+curl --insecure --silent --remote-name https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/Makefile
 [[ "file" != "main.tex" ]] && sed -i "2s/main/${file%.tex}/" Makefile
 # download .vscode/ config
 [[ ! -d .vscode ]] && mkdir .vscode
