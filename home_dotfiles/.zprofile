@@ -67,3 +67,5 @@ export PATH=/usr/local/cuda-12.3/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-12.3/targets/x86_64-linux/lib:/usr/local/cuda-12.3/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 # navi
 export NAVI_FZF_OVERRIDES_VAR='--no-select-1'
+# delta
+DELTA_FEATURES=+side-by-side
