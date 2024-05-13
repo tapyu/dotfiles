@@ -1,10 +1,13 @@
 #!/bin/bash
 
-filename="$1"
+status_line=$(wezterm cli get-text | awk '$0 ~ /NOR/ { print $0 }')
+filename=$(echo $status_line | awk '{ print $2}')
+line_number=$(echo $status_line | awk '$0 ~ /NOR/ { split($NF, arr, ":"); print arr[1] }')
+extension="${filename##*.}"
+
 basedir=$(dirname "$filename")
 basename=$(basename "$filename")
 basename_without_extension="${basename%.*}"
-extension="${filename##*.}"
 
 case "$extension" in
   "c")
