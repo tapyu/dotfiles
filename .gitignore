@@ -1,3 +1,4 @@
+helix/.config/helix/runtime/
 zsh/**/plugins/
 zsh/**/theme/
 zsh/**/.zcompdump
