@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Parse command-line options using getopt (`a:` means that the option `a` has an argument)
+ARGS=$(getopt -o ha:t --long help,arch:t -- "$@")
+eval set -- "$ARGS"
+
+help="An Unix shell script to install a package from GitHub. It uses the GitHub REST API to
+download a release file (e.g., tarball, deb., etc) and install it. It is necessary to have
+\`jq\` installed for JSON traversing.
+
+USAGE:
+  $(basename "$0") [OPTIONS] [--] REPO
+
+ARGS:
+  REPO
+    Repository in the format username/repo-name.
+
+OPTIONS:
+  -a ARCH, --arch=ARCH
+    Set the desired architecture. Usual values for \`ARCH\` are \`aarch64\`, \`amd64\`,
+    \`armv7l\`... The architecture defined in this option is used to select the file.
+    The dafault value is \`amd64\`.
+  -t TYPE
+    Set the file type. It can be either \`deb\` or \`tarball\`. The default value is
+    \`deb\`.
+  -h, --help
+    Print this help.
+"
+
+# default values
+arch="amd64"
+type="deb"
+
+# parse options
+while true; do
+  case "$1" in
+    -h | --help)
+      echo "$help"
+      exit 0  # Exit after displaying help
+      ;;
+    -a | --arch)
+      arch="$2"
+      shift 2
+      ;;
+    -t | --type)
+      [[ ! "$2" ~= ^(deb|tarball)$ ]] && echo "The type is invalid." && exit 1
+      type=$2
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+  esac
+done
+
+repo="$1"
+url=$(curl --location --silent "https://api.github.com/repos/$1/releases/latest" | \
+      jq -r ".assets[] | select(.name | endswith(\".$type\") and contains(\"$arch\")) | .browser_download_url")
+
+curl --location --silent --output /tmp/out.deb "$url"
+sudo dpkg -i /tmp/out.deb
+

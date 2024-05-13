@@ -23,8 +23,9 @@ esc = ["collapse_selection", "keep_primary_selection"]
 
 # "my" mode
 [keys.normal."0"]
-s = ":w"
-w = ":buffer-close"
+w = ":w"
+q = ":q"
+c = ":buffer-close"
 t = [":w", ":sh hx-run.sh main.typ"]
 l = [":w", ":sh hx-run.sh main.tex"]
 

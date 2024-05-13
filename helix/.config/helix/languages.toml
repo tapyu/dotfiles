@@ -3,7 +3,7 @@
 name = "latex"
 scope = "source.tex"
 file-types = ["tex"]
-language-servers = ["grammar-lsp"]
+language-servers = ["grammar-lsp", "texlab"]
 
 ### Typst ###
 [[language]]

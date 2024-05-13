@@ -14,7 +14,7 @@ ARGS:
     A pdf file
 
 OPTIONS:
-  -n, --page-number=NUM
+  -n NUM, --page-number=NUM
     Page reference in FILE in which the cover is normalized to. The default value is 2.
   -o, --output=OUT
     Output filename. The default value is out.pdf.
