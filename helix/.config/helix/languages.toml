@@ -1,17 +1,32 @@
-[language-server.mylang-lsp]
+### LaTeX ###
+[[language]]
+name = "latex"
+scope = "source.tex"
+file-types = ["tex"]
+language-servers = ["grammar-lsp"]
+
+### Typst ###
+[[language]]
+name = "typst"
+language-servers = ["grammar-lsp", "typst-lsp"]
+
+### Grammar LSP ###
+[language-server.grammar-lsp]
+command = "ltex-ls"
+# args = []
+
+### bash ###
+[[language]]
+name = "bash"
+language-servers = [ "bash-lsp" ]
+
+[language-server.bash-lsp]
 command = "bash-language-server"
 args = ["start"]
 config = { provideFormatter = true }
 #environment = { "ENV1" = "value1", "ENV2" = "value2" }
 
-[[language]]
-name = "bash"
-# scope = "source.sh" # it is already set on the default language settings
-# file-types = ["sh", "zsh"] # it is already set on the default language settings
-# comment-token = "#" # it is already set on the default language settings
-language-servers = [ "mylang-lsp" ]
-
-
+### Markdown ###
 [[language]]
 name = "markdown"
 soft-wrap.enable = true
