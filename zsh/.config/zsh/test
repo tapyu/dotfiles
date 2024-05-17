@@ -1,4 +1,0 @@
-#source "/home/tapyu/.config/zsh/plugins/zsh-expand/zsh-expand.plugin.zsh"
-
-alias l='ls'
-alias l1='l -1'
