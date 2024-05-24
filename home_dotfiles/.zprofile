@@ -57,11 +57,12 @@ export NNN_FIFO=/tmp/nnn.fifo # Named Pipe (FIFO) file
 export NNN_BMS="g:$HOME/git;d:$HOME/Downloads;~:$HOME;b:$HOME/books" # nnn bookmarks
 export NNN_PLUG='p:preview-tui'
 # LaTeX
-[[ -d /usr/local/texlive ]] && for year in /usr/local/texlive/[[:digit:]]*/; do
-  export PATH=$PATH:${year}bin/x86_64-linux
-  export INFOPATH=${year}texmf-dist/doc/info:$INFOPATH
-  export MANPATH=${year}texmf-dist/doc/man:$MANPATH
-done
+if [[ -d /usr/local/texlive ]]; then
+  texpath=$(\ls -d1 /usr/local/texlive/[[:digit:]]* | tail -n 1) # get the newest installation
+  export PATH=${texpath}bin/x86_64-linux${PATH:+:${PATH}}
+  export INFOPATH=${texpath}texmf-dist/doc/info:$INFOPATH
+  export MANPATH=${texpath}texmf-dist/doc/man:$MANPATH
+fi
 # CUDA (see https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup)
 export PATH=/usr/local/cuda-12.3/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-12.3/targets/x86_64-linux/lib:/usr/local/cuda-12.3/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
