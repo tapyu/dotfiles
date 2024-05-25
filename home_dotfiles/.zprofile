@@ -59,9 +59,9 @@ export NNN_PLUG='p:preview-tui'
 # LaTeX
 if [[ -d /usr/local/texlive ]]; then
   texpath=$(\ls -d1 /usr/local/texlive/[[:digit:]]* | tail -n 1) # get the newest installation
-  export PATH=${texpath}bin/x86_64-linux${PATH:+:${PATH}}
-  export INFOPATH=${texpath}texmf-dist/doc/info:$INFOPATH
-  export MANPATH=${texpath}texmf-dist/doc/man:$MANPATH
+  export PATH=${texpath}/bin/x86_64-linux${PATH:+:${PATH}}
+  export INFOPATH=${texpath}/texmf-dist/doc/info:$INFOPATH
+  export MANPATH=${texpath}/texmf-dist/doc/man:$MANPATH
 fi
 # CUDA (see https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup)
 export PATH=/usr/local/cuda-12.3/bin${PATH:+:${PATH}}
