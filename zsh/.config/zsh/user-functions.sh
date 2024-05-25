@@ -1,13 +1,13 @@
 #######################################
-# function to perform sparse clone, to see more, check this out
-# https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository
-# Arguments:
-#   $1      -> repository url
-#   $2      -> repository branch
-#   $3      -> local directory path (include dir to be created)
-#   $4...   -> subdirectories cloned from the repo url
-#######################################
 git-sparse-clone() {
+  # function to perform sparse clone, to see more, check this out
+  # https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository
+  # Arguments:
+  #   $1      -> repository url
+  #   $2      -> repository branch
+  #   $3      -> local directory path (include dir to be created)
+  #   $4...   -> subdirectories cloned from the repo url
+  #######################################
   repo_url="$1" branch="$2" localdir="$3" && shift 3
 
   mkdir -p "$localdir"
@@ -40,10 +40,10 @@ fp()
   | cut -z -f 1 -d $'\t' | tr -d '\n' | xargs -r --null $open > /dev/null 2> /dev/null
 }
 
-# ft [FUZZY PATTERN] - Open the selected text file with the default editor
-#   - Bypass fuzzy finder if there's only one match (--select-1)
-#   - Exit if there's no match (--exit-0)
 ft() {
+  # ft [FUZZY PATTERN] - Open the selected text file with the default editor
+  #   - Bypass fuzzy finder if there's only one match (--select-1)
+  #   - Exit if there's no match (--exit-0)
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-hx:-vim:-vi} "${files[@]}"
 }

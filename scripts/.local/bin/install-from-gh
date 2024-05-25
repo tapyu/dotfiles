@@ -43,7 +43,7 @@ while true; do
       shift 2
       ;;
     -t | --type)
-      [[ ! "$2" ~= ^(deb|tarball)$ ]] && echo "The type is invalid." && exit 1
+      [[ ! "$2" =~ ^(deb|tarball)$ ]] && echo "The type is invalid." && exit 1
       type=$2
       shift 2
       ;;
@@ -58,6 +58,9 @@ repo="$1"
 url=$(curl --location --silent "https://api.github.com/repos/$1/releases/latest" | \
       jq -r ".assets[] | select(.name | endswith(\".$type\") and contains(\"$arch\")) | .browser_download_url")
 
+echo "Downloading .deb package"
 curl --location --silent --output /tmp/out.deb "$url"
+echo ".deb package downloaded at /tmp/out.deb"
+echo "Installing .deb package."
 sudo dpkg -i /tmp/out.deb
 
