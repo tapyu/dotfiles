@@ -14,8 +14,8 @@ $ path: $branch
 
 % git, sparse
 
-# sparsely clone (DEPRECATED, left here to reference purposes)
-git_sparse_clone <repo_url> <branch> <local_path> <subdirectories_to_include>
+# sparsely clone
+git-sparse-clone <repo_url> <branch> <local_path> <subdirectories_to_include>
 
 $ branch: git ls-remote --symref <repo_url> | head -n 1 | awk '{ print $2 }' | cut -d/ -f3
 
