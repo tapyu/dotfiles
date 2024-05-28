@@ -1,0 +1,6 @@
+% convert PDF
+
+# convert PDF to JPEG or PNG by using `gs`
+gs -dNOPAUSE -sDEVICE=jpeg -sOutputFile=<outfile> -r200 -dBATCH "<pdffile>" > /dev/null
+$ pdffile: ls
+$ outfile: aux=<pdffile>; echo "${aux/%pdf/jpg}" --- --fzf-overrides --select-1
