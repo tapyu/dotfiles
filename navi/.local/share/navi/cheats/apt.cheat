@@ -1,0 +1,10 @@
+% apt
+
+# list package files
+apt-file list <package-file>
+
+# search for a file in packages
+apt-file -x search <package-file>
+
+$ package-file: echo "" --- --header "Sorround the string by `\b` (in single quotes) for exact match"
+
