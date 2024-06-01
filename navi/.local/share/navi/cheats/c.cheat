@@ -1,0 +1,7 @@
+% C/C++
+
+# C++ header file paths
+eval $(gcc -print-prog-name=cc1plus) -v
+
+# C header file paths
+eval $(gcc -print-prog-name=cpp) -v
