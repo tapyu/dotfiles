@@ -3,6 +3,19 @@
 # cd to git root dir
 cd "$(git rev-parse --show-toplevel)"
 
+# create an brand-new/orphan branch (without files)
+git switch --orphan <new-branch>
+
+# rename branch
+git branch -m <new-branch>
+
+$ new-branch: echo "" --- --header "If the branch is in remote repo, you need: 1- `git push --delete URL oldname`, 2- `git push --set-upstream URL new_branch`"
+
+# local ignore
+echo '<files>' >> $(git rev-parse --show-toplevel)/.git/info/exclude
+
+$ files: find . -maxdepth 1 -printf '%f\n'
+
 # open gitignore
 repo_root=$(git rev-parse --show-toplevel) && [[ -f "$repo_root/.gitignore" ]] && eval ${EDITOR:-vi} "$repo_root/.gitignore" || echo ".gitignore file not found or not in a git repository."
 
