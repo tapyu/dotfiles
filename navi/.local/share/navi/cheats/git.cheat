@@ -13,7 +13,7 @@ git branch -m <renamed-branch>
 git push --delete <URL> <branch>
 
 # set upstream
-git push --set-upstream <URL> <new-branch>
+git branch --set-upstream-to=<URL>/<new-branch>
 
 # local ignore
 echo '<files>' >> $(git rev-parse --show-toplevel)/.git/info/exclude
