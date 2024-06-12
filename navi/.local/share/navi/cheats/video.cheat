@@ -1,0 +1,7 @@
+% video
+
+# convert PDF to JPEG or PNG by using `gs`
+ffmpeg -i <infile> -c copy -map 0 -segment_time <segment_length> -f segment -reset_timestamps 1 part%01d.mp4
+
+<infile>: ls
+<segment_length>: echo "" --- --header "In hh:mm:ss format"
