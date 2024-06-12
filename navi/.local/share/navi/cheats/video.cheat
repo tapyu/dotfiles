@@ -7,4 +7,4 @@ ffmpeg -i <infile> -c copy -map 0 -segment_time <segment_length> -f segment -res
 ffmpeg -i <inifile> -b:v 1000k -b:a 128k output.mp4
 
 <infile>: ls
-<segment_length>: echo "" --- --header "In hh:mm:ss format"
+<segment_length>: ls --- --header "In hh:mm:ss format"
