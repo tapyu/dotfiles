@@ -1,7 +1,10 @@
 % video
 
-# convert PDF to JPEG or PNG by using `gs`
+# split video into segments
 ffmpeg -i <infile> -c copy -map 0 -segment_time <segment_length> -f segment -reset_timestamps 1 part%01d.mp4
+
+# compress video
+ffmpeg -i <inifile> -b:v 1000k -b:a 128k output.mp4
 
 <infile>: ls
 <segment_length>: echo "" --- --header "In hh:mm:ss format"
