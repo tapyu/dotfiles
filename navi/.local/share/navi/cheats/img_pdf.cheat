@@ -5,9 +5,13 @@ gs -dNOPAUSE -sDEVICE=jpeg -sOutputFile=<pdfout> -r200 -dBATCH "<pdfin>" > /dev/
 $ pdfin: ls
 $ pdfout: aux=<pdfin>; echo "${aux/%pdf/jpg}" --- --fzf-overrides --select-1
 
-# change image size/quality
-ffmpeg -i <infile> -q:v <quality> <outfile>
+# change/compress image size/quality
+convert <infile> -quality <quality> <outfile>
+
+# crop/resize image
+convert <infile> -resize <size1>x<size2> <outfile>
 
 $ infile: ls
-$ quality: echo "" --- --header "1 for highest quality and 31 for lowest quality"
+$ quality: echo "" --- --header "10 for highest compression and 1 for lowest compresison"
 $ outfile: echo "" --- --fzf-overrides --query=outfile.
+$ size2: : <size1>; echo "" --- --header "leave it empty for square ratios."
