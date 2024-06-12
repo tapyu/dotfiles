@@ -1,0 +1,13 @@
+% convert PDF
+
+# convert PDF to JPEG or PNG by using `gs`
+gs -dNOPAUSE -sDEVICE=jpeg -sOutputFile=<pdfout> -r200 -dBATCH "<pdfin>" > /dev/null
+$ pdfin: ls
+$ pdfout: aux=<pdfin>; echo "${aux/%pdf/jpg}" --- --fzf-overrides --select-1
+
+# change image size/quality
+ffmpeg -i <infile> -q:v <quality> <outfile>
+
+$ infile: ls
+$ quality: echo "" --- --header "1 for highest quality and 31 for lowest quality"
+$ outfile: echo "" --- --fzf-overrides --query=outfile.

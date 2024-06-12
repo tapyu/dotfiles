@@ -16,10 +16,5 @@
 [diff]
     colorMoved = default
 # Filters can be applied to modify content stored in the repository during checkouts, or during other Git processes. Filters are particularly useful for scenarios where you need to perform text replacements or other transformations on files. Filters can be powerful tools for customizing how Git handles your files.
-[filter "lfs"] # "lfs" is just a label for the filter. You can name it whatever you want, and it won't affect the behavior of the filter.
-	clean = git-lfs clean -- %f # clean filter is applied when files are staged (using git add) or committed
-	smudge = git-lfs smudge -- %f #  smudge filter is applied when files are checked out. It transforms the content of the file after it's retrieved from the Git repository. This is commonly used for expanding keywords or performing other transformations.
-	process = git-lfs filter-process # process filter is a more general-purpose filter that can be applied during various Git operations. It allows you to define a command that is applied to a file's content during processes like git diff or git apply.
-	required = true # indicates that the Git LFS filter is globally required (as it is a global git cofig file). If someone clones or fetches from this repository and doesn't have Git LFS installed, Git will consider it an error, and it will prompt the user to install Git LFS.
 [credential]
 	helper = store # it stores the git token credential in ~/.conf/git/credentials for the next git logins
