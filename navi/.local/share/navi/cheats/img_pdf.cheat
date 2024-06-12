@@ -8,10 +8,14 @@ $ pdfout: aux=<pdfin>; echo "${aux/%pdf/jpg}" --- --fzf-overrides --select-1
 # change/compress image size/quality
 convert <infile> -quality <quality> <outfile>
 
-# crop/resize image
-convert <infile> -resize <size1>x<size2> <outfile>
+# change pixels in image
+convert <infile> -resize <pixel_x>x<pixel_y> <outfile>
+
+# crop image
+convert <infile> -gravity center -crop <pixel_x>x<pixel_y>+0+0 +repage <outfile>
+
 
 $ infile: ls
-$ quality: echo "" --- --header "10 for highest compression and 1 for lowest compresison"
+$ quality: echo "" --- --header "0 for lowest quality and 100 for highest quality"
 $ outfile: echo "" --- --fzf-overrides --query=outfile.
-$ size2: : <size1>; echo "" --- --header "leave it empty for square ratios."
+$ pixel_y: : <pixel_x>; echo "" --- --header "leave it empty for square ratios."
