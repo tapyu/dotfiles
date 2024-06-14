@@ -3,8 +3,11 @@
 # cd to git root dir
 cd "$(git rev-parse --show-toplevel)"
 
-# create an brand-new/orphan branch (without files)
+# create a brand-new/orphan branch (without files/commits)
 git switch --orphan <new-branch>
+
+# create a new branch
+git switch --create <new-branch>
 
 # rename branch
 git branch -m <renamed-branch>
