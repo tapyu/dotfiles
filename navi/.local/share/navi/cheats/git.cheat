@@ -18,6 +18,9 @@ git push --delete <URL> <branch>
 # set upstream
 git branch --set-upstream-to=<URL>/<new-branch>
 
+# reset local branch commits
+git reset --hard <remote_branch>
+
 # local ignore
 echo '<files>' >> $(git rev-parse --show-toplevel)/.git/info/exclude
 
@@ -27,6 +30,7 @@ repo_root=$(git rev-parse --show-toplevel) && [[ -f "$repo_root/.gitignore" ]] &
 $ branch: git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq
 $ URL: echo "" --- --fzf-overrides --query="origin"
 $ files: find . -maxdepth 1 -printf '%f\n'
+$ remote_branch: git branch -r | grep -v 'HEAD' --- --header "discard all local commits and match the remote branch"
 $ renamed-branch: echo "" --- --header "If the branch is in remote repo, you need: 1- `git push --delete URL oldname`, 2- `git push --set-upstream URL new_branch`"
 
 % git, worktree
