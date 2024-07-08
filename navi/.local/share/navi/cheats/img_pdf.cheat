@@ -18,4 +18,5 @@ convert <infile> -gravity center -crop <pixel_x>x<pixel_y>+0+0 +repage <outfile>
 $ infile: ls
 $ quality: echo "" --- --header "0 for lowest quality and 100 for highest quality"
 $ outfile: echo "" --- --fzf-overrides --query=outfile.
+; `:` is a built-in shell command that does nothing, it is basically to create a dependency with `file`, and `echo` prevents a bug
 $ pixel_y: : <pixel_x>; echo "" --- --header "leave it empty for square ratios."

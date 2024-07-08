@@ -13,10 +13,10 @@ git switch --create <new-branch>
 git branch -m <renamed-branch>
 
 # delete remote repo
-git push --delete <URL> <branch>
+git push --delete <remote> <branch>
 
 # set upstream
-git branch --set-upstream-to=<URL>/<new-branch>
+git branch --set-upstream-to=<remote>/<new-branch>
 
 # reset local branch commits
 git reset --hard <remote_branch>
@@ -28,7 +28,7 @@ echo '<files>' >> $(git rev-parse --show-toplevel)/.git/info/exclude
 repo_root=$(git rev-parse --show-toplevel) && [[ -f "$repo_root/.gitignore" ]] && eval ${EDITOR:-vi} "$repo_root/.gitignore" || echo ".gitignore file not found or not in a git repository."
 
 $ branch: git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq
-$ URL: echo "" --- --fzf-overrides --query="origin"
+$ remote: echo "" --- --fzf-overrides --query="origin"
 $ files: find . -maxdepth 1 -printf '%f\n'
 $ remote_branch: git branch -r | grep -v 'HEAD' --- --header "discard all local commits and match the remote branch"
 $ renamed-branch: echo "" --- --header "If the branch is in remote repo, you need: 1- `git push --delete URL oldname`, 2- `git push --set-upstream URL new_branch`"
@@ -53,3 +53,16 @@ $ branch: git ls-remote --symref <repo_url> | head -n 1 | awk '{ print $2 }' | c
 
 # fork repo
 gh repo fork <github_url>
+
+
+% git submodule
+
+# add submodule
+git submodule add<prefix_branch><is_branch> <URL> <repo_path>
+
+
+$ is_branch: echo "" --- --header "If you want to add the default repo branch, leave it empty. Otherwise, type the desired branch name."
+$ prefix_branch: [[ -n $(echo <is_branch>) ]] && echo ' --branch=' || echo '' --- --fzf-overrides '--select-1'
+$ URL: echo "" --- --fzf-overrides --query="https://github.com/"
+$ repo_path: find "$(git rev-parse --show-toplevel)" -type d | sed "s|$(git rev-parse --show-toplevel)/\?||" | grep -v '^$' --- --header "Include the submodule name."
+

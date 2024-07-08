@@ -7,5 +7,4 @@ sed -n <number>p <file>
 sed -n <number>d <file>
 
 $ file: find . -maxdepth 1 -type f | cut -c3- --- --header "select a file"
-; `:` does nothing, it is basically to create a dependency with `file`, and `echo` prevents a bug 
-$ number: : <file> && echo ""
+$ number: aux=$(wc -l <file> | cut -d ' ' -f 1) && echo "The file <file> contains $aux pages" --- --header-lines 1
