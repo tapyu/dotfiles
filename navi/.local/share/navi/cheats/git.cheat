@@ -82,22 +82,22 @@ git annex initremote <git_annex_remote_name> type=external externaltype=rclone t
 # add file
 git annex add <large_file>
 
-$ large_file: echo -e 'At this point you are adding the git annexed files, which will be converted to symlinks to git.\nAfter running this command, you will see that `large_file` has been added to git, but it is only a symlink\nthat is being add and will be pushed to Github.'; echo '' --- --fzf-overrides '--header-lines=3 --no-select-1'
+$ large_file: echo -e 'At this point you are adding the git annexed files, which will be converted to symlinks to git.\nAfter running this command, you will see that `large_file` has been added to git, but it is only a symlink\nthat is being add and will be pushed to Github. This is a multi-selection prompt, press tab/shift-tab to select/unselect\nand enter to finish.'; find . -type f -size +50M ---  --multi --fzf-overrides '--header-lines=4 --no-select-1 --height=100%'
 $ description: echo -e 'Git annex description. This description will appear when you run `git annex info`. E.g.,\n\n\ta1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6 -- Google Drive repository [here]\n\nWhere `a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6` is the UUID (Universally Unique Identifier) and serves as a\nunique identifier for that specific repository clone\nand `[here]` indicates that this entry corresponds to the repository at the current location.'; echo ''  ---  --fzf-overrides '--query="Google Drive repository" --header-lines=6 --height=100%'
 $ google_drive_dir: echo -e '`prefix=` sets the dir path on Google Drive. Under the `git_annex` dir, it is reasonable to create\na dir for each repostitory that is using it. In this way, we can have the\nblob files separated for each repo. You should use the repo name.\nAfter running this command, you will see git_annex/google_drive_dir on Google Drive'; echo "$(basename $(git rev-parse --show-toplevel))" --- --fzf-overrides '--header-lines=4 --no-select-1 --height=100%'
 $ rclone_target_name: rclone config show | \grep '\[.*\]' | tr -d '[]' --- --header "Cloud service label you gave in configuration step (it is the bracketed name output of the command `rclone config show`)" --fzf-overrides '--height=100%'
 $ git_annex_remote_name: echo -e 'Give any label you want. It is equivalent to the git remote `origin` label, which is automatically set by git when you clone a repo.\nAfter running it, you can see `[annex-origin]` when running `git annex info`.' --- --fzf-overrides '--query=annex-origin --header-lines=2 --height=100%'
 
 # Copy/transfer/push git annexed files to remote
-git annex find | while IFS= read -r line; do
-    while ! git annex copy "$line" --to=<git_annex_remote>; do
+git annex find | while IFS= read -r git_annexed_file; do
+    while ! git annex copy "$git_annexed_file" --to=<git_annex_remote>; do
         :
     done
 done
 
 # Get/transfer/pull git annexed files to local repo
-git annex find | while IFS= read -r line; do
-    while ! git annex get "$line" --from=<git_annex_remote>; do
+git annex find | while IFS= read -r git_annexed_file; do
+    while ! git annex get "$git_annexed_file" --from=<git_annex_remote>; do
         :
     done
 done
