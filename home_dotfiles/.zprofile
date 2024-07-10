@@ -46,7 +46,7 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 export HISTORY_SUBSTRING_SEARCH_PREFIXED='true'
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE='true'
 # fzf
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make prettier :)
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make it prettier :)
 export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/files PS: rg = ripgrep
 # matlab
 #export LD_LIBRARY_PATH='/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a/sys/os/glnxa64:$LD_LIBRARY_PATH'

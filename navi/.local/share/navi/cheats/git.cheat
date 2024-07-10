@@ -58,11 +58,35 @@ gh repo fork <github_url>
 % git submodule
 
 # add submodule
-git submodule add<prefix_branch><is_branch> <URL> <repo_path>
+git submodule add<prefix_branch><is_branch> <URL> <path>/<basename>
 
 
 $ is_branch: echo "" --- --header "If you want to add the default repo branch, leave it empty. Otherwise, type the desired branch name."
 $ prefix_branch: [[ -n $(echo <is_branch>) ]] && echo ' --branch=' || echo '' --- --fzf-overrides '--select-1'
 $ URL: echo "" --- --fzf-overrides --query="https://github.com/"
-$ repo_path: find "$(git rev-parse --show-toplevel)" -type d | sed "s|$(git rev-parse --show-toplevel)/\?||" | grep -v '^$' --- --header "Include the submodule name."
+$ path: find "$(git rev-parse --show-toplevel)" -type d | sed "s|$(git rev-parse --show-toplevel)/\?||" | grep -v '^$' --- --header "Where is the path of the submodule you want to add?"
+$ basename: echo "" --- --header "What will the submodule be called in your repository?"
+
+
+% git annex
+
+# init git annex
+git annex init "<description>"
+
+# init remote git annex
+git annex initremote <git_annex_remote_name> type=external externaltype=rclone target=<rclone_cfg_name> prefix=git_annex/<google_drive_dir> chunk=50MiB encryption=shared mac=HMACSHA512 rclone_layout=lower
+
+# add file
+git annex add <file>
+
+$ description: echo -e 'Git annex description. This description will appear when you run `git annex info`. E.g.,\n\n\ta1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6 -- Google Drive repository [here]\n\nWhere `a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6` is the UUID (Universally Unique Identifier) and serves as a\nunique identifier for that specific repository clone\nand `[here]` indicates that this entry corresponds to the repository at the current location.'; echo ''  ---  --fzf-overrides '--query="Google Drive repository" --header-lines=6 --height=100%'
+$ google_drive_dir: echo -e '`prefix=` sets the dir path on Google Drive. Under the `git_annex` dir, it is reasonable to create\na dir for each repostitory that is using it. In this way, we can have the\nblob files separated for each repo. You should use the repo name.\nAfter running this command, you will see git_annex/google_drive_dir on Google Drive'; echo "$(basename $(git rev-parse --show-toplevel))" --- --fzf-overrides '--header-lines=4 --no-select-1 --height=100%'
+$ rclone_cfg_name: rclone config show | \grep '\[.*\]' | tr -d '[]' --- --header "Cloud service label you gave in configuration step (it is the bracketed name output of the command `rclone config show`)" --fzf-overrides '--height=100%'
+$ git_annex_remote_name: echo -e 'Give any label you want. It is equivalent to the git remote `origin` label, which is automatically set by git when you clone a repo.\nAfter running it, you can see `[annex_origin]` when running `git annex info`.' --- --fzf-overrides '--query=annex_origin --header-lines=2 --height=100%'
+
+# Copy (transfer) git annexed (added) files to remote
+
+git annex copy --to=<git_annex_remote_initialized>
+
+$ git_annex_remote_initialized: echo -e 'WARNING: Make sure you are selecting the annex remote label you gave\nin the `git annex initremote`'; git annex info | \grep -P '.{8}-.{8}' | awk '{ print $NF }' | tr -d '[]' --- --fzf-overrides '--header-lines=2 --height=100%'
 
