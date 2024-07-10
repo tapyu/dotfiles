@@ -6,11 +6,13 @@ for <element> in <elements>; do
 done
 
 # while loop from command
-<command> | while IFS= read -r line; do
+<command> | while IFS= read -r <while_var>; do
     <inner_command>
 done
 
 # while loop from file's contents (lines) as STDIN
-while IFS= read -r line; do
+while IFS= read -r <while_var>; do
     <command>
 done < <filename>
+
+$ while_var: echo '' --- --fzf-overrides '--query=l'
