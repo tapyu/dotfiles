@@ -30,6 +30,11 @@ echo '<files>' >> $(git rev-parse --show-toplevel)/.git/info/exclude
 # open gitignore
 repo_root=$(git rev-parse --show-toplevel) && [[ -f "$repo_root/.gitignore" ]] && eval ${EDITOR:-vi} "$repo_root/.gitignore" || echo ".gitignore file not found or not in a git repository."
 
+# forget previously tracked but now gitignored files
+git rm -r --cached .
+git add -A
+git push <remote> <branch>
+
 $ branch: git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq
 $ remote: echo "" --- --fzf-overrides --query="origin"
 $ files: find . -maxdepth 1 -printf '%f\n'
@@ -69,7 +74,6 @@ $ prefix_branch: [[ -n $(echo <is_branch>) ]] && echo ' --branch=' || echo '' --
 $ URL: echo "" --- --fzf-overrides --query="https://github.com/"
 $ path: find "$(git rev-parse --show-toplevel)" -type d | sed "s|$(git rev-parse --show-toplevel)/\?||" | grep -v '^$' --- --header "Where is the path of the submodule you want to add?"
 $ basename: echo "" --- --header "What will the submodule be called in your repository?"
-
 
 % git annex
 
