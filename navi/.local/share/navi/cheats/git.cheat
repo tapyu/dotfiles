@@ -15,8 +15,11 @@ git branch -m <renamed-branch>
 # delete remote repo
 git push --delete <remote> <branch>
 
-# set upstream
+# set upstream locally
 git branch --set-upstream-to=<remote>/<new-branch>
+
+# set upstream remotelly (pushes it)
+git push --set-upstream <remote> <new-branch>
 
 # reset local branch commits
 git reset --hard <remote_branch>
