@@ -8,3 +8,6 @@ sed -n <number>d <file>
 
 $ file: find . -maxdepth 1 -type f | cut -c3- --- --header "select a file"
 $ number: aux=$(wc -l <file> | cut -d ' ' -f 1) && echo "The file <file> contains $aux pages" --- --header-lines 1
+
+# Substitute text
+sed 's/<input_pattern>/<output_pattern>/g'

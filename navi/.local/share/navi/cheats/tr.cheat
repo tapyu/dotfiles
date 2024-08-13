@@ -1,0 +1,4 @@
+% tr
+
+# Delete text
+tr -d '<text>'
