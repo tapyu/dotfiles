@@ -46,12 +46,12 @@ $ renamed-branch: echo "" --- --header "If the branch is in remote repo, you nee
 
 % git, worktree
 
-# create a linked worktree `brach` to the `path` (`path` must contains the worktree root dir). Linked worktree contrasts with the main worktree, which is initiated via `git clone` or `git init`. It must be run inside a worktree, whether it is linked or main. In order to make it organized, one must to place all worktrees within the same parent directory
+# create a linked worktree `brach` to the `path` 
 git worktree add <prefix>/<path> <branch>
 
-$ prefix: { git rev-parse --show-toplevel | xargs dirname; } 2> /dev/null || pwd
-$ branch: git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq | grep -v "$(git branch | awk '{ print $2 }')"
-$ path: $branch
+$ prefix: echo -e '`prefix` is the path containing all worktrees, i.e., the worktree root dir.\nThe default option is the parent dir of the current repository root dir.\n\nPS1: Linked worktree contrasts with the main worktree, which is initiated via `git clone` or `git init`.\nPS2: `git worktree` must be run inside a worktree, whether it is linked or main.'; { git rev-parse --show-toplevel | xargs dirname; } 2> /dev/null || pwd; echo '' --- --fzf-overrides '--header-lines=5 --height=100%'
+$ branch: echo -e 'Which branch do you want to add as a linked worktree?'; git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq --- --fzf-overrides '--header-lines=1 --height=100%'
+$ path: echo -e 'It is reasonable that `path` is equal to the branch name.'; echo '<branch>'; echo '' --- --fzf-overrides '--header-lines=1 --height=100%'
 
 % git, sparse
 
