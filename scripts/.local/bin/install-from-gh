@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Parse command-line options using getopt (`a:` means that the option `a` has an argument)
 ARGS=$(getopt -o ha:t --long help,arch:t -- "$@")
@@ -26,6 +26,12 @@ OPTIONS:
   -h, --help
     Print this help.
 "
+
+# Check if no arguments are passed
+if [ $# -eq 1 ]; then
+  echo "$help"
+  exit 0
+fi
 
 # default values
 arch="amd64"

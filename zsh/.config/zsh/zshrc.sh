@@ -64,3 +64,5 @@ eval "$(zoxide init zsh)"
 #fi
 # navi
 eval "$(navi widget zsh)"
+
+source /home/tapyu/.config/broot/launcher/bash/br
