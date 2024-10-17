@@ -70,3 +70,5 @@ export LD_LIBRARY_PATH=/usr/local/cuda-12.3/targets/x86_64-linux/lib:/usr/local/
 export NAVI_FZF_OVERRIDES_VAR='--no-select-1'
 # delta
 DELTA_FEATURES=+side-by-side
+# cdhist (fzf integration) SEE: https://github.com/bulletmark/cdhist?tab=readme-ov-file#fzf-integration
+export FZF_ALT_C_COMMAND="cdhist -p && cat $HOME/.cd_history"

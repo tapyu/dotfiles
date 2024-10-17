@@ -64,5 +64,10 @@ eval "$(zoxide init zsh)"
 #fi
 # navi
 eval "$(navi widget zsh)"
-
+# broot
 source /home/tapyu/.config/broot/launcher/bash/br
+# cdhist (SEE: https://github.com/bulletmark/cdhist)
+if type cdhist &>/dev/null; then
+    . <(cdhist -i)
+fi
+source <(fzf --zsh | sed 's/builtin cd/cd/g')

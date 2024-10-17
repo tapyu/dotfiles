@@ -53,6 +53,12 @@ $ prefix: echo -e '`prefix` is the path containing all worktrees, i.e., the work
 $ branch: echo -e 'Which branch do you want to add as a linked worktree?'; git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq --- --fzf-overrides '--header-lines=1 --height=100%'
 $ path: echo -e 'It is reasonable that `path` is equal to the branch name.'; echo '<branch>'; echo '' --- --fzf-overrides '--header-lines=1 --height=100%'
 
+# cd (chage directory) between worktrees
+
+cd -g <worktree>
+
+$ worktree: echo 'PS: It assumes that cdhist has been installed'; git worktree list | awk -F'[][]' '{ print $2 }' | grep -v $(git branch --show-current) --- --fzf-overrides '--header-lines=1 --height=100%'
+
 % git, sparse
 
 # sparsely clone
