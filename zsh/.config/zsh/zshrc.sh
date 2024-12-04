@@ -24,10 +24,10 @@ bindkey '^E' edit-command-line
 bindkey -s '^o' 'n\n'
 
 ### imports ###
-source "$ZDOTDIR/base-functions.sh" # this makes all the jobs of the bloated "oh-my-zsh" stuff
+source "$ZDOTDIR/base_functions.sh" # this makes all the jobs of the bloated "oh-my-zsh" stuff
 source "$ZDOTDIR/exports.sh"
 source "$ZDOTDIR/aliases.sh"
-source "$ZDOTDIR/user-functions.sh"
+source "$ZDOTDIR/user_functions.sh"
 
 ### plugins ###
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
@@ -40,7 +40,6 @@ mkdir -p $ZDOTDIR/plugins/git-auto-fetch; [[ ! -f $ZDOTDIR/plugins/git-auto-fetc
 zsh_add_plugin "laggardkernel/git-ignore"
 zsh_add_plugin "se-jaeger/zsh-activate-py-environment"
 zsh_add_plugin "Aloxaf/fzf-tab"
-# zsh_add_plugin "egyptianbman/zsh-git-worktrees" # bloated plugin!
 # zsh_add_plugin "MichaelAquilina/zsh-you-should-use" # not necessary anymore (?)
 
 ### plugins setup ###
