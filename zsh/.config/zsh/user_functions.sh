@@ -25,9 +25,19 @@ git-sparse-clone() {
   git pull origin $branch
 }
 
+gwt() {
+  # cd between the git worktrees
+  local worktree
+  worktree=$(git worktree list | fzf | awk '{print $1}')
+  if [ -n "$worktree" ]; then
+      cd "$worktree" || echo "Failed to navigate to $worktree"
+  else
+      echo "No worktree selected."
+  fi
+}
+
 ### fzf-based commads
-fp()
-{
+fp() {
   # open PDF using fuzzy finder
   local open=xdg-open   # this will open pdf file withthe default PDF viewer on KDE, xfce, LXDE and perhaps on other desktops.
   rg --type 'pdf' --files \
@@ -55,8 +65,7 @@ fd() {
   cd "$dir"
 }
 
-n_cd ()
-{
+n_cd () {
     # Block nesting of nnn in subshells
     [ "${NNNLVL:-0}" -eq 0 ] || {
         echo "nnn is already running"
