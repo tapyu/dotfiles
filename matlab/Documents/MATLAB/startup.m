@@ -14,6 +14,7 @@ if isunix
     else
         error('There is no path %s to the added', matlab_path);
     end
+    clear matlab_path xdg_data_home_path
 elseif ispc
     error('There is no default paths for Windows.');
 elseif ismac
