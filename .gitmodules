@@ -7,3 +7,6 @@
 [submodule "matlab/.local/share/matlab/matlab_schemer"]
 	path = matlab/.local/share/matlab/matlab_schemer
 	url = https://github.com/scottclowe/matlab-schemer
+[submodule "matlab/.local/share/matlab/matlab2tikz"]
+	path = matlab/.local/share/matlab/matlab2tikz
+	url = https://github.com/matlab2tikz/matlab2tikz
