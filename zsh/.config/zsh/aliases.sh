@@ -10,7 +10,6 @@ if [[ -x /usr/bin/dircolors ]]; then
 fi
 
 # Verbosity and settings that you pretty much just always are going to want.
-# TODO: see more here: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
 alias cp='cp --interactive --recursive'
 alias mv='mv --interactive --verbose'
 alias mkdir='mkdir --parents --verbose'
@@ -18,13 +17,15 @@ alias l='ls'
 alias l1='ls -1'
 alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --almost-all -> ignore . and ..
 
+# BurntSushi/ripgrep
+alias grep='rg' # ripgrep
 # sharkdp/bat
 alias cat=bat
 # dandavison/delta
 alias diff=delta
 # wezterm image redering capability
 alias imgcat='wezterm imgcat'
-# peltoche/lsd program
+# peltoche/lsd
 [[ "$(command -v lsd)" ]] && alias ls='lsd --group-dirs first --total-size' # although `--total-size` is useless without the `-l optionl`, it must be placed here as `\ls` has no `--total-size` option
 # jarun/nnn
 alias nnn='n_cd -e -P p'
