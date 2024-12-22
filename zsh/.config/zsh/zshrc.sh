@@ -33,7 +33,7 @@ source "$ZDOTDIR/user_functions.sh"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "MenkeTechnologies/zsh-expand" # another possible alternative to it is `olets/zsh-abbr`, which has omre stars
+zsh_add_plugin "MenkeTechnologies/zsh-expand" # another possible alternative to it is `olets/zsh-abbr`, which has more stars
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search"
 mkdir -p $ZDOTDIR/plugins/git-auto-fetch; [[ ! -f $ZDOTDIR/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh ]] && curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh > $ZDOTDIR/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh # git-auto-fetch oh-my-zsh plugin
