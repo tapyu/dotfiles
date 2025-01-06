@@ -25,11 +25,6 @@ OPTIONS:
     Download the homework MWE instead.
 "
 
-# Check if no arguments are passed
-if [ $# -eq 1 ]; then
-  echo "$help"
-  exit 0
-fi
 
 # default values
 mwe='https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/default_mwe.tex'
