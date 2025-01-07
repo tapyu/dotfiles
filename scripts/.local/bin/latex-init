@@ -71,7 +71,7 @@ curl --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581cc
 # download default preamble
 curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_default_preamble.tex > default_preamble.tex
 # download default glossary entries
-curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/my_glossary_entries.tex > default_gossary_entries.tex
+curl --insecure --silent https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/my_glossary_entries.tex > default_glossary_entries.tex
 # if the MWE has support files, download them
 if [[ -v support ]]; then
   for ((i=0; i<${#support[@]}; i++));do
