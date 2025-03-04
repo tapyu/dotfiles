@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# here you put the shell(local) variables
+## here you put the shell(local) variables
+## the settings here are technically shell variables, not exported environment variables.
 # History in cache directory:
 HISTSIZE=150000
 SAVEHIST=150000

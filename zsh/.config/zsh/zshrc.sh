@@ -1,11 +1,15 @@
 ### basic config ###
-setopt appendhistory # append new history entries to the history file, rather than overwriting the entire file each time the shell exits
-setopt autocd # if you type a directory name as a command and press Enter, Zsh automatically changes to that directory
-setopt extendedglob # This option extends the functionality of globbing patterns in zsh, allowing the use of additional features such	^(foo|bar)
-setopt nomatch # prevents the zsh from reporting an error if a glob pattern does not match any files
-setopt interactive_comments # allows you to include comments in interactive shell sessions
-unsetopt BEEP # unset beep
-stty stop undef	# Disable ctrl-s to freeze terminal.
+setopt appendhistory         # append new history entries to the history file, rather than overwriting the entire file each time the shell exits
+setopt autocd                # if you type a directory name as a command and press Enter, Zsh automatically changes to that directory
+setopt extendedglob          # this option extends the functionality of globbing patterns in zsh, allowing the use of additional features such	^(foo|bar)
+setopt nomatch               # prevents the zsh from reporting an error if a glob pattern does not match any files
+setopt interactive_comments  # allows you to include comments in interactive shell sessions
+unsetopt BEEP                # unset beep
+setopt HIST_IGNORE_ALL_DUPS  # prevent duplicate entries in history
+setopt HIST_APPEND           # append history instead of overwriting
+setopt INC_APPEND_HISTORY    # save each command as it is executed
+setopt SHARE_HISTORY         # share history across multiple sessions
+stty stop undef	             # disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none') # disable highlighting when pasting something
 
 ### auto/tab complete ###
