@@ -73,4 +73,4 @@ DELTA_FEATURES=+side-by-side
 # cdhist (fzf integration) SEE: https://github.com/bulletmark/cdhist?tab=readme-ov-file#fzf-integration
 export FZF_ALT_C_COMMAND="cdhist -p && cat $HOME/.cd_history"
 # git-credential-manager
-export GCM_CREDENTIAL_STORE=gpg # use GPG key + `pass` to encrypt the remote repo authentications by using `git-credential-manager`.
+export GCM_CREDENTIAL_STORE=gpg # use GPG key + `pass` to encrypt the remote repo authentications by using `git-credential-manager` (redundant ifi you run `git config --global credential.credentialStore gpg`)
