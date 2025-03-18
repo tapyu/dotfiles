@@ -51,7 +51,7 @@ export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/fi
 # matlab
 #export LD_LIBRARY_PATH='/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a/sys/os/glnxa64:$LD_LIBRARY_PATH'
 # cargo
-[[ -f "/home/tapyu/.local/share/cargo/env" ]] && source "/home/tapyu/.local/share/cargo/env" # nnn
+[[ -f "/home/tapyu/.local/share/cargo/env" ]] && source "/home/tapyu/.local/share/cargo/env"
 # nnn
 export NNN_FIFO=/tmp/nnn.fifo # Named Pipe (FIFO) file
 export NNN_BMS="g:$HOME/git;d:$HOME/Downloads;~:$HOME;b:$HOME/books" # nnn bookmarks
@@ -72,3 +72,5 @@ export NAVI_FZF_OVERRIDES_VAR='--no-select-1'
 DELTA_FEATURES=+side-by-side
 # cdhist (fzf integration) SEE: https://github.com/bulletmark/cdhist?tab=readme-ov-file#fzf-integration
 export FZF_ALT_C_COMMAND="cdhist -p && cat $HOME/.cd_history"
+# git-credential-manager
+export GCM_CREDENTIAL_STORE=gpg # use GPG key + `pass` to encrypt the remote repo authentications by using `git-credential-manager`.
