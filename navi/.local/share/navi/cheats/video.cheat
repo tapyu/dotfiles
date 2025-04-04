@@ -3,8 +3,13 @@
 # split video into segments
 ffmpeg -i <infile> -c copy -map 0 -segment_time <segment_length> -f segment -reset_timestamps 1 part%01d.mp4
 
+# crop video from t1 to t2
+ffmpeg -i <infile> -ss <start_time> -to <end_time> -c copy output.mp4
+
 # compress video
 ffmpeg -i <inifile> -b:v 1000k -b:a 128k output.mp4
 
-<infile>: ls
-<segment_length>: ls --- --header "In hh:mm:ss format"
+$ infile: ls *.mkv *.mp4 --- --fzf-overrides '--height=100%'
+$ segment_length: echo "In hh:mm:ss format" --- --fzf-overrides '--header-lines=1 --height=100%'
+$ start_time: echo "In hh:mm:ss format" --- --fzf-overrides '--header-lines=1 --height=100%'
+$ end_time: echo "In hh:mm:ss format" --- --fzf-overrides '--header-lines=1 --height=100%'

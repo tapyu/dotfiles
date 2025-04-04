@@ -11,3 +11,6 @@ sudo apt -y autoremove
 # rust
 rustup update # rust's toolchain and version manager: update rust compiler (rustc)
 cargo install-update --all --git # update all rust crates. You need to run `cargo install cargo-update` first as there is no built-in subcommand to update all rust crates on your system (see https://stackoverflow.com/a/40982333/13998346). run `cargo install --list` to see all crates. The `--git` option allows the crates intalled using git repositories, e.g., `cargo install --git https://github.com/typst/typst`
+# snap
+sudo snap refresh
+
