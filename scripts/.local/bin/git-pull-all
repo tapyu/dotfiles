@@ -1,14 +1,17 @@
 #!/bin/sh
+# Pull all braches that are pulled so far
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
 
 git branch -r | \
   grep -v '\->' | \
   sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | \
   sed "s,origin/,,g" | \
+  grep -v \grep -v "${current_branch}" | \
   while read remote; do
-
-if git rev-parse "refs/remotes/origin/$remote" > /dev/null 2>&1; then
-  git fetch origin "$remote":"$remote"
-else
-  git branch --track "$remote" "origin/$remote"
-fi
-done
+    if git rev-parse "refs/remotes/origin/$remote" > /dev/null 2>&1; then
+      git fetch origin "$remote":"$remote"
+    else
+      git branch --track "$remote" "origin/$remote"
+    fi
+  done
