@@ -1,28 +1,6 @@
 % git
-
 # cd to git root dir
 cd "$(git rev-parse --show-toplevel)"
-
-# create a brand-new/orphan branch (without files/commits)
-git switch --orphan <new-branch>
-
-# create a new branch
-git switch --create <new-branch>
-
-# rename branch
-git branch -m <renamed-branch>
-
-# delete remote repo
-git push --delete <remote> <branch>
-
-# set upstream locally
-git branch --set-upstream-to=<remote>/<new-branch>
-
-# set upstream remotelly (pushes it)
-git push --set-upstream <remote> <new-branch>
-
-# reset local branch commits
-git reset --hard <remote_branch>
 
 # print untracked files
 git ls-files --others --exclude-standard
@@ -38,11 +16,65 @@ git rm -r --cached .
 git add -A
 git push <remote> <branch>
 
+
+
+
+
+% git, trace back
+
+# trace back a file
+git log --follow --name-status -- "<tracked-files>"
+
+# cat a file after a given hash change
+git show <hash>:"<file-hash>"
+
+# list file tree at a given hash
+git ls-tree -r --name-only <hash>
+
+$ tracked-files: echo -e 'PS: `--follow` turns on Git’s rename-detection when walking back through history. By default Git will consider\ntwo files “the same” if they’re sufficiently similar,\neven if they live in completely different folders and have different names.'; git ls-files --- --fzf-overrides '--header-lines=3 --height=100%'
+
+
+
+
+
+
+% git, branch
+# create a brand-new/orphan branch (without files/commits)
+git switch --orphan <new-branch>
+
+# create a new branch
+git switch --create <new-branch>
+
+# rename branch
+git branch -m <renamed-branch>
+
+# delete branch locally
+git branch -d <local-branches>
+
+$ local-branches: git branch --list | grep -v '*' | awk '{ print $1 }'
+
+% git, remote, upstream
+# delete remote repo
+git push --delete <remote> <branch>
+
+# set upstream locally
+git branch --set-upstream-to=<remote>/<new-branch>
+
+# set upstream remotelly (pushes it)
+git push --set-upstream <remote> <new-branch>
+
+# reset local branch commits
+git reset --hard <remote_branch>
+
 $ branch: git branch --remotes | awk -F/ '{ print $NF }' | sort | uniq
 $ remote: echo "" --- --fzf-overrides --query="origin"
 $ files: find . -maxdepth 1 -printf '%f\n'
 $ remote_branch: git branch -r | grep -v 'HEAD' --- --header "discard all local commits and match the remote branch"
 $ renamed-branch: echo "" --- --header "If the branch is in remote repo, you need: 1- `git push --delete URL oldname`, 2- `git push --set-upstream URL new_branch`"
+
+
+
+
 
 % git, worktree
 
@@ -54,8 +86,7 @@ $ branch: echo -e 'Which branch do you want to add as a linked worktree?'; git b
 $ path: echo -e 'It is reasonable that `path` is equal to the branch name.'; echo '<branch>'; echo '' --- --fzf-overrides '--header-lines=1 --height=100%'
 
 # cd (chage directory) between worktrees
-
-cd -g <worktree>
+cdhist -g <worktree>
 
 $ worktree: echo 'PS: It assumes that cdhist has been installed'; git worktree list | awk -F'[][]' '{ print $2 }' | grep -v $(git branch --show-current) --- --fzf-overrides '--header-lines=1 --height=100%'
 
@@ -66,14 +97,19 @@ git-sparse-clone <repo_url> <branch> <local_path> <subdirectories_to_include>
 
 $ branch: git ls-remote --refs <repo_url> | head -n 1 | awk '{ print $2 }' | cut -d/ -f3
 
-% gh
 
+
+
+
+% gh
 # fork repo
 gh repo fork <github_url>
 
 
-% git submodule
 
+
+
+% git submodule
 # add submodule
 git submodule add<prefix_branch><is_branch> <URL> <dir_prefix>/<dir_basename>
 
@@ -83,8 +119,11 @@ $ prefix_branch: [[ -n $(echo <is_branch>) ]] && echo ' --branch=' || echo '' --
 $ dir_prefix: echo -e "Where is the path of the submodule you want to add? Enter the relative dir path with respect to it."; find "$(git rev-parse --show-toplevel)" -type d | sed "s|$(git rev-parse --show-toplevel)/\?||" | grep -v '^$' --- --fzf-overrides '--header-lines=2 --height=100%'
 $ dir_basename: echo "What will the submodule be called in your repository?" --- --fzf-overrides '--header-lines=1 --query="TODO: try to get repo name here"'
 
-% git annex
 
+
+
+
+% git annex
 # init git annex
 git annex init "<description>"
 
