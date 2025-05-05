@@ -61,14 +61,17 @@ fi
 ### software setups ###
 # zoxide
 eval "$(zoxide init zsh)"
+
 # tmux
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #  exec tmux
 #fi
+
 # navi
 eval "$(navi widget zsh)"
+
 # cdhist SEE: https://github.com/bulletmark/cdhist
 if type cdhist &>/dev/null; then
-    . <(cdhist -i)
+    source <(cdhist -i)
 fi
-source <(fzf --zsh | sed 's/builtin cd/cd/g')
+source <(fzf --zsh | sed 's/builtin cd/cd/g') # NOTE: changes the `alt+C` (a `zsh` shortcut) from `builtin cd` to `cdhist`. In practice, it makes `alt+C` run `cd --`
