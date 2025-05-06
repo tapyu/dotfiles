@@ -10,7 +10,8 @@ if isunix
     matlab_path = [xdg_data_home_path '/matlab'];
     if isfolder(matlab_path)
         addpath(genpath(matlab_path));
-        disp('Welcome to MATLAB! Custom paths have been added.');
+        disp(['Welcome to MATLAB! The directory ' ...
+            matlab_path ' has been added to the MATLAB path.']);
     else
         error('There is no path %s to the added', matlab_path);
     end
