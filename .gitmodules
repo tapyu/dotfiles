@@ -10,7 +10,3 @@
 [submodule "matlab/.local/share/matlab/matlab2tikz"]
 	path = matlab/.local/share/matlab/matlab2tikz
 	url = https://github.com/matlab2tikz/matlab2tikz
-[submodule "matlab/.local/share/gnss-scintillation-simulator"]
-	path = matlab/.local/share/gnss-scintillation-simulator
-	url = https://github.com/ita-gnss-lab/gnss-scintillation-simulator
-	branch = refactored
