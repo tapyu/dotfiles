@@ -113,6 +113,9 @@ gh repo fork <github_url>
 # add submodule
 git submodule add<prefix_branch><is_branch> <URL> <dir_prefix>/<dir_basename>
 
+# update submodule
+git submodule update --remote --merge --recursive
+
 $ URL: echo 'NOTE: Make sure you are running `git submodule add` from the root directory of this git repository.' --- --fzf-overrides '--header-lines=1 --query="https://github.com/"'
 $ is_branch: echo -e 'If you want to add the default repo branch, leave it empty. Otherwise, type the desired branch name.\n\n'; echo ''; git ls-remote --refs <URL> | \grep 'heads' | awk -F '/' '{print $NF}' --- --fzf-overrides '--header-lines=3 --height=100%'
 $ prefix_branch: [[ -n $(echo <is_branch>) ]] && echo ' -b ' || echo '' --- --fzf-overrides '--select-1'
