@@ -64,8 +64,8 @@ if [[ -d /usr/local/texlive ]]; then
   export MANPATH=${texpath}/texmf-dist/doc/man:$MANPATH
 fi
 # CUDA (see https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup)
-export PATH=/usr/local/cuda-12.9/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-12.9/targets/x86_64-linux/lib:/usr/local/cuda-12.9/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH=/usr/local/cuda-12.5/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-12.5/targets/x86_64-linux/lib:/usr/local/cuda-12.5/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 # navi
 export NAVI_FZF_OVERRIDES_VAR='--no-select-1'
 # delta
