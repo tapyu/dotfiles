@@ -1,0 +1,6 @@
+
+[[Snippets]]
+  Description = "if/else block"
+  Output = ""
+  Tag = ["ie"]
+  command = "if [[ <condition> ]]; then\n    <then_cmd>\nelse\n    <else_cmd>\nfi"
