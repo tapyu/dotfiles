@@ -1,4 +1,3 @@
-#######################################
 git-sparse-clone() {
   # function to perform sparse clone, to see more, check this out
   # https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository
@@ -36,7 +35,6 @@ gwt() {
   fi
 }
 
-### fzf-based commads
 fp() {
   # open PDF using fuzzy finder
   local open=xdg-open   # this will open pdf file withthe default PDF viewer on KDE, xfce, LXDE and perhaps on other desktops.
@@ -58,39 +56,52 @@ ft() {
   [[ -n "$files" ]] && ${EDITOR:-hx:-vim:-vi} "${files[@]}"
 }
 
-# fd - cd to selected directory
 fd() {
+  # fd - cd to selected directory
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
 n_cd () {
-    # Block nesting of nnn in subshells
-    [ "${NNNLVL:-0}" -eq 0 ] || {
-        echo "nnn is already running"
-        return
-    }
+  # jarun/nnn cd functionality
+  # NOTE: It is alaised to `nnn`
+  # SEE: aliases.sh
+  # Block nesting of nnn in subshells
+  [ "${NNNLVL:-0}" -eq 0 ] || {
+      echo "nnn is already running"
+      return
+  }
 
-    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-    # see. To cd on quit only on ^G, remove the "export" and make sure not to
-    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-    #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+  # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+  # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+  # see. To cd on quit only on ^G, remove the "export" and make sure not to
+  # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+  #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+  export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
+  # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+  # stty start undef
+  # stty stop undef
+  # stty lwrap undef
+  # stty lnext undef
 
-    # The command builtin allows one to alias nnn to n, if desired, without
-    # making an infinitely recursive alias
-    command nnn "$@"
+  # The command builtin allows one to alias nnn to n, if desired, without
+  # making an infinitely recursive alias
+  command nnn "$@"
 
-    [ ! -f "$NNN_TMPFILE" ] || {
-        . "$NNN_TMPFILE"
-        rm -f "$NNN_TMPFILE" > /dev/null
-    }
+  [ ! -f "$NNN_TMPFILE" ] || {
+      . "$NNN_TMPFILE"
+      rm -f "$NNN_TMPFILE" > /dev/null
+  }
 }
+
+function pet-select() {
+  # knqyf263/pet function
+  # NOTE: It is binded to ^S
+  # SEE: zshrc.sh
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+

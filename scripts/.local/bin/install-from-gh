@@ -13,7 +13,8 @@ USAGE:
 
 ARGS:
   REPO
-    Repository in the format username/repo-name.
+    Repository in the format username/repo-name. E.g., pass knqyf263/pet if you want to
+    download the lastest deb file from https://github.com/knqyf263/pet
 
 OPTIONS:
   -a ARCH, --arch=ARCH

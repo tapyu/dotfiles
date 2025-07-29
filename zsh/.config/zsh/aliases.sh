@@ -14,7 +14,9 @@ alias cp='cp --interactive --recursive'
 alias mv='mv --interactive --verbose'
 alias mkdir='mkdir --parents --verbose'
 alias l='ls'
-alias l1='ls -1'
+alias l1='ls --oneline'
+alias l1a='ls --almost-all --oneline'
+alias la='ls --almost-all'
 alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --almost-all -> ignore . and ..
 
 # BurntSushi/ripgrep
@@ -32,3 +34,4 @@ alias nnn='n_cd -e -P p'
 alias n='nnn'
 # kaelzhang/shell-safe-rm
 alias rm='safe-rm -rf'
+

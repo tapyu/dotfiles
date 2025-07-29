@@ -26,6 +26,9 @@ zle -N edit-command-line
 bindkey '^E' edit-command-line
 # open nnn with ^o
 bindkey -s '^o' 'n\n'
+# knqyf263/pet
+zle -N pet-select
+bindkey '^s' pet-select
 
 ### imports ###
 source "$ZDOTDIR/base_functions.sh" # this makes all the jobs of the bloated "oh-my-zsh" stuff
@@ -60,11 +63,6 @@ fi
 ### software setups ###
 # zoxide
 eval "$(zoxide init zsh)"
-
-# tmux
-#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#  exec tmux
-#fi
 
 # navi
 eval "$(navi widget zsh)"

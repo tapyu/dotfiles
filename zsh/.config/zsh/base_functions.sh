@@ -2,7 +2,13 @@
 zsh_add_plugin() {
   PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2 | cut -d '.' -f 1)
   [[ ! -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]] && git clone "https://github.com/$1" "$ZDOTDIR/plugins/$PLUGIN_NAME"
-  source "$ZDOTDIR/plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" 2> /dev/null || source "$ZDOTDIR/plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+  for script in \
+    "$ZDOTDIR/plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" \
+    "$ZDOTDIR/plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh" \
+    "$ZDOTDIR/plugins/$PLUGIN_NAME/${PLUGIN_NAME#zsh-}.plugin.zsh"
+  do
+    [[ -r $script ]] && source $script && break
+  done
 }
 
 # add theme
