@@ -72,3 +72,4 @@ if type cdhist &>/dev/null; then
     source <(cdhist -i)
 fi
 source <(fzf --zsh | sed 's/builtin cd/cd/g') # NOTE: changes the `alt+C` (a `zsh` shortcut) from `builtin cd` to `cdhist`. In practice, it makes `alt+C` run `cd --`
+

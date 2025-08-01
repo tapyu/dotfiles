@@ -22,9 +22,9 @@ alias ll='ls -l --almost-all --human-readable' # -l -> long list formating; --al
 # BurntSushi/ripgrep
 alias grep='rg' # ripgrep
 # sharkdp/bat
-alias cat=bat
+alias cat='bat'
 # dandavison/delta
-alias diff=delta
+alias diff='delta'
 # wezterm image redering capability
 alias imgcat='wezterm imgcat'
 # peltoche/lsd
@@ -34,4 +34,6 @@ alias nnn='n_cd -e -P p'
 alias n='nnn'
 # kaelzhang/shell-safe-rm
 alias rm='safe-rm -rf'
+# sharkdp/fd
+alias fd='fdfind'
 
