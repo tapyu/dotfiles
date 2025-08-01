@@ -56,13 +56,6 @@ ft() {
   [[ -n "$files" ]] && ${EDITOR:-hx:-vim:-vi} "${files[@]}"
 }
 
-fd() {
-  # fd - cd to selected directory
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
-}
-
 n_cd () {
   # jarun/nnn cd functionality
   # NOTE: It is alaised to `nnn`
