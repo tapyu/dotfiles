@@ -124,7 +124,7 @@ git submodule update --remote --merge --recursive
 $ URL: echo 'NOTE: Make sure you are running `git submodule add` from the root directory of this git repository.' --- --fzf-overrides '--header-lines=1 --query="https://github.com/"'
 $ is_branch: echo -e 'If you want to add the default repo branch, leave it empty. Otherwise, type the desired branch name.\n\n'; echo ''; git ls-remote --refs <URL> | \grep 'heads' | awk -F '/' '{print $NF}' --- --fzf-overrides '--header-lines=3 --height=100%'
 $ prefix_branch: [[ -n $(echo <is_branch>) ]] && echo ' -b ' || echo '' --- --fzf-overrides '--select-1'
-$ dir_prefix: echo -e "Where is the path of the submodule you want to add? Enter the relative dir path with respect to it."; find "$(git rev-parse --show-toplevel)" -type d | sed "s|$(git rev-parse --show-toplevel)/\?||" | grep -v '^$' --- --fzf-overrides '--header-lines=1 --height=100%'
+$ dir_prefix: echo -e "Where is the path of the submodule you want to add? Enter the relative dir path with respect to it."; echo '.'; find "$(git rev-parse --show-toplevel)" -type d | sed "s|$(git rev-parse --show-toplevel)/\?||" | grep -v '^$' --- --fzf-overrides '--header-lines=1 --height=100%'
 $ dir_basename: echo "What will the submodule be called in your repository?" --- --fzf-overrides '--header-lines=1 --query="TODO: try to get repo name here"'
 
 
