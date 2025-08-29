@@ -22,3 +22,5 @@ elseif ismac
     error('There is no default paths for macOS.');
 else
     error('Unknown operating system.');
+
+end
