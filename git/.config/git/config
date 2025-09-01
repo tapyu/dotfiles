@@ -17,6 +17,7 @@
     colorMoved = default
 # Filters can be applied to modify content stored in the repository during checkouts, or during other Git processes. Filters are particularly useful for scenarios where you need to perform text replacements or other transformations on files. Filters can be powerful tools for customizing how Git handles your files.
 [credential]
-	helper = store # it stores the git token credential in ~/.conf/git/credentials for the next git logins
+	helper = manager
+	credentialStore = gpg
 [http]
 	postBuffer = 524288000

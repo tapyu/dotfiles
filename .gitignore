@@ -1,3 +1,10 @@
+pass/.local/share/password-store/git/
+scripts/.local/bin/env
+scripts/.local/bin/env.fish
+scripts/.local/bin/jq
+scripts/.local/bin/uv
+scripts/.local/bin/uvx
+scripts/.local/bin/xml2json
 matlab/Documents/MATLAB/Examples
 helix/.config/helix/runtime/
 zsh/**/plugins/
