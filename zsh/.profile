@@ -75,4 +75,5 @@ export FZF_ALT_C_COMMAND="cdhist -p && cat $HOME/.cd_history"
 # git-credential-manager
 export GCM_CREDENTIAL_STORE=gpg # use GPG key + `pass` to encrypt the remote repo authentications by using `git-credential-manager` (redundant ifi you run `git config --global credential.credentialStore gpg`)
 
-. "$HOME/.local/share/../bin/env"
+[ -f "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
+
