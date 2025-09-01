@@ -28,6 +28,9 @@ git log --follow --name-status -- "<tracked-files>"
 # cat a file after a given hash change
 git show <hash>:"<file-hash>"
 
+# show added/deleted/modified files within a given commit
+git show --name-status <hash>
+
 # list file tree at a given hash
 git ls-tree -r --name-only <hash>
 
