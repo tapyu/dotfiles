@@ -74,6 +74,3 @@ DELTA_FEATURES=+side-by-side
 export FZF_ALT_C_COMMAND="cdhist -p && cat $HOME/.cd_history"
 # git-credential-manager
 export GCM_CREDENTIAL_STORE=gpg # use GPG key + `pass` to encrypt the remote repo authentications by using `git-credential-manager` (redundant ifi you run `git config --global credential.credentialStore gpg`)
-# AWS: defines AWS_SECRET_ACCESS_KEY, AWS_ACCESS_KEY_ID, and AWS_SESSION_TOKEN
-# NOTE: secret gist. It assumes you have logged on tapyu
-eval "$(curl -LsSf https://gist.githubusercontent.com/tapyu/c97a537285cdd3171dbaf1f79b3d1862/raw/3fd8cbbfc6057ee223b316f4543a6b5791f8e38d/aws_rubem.sh)"
