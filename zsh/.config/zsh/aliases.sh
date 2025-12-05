@@ -10,7 +10,7 @@ if [[ -x /usr/bin/dircolors ]]; then
 fi
 
 # Verbosity and settings that you pretty much just always are going to want.
-alias cp='cp --interactive --recursive'
+alias cp='cpmkdir'
 alias mv='mv --interactive --verbose'
 alias mkdir='mkdir --parents --verbose'
 alias l='ls'

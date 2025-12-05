@@ -1,3 +1,9 @@
+cpmkdir() {
+  # make sure the destination directory exists
+  mkdir -p "$(dirname "$2")" && cp --interactive --recursive "$1" "$2"
+}
+
+
 git-sparse-clone() {
   # function to perform sparse clone, to see more, check this out
   # https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository
