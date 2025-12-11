@@ -11,6 +11,7 @@ zsh/**/plugins/
 zsh/**/theme/
 zsh/**/.zcompdump
 zsh/**/.p10k.zsh
+typst/.cache
 **/__pycache__/
 .newsboat/cache.db
 ranger/.config/ranger/history
