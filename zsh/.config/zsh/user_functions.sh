@@ -1,6 +1,5 @@
 cpmkdir() {
-    dest="$2"
-    mkdir -p "$(dirname "$dest")" && cp -a "$1" "$dest"
+  mkdir --parents --verbose -p "$(dirname "$2")" && \cp --interactive --recursive "$1" "$2"
 }
 
 
