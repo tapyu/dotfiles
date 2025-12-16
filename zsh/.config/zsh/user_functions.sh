@@ -1,5 +1,19 @@
 cpmkdir() {
-  mkdir --parents --verbose -p "$(dirname "$2")" && \cp --interactive --recursive "$1" "$2"
+  # usage: cpmkdir [cp options...] SRC... DEST
+  # Creates DEST dir (or DEST's parent, if DEST is a file path), then runs cp.
+
+  local dest
+  dest="${@: -1}"          # last argument = DEST
+
+  # If DEST ends with / or is an existing directory, ensure it exists.
+  if [[ "$dest" == */ || -d "$dest" ]]; then
+    mkdir -p -- "$dest" || return 1
+  else
+    # DEST is a file path (or non-existent dir without trailing /): create its parent
+    mkdir -p -- "$(dirname -- "$dest")" || return 1
+  fi
+
+  command cp -aiv -- "$@" # `command` avoids recursion
 }
 
 
