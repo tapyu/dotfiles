@@ -28,6 +28,13 @@ OPTIONS:
 
 # default values
 mwe='https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/default_mwe.tex'
+refs_default='@book{strangIntroductionLinearAlgebra1993,
+  title = {Introduction to Linear Algebra},
+  author = {Strang, Gilbert and Strang, Gilbert and Strang, Gilbert and Strang, Gilbert},
+  date = {1993},
+  volume = {3},
+  publisher = {Wellesley-Cambridge Press Wellesley, MA}
+}'
 
 # Process the options and arguments
 while true; do
@@ -85,3 +92,5 @@ if [[ -f "$file" ]]; then
 else
 	curl --insecure --silent $mwe > "$file"
 fi
+# if refs.bib doesn't exist, create it with a default entry
+[[ -f refs.bib ]] || echo "$refs_default" > refs.bib
