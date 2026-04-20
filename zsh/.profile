@@ -74,3 +74,5 @@ DELTA_FEATURES=+side-by-side
 export FZF_ALT_C_COMMAND="cdhist -p && cat $HOME/.cd_history"
 # git-credential-manager
 export GCM_CREDENTIAL_STORE=gpg # use GPG key + `pass` to encrypt the remote repo authentications by using `git-credential-manager` (redundant ifi you run `git config --global credential.credentialStore gpg`)
+export GPG_TTY=$(tty) # you must set the GPG_TTY environment variable so that GnuPG knows which terminal to use for displaying the passphrase prompt.
+
