@@ -44,8 +44,8 @@ while true; do
       exit 0  # Exit after displaying help      ;;
       ;;
     -b | --beamer)
-      mwe='https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/beamer_mwe.tex'
-      support=('https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/beamer_class.cls')
+      mwe='https://gist.githubusercontent.com/tapyu/8f2fde0cde62eb664c2d6676469aa902/raw/beamer_mwe.tex'
+      support=('https://gist.githubusercontent.com/tapyu/8f2fde0cde62eb664c2d6676469aa902/raw/beamer_class.cls')
       support_name=('beamer_class.cls')
       shift 2
       break
