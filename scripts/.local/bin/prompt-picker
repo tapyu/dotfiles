@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+dir="${XDG_DATA_HOME:-$HOME/.local/share}/prompts"
+
+choice="$(
+  find "$dir" -maxdepth 1 -type f -name '*.txt' -printf '%f\n' \
+    | sed 's/\.txt$//' \
+    | sort \
+    | rofi -dmenu -p "Prompt"
+)"
+
+[[ -n "$choice" ]] || exit 0
+
+file="$dir/$choice.txt"
+
+if [[ "${XDG_SESSION_TYPE:-}" == "wayland" ]] && command -v wl-copy >/dev/null; then
+  wl-copy < "$file"
+else
+  xclip -selection clipboard < "$file"
+fi
+
+notify-send "Prompt copied" "$choice" 2>/dev/null || true
+
