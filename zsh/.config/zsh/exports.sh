@@ -34,3 +34,11 @@ export LESS_TERMCAP_us="$(printf '\33[1;32m')"
 export LESS_TERMCAP_ue="$(printf '\33[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 
+# Ensure GnuPG knows which terminal to use for pinentry prompts.
+# Must be set per-interactive-shell (not in .profile), since $(tty)
+# needs an actual attached terminal to resolve correctly — running it
+# too early (e.g. at login, before a terminal exists) yields the
+# literal string "not a tty" instead of a real device path, which
+# breaks gpg-agent with "No such file or directory" errors.
+export GPG_TTY=$(tty)
+
