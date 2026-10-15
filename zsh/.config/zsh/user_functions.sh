@@ -75,39 +75,6 @@ ft() {
   [[ -n "$files" ]] && ${EDITOR:-hx:-vim:-vi} "${files[@]}"
 }
 
-n_cd () {
-  # jarun/nnn cd functionality
-  # NOTE: It is alaised to `nnn`
-  # SEE: aliases.sh
-  # Block nesting of nnn in subshells
-  [ "${NNNLVL:-0}" -eq 0 ] || {
-      echo "nnn is already running"
-      return
-  }
-
-  # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-  # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-  # see. To cd on quit only on ^G, remove the "export" and make sure not to
-  # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-  #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-  export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-  # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-  # stty start undef
-  # stty stop undef
-  # stty lwrap undef
-  # stty lnext undef
-
-  # The command builtin allows one to alias nnn to n, if desired, without
-  # making an infinitely recursive alias
-  command nnn "$@"
-
-  [ ! -f "$NNN_TMPFILE" ] || {
-      . "$NNN_TMPFILE"
-      rm -f "$NNN_TMPFILE" > /dev/null
-  }
-}
-
 function pet-select() {
   # knqyf263/pet function
   # NOTE: It is binded to ^S
@@ -116,38 +83,3 @@ function pet-select() {
   CURSOR=$#BUFFER
   zle redisplay
 }
-
-voice-claude() {
-    local speech command
-
-    echo "🎤 Speak..."
-
-    speech=$(nerd-dictation begin \
-        --vosk-model-dir "$HOME/.config/nerd-dictation/model" \
-        --output=STDOUT \
-        --timeout=2)
-
-    [[ -z "$speech" ]] && return
-
-    echo "🎤 Transcribed: $speech"
-
-    command=$(claude -p \
-        --tools= \
-        "Convert the following request into one Zsh command.
-         Output only the command, without Markdown.
-         Do not execute anything.
-         Request: $speech") || return
-
-    command=$(printf '%s\n' "$command" | sed '/^```/d')
-
-    [[ -z "$command" ]] && return
-
-    # Insert command directly into Zsh editing buffer
-    if [[ -o zle ]]; then
-        BUFFER="$command"
-        CURSOR=${#BUFFER}
-    else
-        print -z -- "$command"
-    fi
-}
-

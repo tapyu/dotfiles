@@ -24,19 +24,9 @@ _comp_options+=(globdots) # Include hidden files.
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^E' edit-command-line
-# open nnn with ^o
-bindkey -s '^o' 'n\n'
 # knqyf263/pet
 zle -N pet-select
 bindkey '^s' pet-select
-# voice-claude
-_voice_claude_widget() {
-    zle -I
-    voice-claude
-    zle -R
-}
-zle -N _voice_claude_widget
-bindkey '^G' _voice_claude_widget
 
 ### imports ###
 source "$ZDOTDIR/base_functions.sh" # this makes all the jobs of the bloated "oh-my-zsh" stuff
@@ -45,6 +35,7 @@ source "$ZDOTDIR/aliases.sh"
 source "$ZDOTDIR/user_functions.sh"
 
 ### plugins ###
+zsh_add_plugin "kylesnowschwartz/zsh-ai-cmd"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"

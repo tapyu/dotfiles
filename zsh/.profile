@@ -48,14 +48,9 @@ export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE='true'
 # fzf
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border" # just to make it prettier :)
 export FZF_DEFAULT_COMMAND='rg --hidden --files' # include hidden directories/files PS: rg = ripgrep
-# matlab
-#export LD_LIBRARY_PATH='/usr/local/MATLAB/R2022a/bin/glnxa64:/usr/local/MATLAB/R2022a/sys/os/glnxa64:$LD_LIBRARY_PATH'
+export FZF_ALT_C_COMMAND="cdhist -p && cat $HOME/.cd_history"
 # cargo
 [[ -f "/home/tapyu/.local/share/cargo/env" ]] && source "/home/tapyu/.local/share/cargo/env"
-# nnn
-export NNN_FIFO=/tmp/nnn.fifo # Named Pipe (FIFO) file
-export NNN_BMS="g:$HOME/git;d:$HOME/Downloads;~:$HOME;b:$HOME/books" # nnn bookmarks
-export NNN_PLUG='p:preview-tui'
 # LaTeX
 if [[ -d /usr/local/texlive ]]; then
   texpath=$(\ls -d1 /usr/local/texlive/[[:digit:]]* | tail -n 1) # get the newest installation
@@ -66,12 +61,13 @@ fi
 # CUDA (see https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup)
 export PATH=/usr/local/cuda-12.5/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-12.5/targets/x86_64-linux/lib:/usr/local/cuda-12.5/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-# navi
-export NAVI_FZF_OVERRIDES_VAR='--no-select-1'
 # delta
 DELTA_FEATURES=+side-by-side
 # cdhist (fzf integration) SEE: https://github.com/bulletmark/cdhist?tab=readme-ov-file#fzf-integration
-export FZF_ALT_C_COMMAND="cdhist -p && cat $HOME/.cd_history"
 # git-credential-manager
 export GCM_CREDENTIAL_STORE=gpg # use GPG key + `pass` to encrypt the remote repo authentications by using `git-credential-manager` (redundant ifi you run `git config --global credential.credentialStore gpg`)
+# kylesnowschwartz/zsh-ai-cmd
+export ZSH_AI_CMD_PROVIDER='ollama'                 # or: openai, gemini, deepseek, ollama, copilot, claude-code
+export ZSH_AI_CMD_OLLAMA_MODEL='qwen2.5-coder:7b'
+export ZSH_AI_CMD_KEY='^g'                          # Trigger key: Ctrl+G
 

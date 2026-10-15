@@ -29,9 +29,6 @@ alias diff='delta'
 alias imgcat='wezterm imgcat'
 # peltoche/lsd
 [[ "$(command -v lsd)" ]] && alias ls='lsd --group-dirs first --total-size' # although `--total-size` is useless without the `-l optionl`, it must be placed here as `\ls` has no `--total-size` option
-# jarun/nnn
-alias nnn='n_cd -e -P p'
-alias n='nnn'
 # kaelzhang/shell-safe-rm
 alias rm='safe-rm -rf'
 # sharkdp/fd
