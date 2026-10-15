@@ -29,6 +29,14 @@ bindkey -s '^o' 'n\n'
 # knqyf263/pet
 zle -N pet-select
 bindkey '^s' pet-select
+# voice-claude
+_voice_claude_widget() {
+    zle -I
+    voice-claude
+    zle -R
+}
+zle -N _voice_claude_widget
+bindkey '^G' _voice_claude_widget
 
 ### imports ###
 source "$ZDOTDIR/base_functions.sh" # this makes all the jobs of the bloated "oh-my-zsh" stuff
@@ -63,9 +71,6 @@ fi
 ### software setups ###
 # zoxide
 eval "$(zoxide init zsh)"
-
-# navi
-eval "$(navi widget zsh)"
 
 # cdhist SEE: https://github.com/bulletmark/cdhist
 if type cdhist &>/dev/null; then

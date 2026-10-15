@@ -117,3 +117,37 @@ function pet-select() {
   zle redisplay
 }
 
+voice-claude() {
+    local speech command
+
+    echo "🎤 Speak..."
+
+    speech=$(nerd-dictation begin \
+        --vosk-model-dir "$HOME/.config/nerd-dictation/model" \
+        --output=STDOUT \
+        --timeout=2)
+
+    [[ -z "$speech" ]] && return
+
+    echo "🎤 Transcribed: $speech"
+
+    command=$(claude -p \
+        --tools= \
+        "Convert the following request into one Zsh command.
+         Output only the command, without Markdown.
+         Do not execute anything.
+         Request: $speech") || return
+
+    command=$(printf '%s\n' "$command" | sed '/^```/d')
+
+    [[ -z "$command" ]] && return
+
+    # Insert command directly into Zsh editing buffer
+    if [[ -o zle ]]; then
+        BUFFER="$command"
+        CURSOR=${#BUFFER}
+    else
+        print -z -- "$command"
+    fi
+}
+
