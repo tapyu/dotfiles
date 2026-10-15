@@ -24,9 +24,6 @@ _comp_options+=(globdots) # Include hidden files.
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^E' edit-command-line
-# knqyf263/pet
-zle -N pet-select
-bindkey '^s' pet-select
 
 ### imports ###
 source "$ZDOTDIR/base_functions.sh" # this makes all the jobs of the bloated "oh-my-zsh" stuff

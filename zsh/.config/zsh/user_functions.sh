@@ -74,12 +74,3 @@ ft() {
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-hx:-vim:-vi} "${files[@]}"
 }
-
-function pet-select() {
-  # knqyf263/pet function
-  # NOTE: It is binded to ^S
-  # SEE: zshrc.sh
-  BUFFER=$(pet search --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle redisplay
-}
