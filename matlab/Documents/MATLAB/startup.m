@@ -1,5 +1,8 @@
 %% Add path
-if isunix
+% Aplicações compiladas (MATLAB Compiler) não podem alterar o path.
+if isdeployed
+    % não faz nada
+elseif isunix
     xdg_data_home_path = getenv('XDG_DATA_HOME');
     % if `xdg_data_home_path` is empty, fallback to the default
     % `XDG_DATA_HOME` path
