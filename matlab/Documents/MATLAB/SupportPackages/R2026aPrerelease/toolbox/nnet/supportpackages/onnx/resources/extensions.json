@@ -1,0 +1,16 @@
+{
+  "mw": {
+    "addons": {
+      "identifier": "ONNXCONVERTER",
+      "previewImage": "screenshot_16x12.png",
+      "setup": "",
+      "gettingStarted": {
+        "externalDocumentationUrl": ""
+      },
+      "provider": {
+        "name": "MathWorks",
+        "icon": "matlabLogoUI"
+      }
+    }
+  }
+}

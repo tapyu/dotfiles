@@ -68,6 +68,6 @@ DELTA_FEATURES=+side-by-side
 export GCM_CREDENTIAL_STORE=gpg # use GPG key + `pass` to encrypt the remote repo authentications by using `git-credential-manager` (redundant ifi you run `git config --global credential.credentialStore gpg`)
 # kylesnowschwartz/zsh-ai-cmd
 export ZSH_AI_CMD_PROVIDER='ollama'                 # or: openai, gemini, deepseek, ollama, copilot, claude-code
-export ZSH_AI_CMD_OLLAMA_MODEL='qwen2.5-coder:7b'
+export ZSH_AI_CMD_OLLAMA_MODEL='qwen2.5-coder:0.5b' # qwen2.5-coder:0.5b | qwen2.5-coder:1.5b | qwen2.5-coder:3b | qwen2.5-coder:7b
 export ZSH_AI_CMD_KEY='^g'                          # Trigger key: Ctrl+G
 

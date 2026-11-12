@@ -1,0 +1,68 @@
+{
+    "importONNXFunction":
+    {
+        "inputs":
+        [
+            {"name":"modelfile", "kind":"required", "type":[["char"],["file=*.onnx"]]},
+            {"name":"outputFunctionName", "kind":"required", "type":"char"}
+        ]
+    },
+
+    "importONNXLayers":
+    {
+        "inputs":
+        [
+            {"name":"modelfile", "kind":"required", "type":[["char"],["file=*.onnx"]]},
+            {"name":"ImportWeights", "kind":"namevalue", "type":["logical", "scalar"]},
+            {"name":"OutputLayerType", "kind":"namevalue", "type":"choices={'classification','regression','pixelclassification'}"},
+            {"name":"InputDataFormats", "kind":"namevalue", "type":[["char", "vector"], ["string", "vector"], ["cellstr", "vector"]]},
+            {"name":"OutputDataFormats", "kind":"namevalue", "type":[["char", "vector"], ["string", "vector"], ["cellstr", "vector"]]},
+            {"name":"TargetNetwork", "kind":"namevalue", "type":"choices={'dagnetwork', 'dlnetwork'}"},
+            {"name":"ImageInputSize", "kind":"namevalue", "type":["integer", "vector"]},
+            {"name":"Namespace", "kind":"namevalue", "type":"char"},
+            {"name":"GenerateCustomLayers", "kind":"namevalue", "type": ["logical", "scalar"]},
+            {"name":"FoldConstants", "kind":"namevalue", "type":"choices={'deep','shallow','none'}"}
+        ]
+    },
+
+    "importONNXNetwork":
+    {
+        "inputs":
+        [
+            {"name":"modelfile", "kind":"required", "type":[["char"],["file=*.onnx"]]},
+            {"name":"OutputLayerType", "kind":"namevalue", "type":"choices={'classification','regression','pixelclassification'}"},
+            {"name":"Classes", "kind":"namevalue", "type":[["categorical","vector"],["string","vector"],["cellstr","vector"]]},
+            {"name":"InputDataFormats", "kind":"namevalue", "type":[["char", "vector"], ["string", "vector"], ["cellstr", "vector"]]},
+            {"name":"OutputDataFormats", "kind":"namevalue", "type":[["char", "vector"], ["string", "vector"], ["cellstr", "vector"]]},   
+            {"name":"TargetNetwork", "kind":"namevalue", "type":"choices={'dagnetwork', 'dlnetwork'}"},
+            {"name":"ImageInputSize", "kind":"namevalue", "type":["integer", "vector"]},
+            {"name":"Namespace", "kind":"namevalue", "type":"char"},
+            {"name":"GenerateCustomLayers", "kind":"namevalue", "type":["logical", "scalar"]},
+            {"name":"FoldConstants", "kind":"namevalue", "type":"choices={'deep','shallow','none'}"}    
+        ]
+    },
+
+    "importNetworkFromONNX":
+    {
+        "inputs":
+        [
+            {"name":"modelfile", "kind":"required", "type":[["char"],["file=*.onnx"]]},
+            {"name":"Namespace", "kind":"namevalue", "type":"char"},
+            {"name":"InputDataFormats", "kind":"namevalue", "type":[["char", "vector"], ["string", "vector"], ["cellstr", "vector"]]},
+            {"name":"OutputDataFormats", "kind":"namevalue", "type":[["char", "vector"], ["string", "vector"], ["cellstr", "vector"]]},
+            {"name":"GenerateCoderFiles", "kind":"namevalue", "type":["logical", "scalar"]}
+        ]
+    },
+
+    "exportONNXNetwork":
+    {
+        "inputs":
+        [
+            {"name":"net", "kind":"required"},
+            {"name":"filename", "kind":"required", "type":"char"},
+            {"name":"NetworkName", "kind":"namevalue", "type":"char"},
+            {"name":"OpsetVersion", "kind":"namevalue", "type":"integer"},
+            {"name":"BatchSize", "kind":"namevalue", "type":"integer"}
+        ]
+    }  
+}

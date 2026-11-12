@@ -1,0 +1,37 @@
+classdef TypeProto_Optional
+    % Language binding class for the Optional TypeProto protobuf message
+    % optional TypeProto elem_type = 1;
+    
+    %   Copyright 2021 The MathWorks, Inc.
+
+    properties
+        elem_type
+    end
+    
+    methods
+        function this = TypeProto_Optional(varargin)
+            import nnet.internal.cnn.onnx.*
+            %Add Spkg bin path to system path
+            nnet.internal.cnn.onnx.util.addSpkgBinPath();
+            if nargin > 0
+                Ptr = varargin{1};
+                % Get raw properties
+                PropertyCell = onnxmex(int32(FuncName.EdecodeTypeProto_Optional), Ptr);
+                [this.elem_type] = PropertyCell{:};
+                % Call constructors on properties that are Proto objects
+                if ~isempty(this.elem_type)
+                    this.elem_type = TypeProto(this.elem_type);
+                end
+            end
+        end
+        
+        function encodeTypeProto_Optional(this, CPtr)
+            % Recursively fill the CPtr from 'this'.
+            import nnet.internal.cnn.onnx.*
+            PropertyCell = {this.elem_type};
+            PtrCell = onnxmex(int32(FuncName.EencodeTypeProto_Optional), CPtr, PropertyCell);
+            % Fill pointer objects
+            arrayfun(@encodeTypeProto, this.elem_type, PtrCell{1});     
+        end
+    end
+end

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<productAdditionalComps>
+  <dependsOn>
+    <component>
+      <name>softwaresupportpkgs/nnet/onnx_glnxa64</name>
+      <componentBaseName>softwaresupportpkgs/nnet/onnx</componentBaseName>
+      <componentFileName>softwaresupportpkgs/nnet/onnx_glnxa64_1786141095.zip</componentFileName>
+      <contentType>glnxa64</contentType>
+      <demo>0</demo>
+      <doc>0</doc>
+      <doc_build>0</doc_build>
+      <doc_search>0</doc_search>
+      <gpu>0</gpu>
+      <instrset>0</instrset>
+      <locale/>
+      <platformList>
+        <platform>glnxa64</platform>
+      </platformList>
+      <size>163451</size>
+      <uncompressedBytes>523856</uncompressedBytes>
+      <version>1786141095</version>
+    </component>
+  </dependsOn>
+  <isControllingProduct>false</isControllingProduct>
+  <licenseAgreementType>ASLA</licenseAgreementType>
+  <platform>glnxa64</platform>
+  <productBaseCode>ONNXCONVERTER</productBaseCode>
+  <productName>Deep Learning Toolbox Converter for ONNX Model Format</productName>
+  <productNumber>2187</productNumber>
+  <productType>softwareSupportPkg</productType>
+  <productVersion>25.2.13</productVersion>
+  <releaseDescription>R2025b</releaseDescription>
+  <releaseFamily>R2025b</releaseFamily>
+</productAdditionalComps>
