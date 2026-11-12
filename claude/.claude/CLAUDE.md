@@ -8,3 +8,7 @@
 - For boolean variable use the prefix `is_` or `has_` to make it easy to infer that it is a true/false variable, *e.g.*, `is_enabled`
 - Avoid exagerated abbreviations, *e.g.*, `nr` when you mean `nav_rec` (navigation record).
 
+## Commands
+
+- Some commands were aliased, so you should always run the commands with backslash for security, e.g., `\grep` instead of `grep`, and so on. In zsh, this prevents you call the aliased command.
+
