@@ -11,4 +11,5 @@
 ## Commands
 
 - Some commands were aliased, so you should always run the commands with backslash for security, e.g., `\grep` instead of `grep`, and so on. In zsh, this prevents you call the aliased command.
+- You should never commit anything with your authorship.
 
